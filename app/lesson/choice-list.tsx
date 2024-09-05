@@ -8,14 +8,15 @@ export interface ChoiceListProps {
   reveal: boolean,
 }
 
-export function ChoiceList({ choices, correctIndex, reveal }: ChoiceListProps) {
+export function ChoiceList({ choices, correctIndex, reveal }: Readonly<ChoiceListProps>) {
   const [value, setValue] = useState<number | null>(null);
 
   return (
     <div className={styles.root}>
       {choices.map((choice, index) => (
         <ChoiceButton
-          key={choice} state={index === (reveal && correctIndex) ? ChoiceButtonState.Correct : ChoiceButtonState.Normal}
+            key={choice}
+            state={index === (reveal && correctIndex) ? ChoiceButtonState.Correct : ChoiceButtonState.Normal}
         >
           {choice}
         </ChoiceButton>

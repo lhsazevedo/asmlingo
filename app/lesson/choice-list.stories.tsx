@@ -4,7 +4,11 @@ import { ChoiceList } from "./choice-list";
 const meta = {
     title: 'Lesson/Components/ChoiceList',
     component: ChoiceList,
-    decorators: [(Story) => <div style={{ maxWidth: '300px' }}><Story /></div>],
+    decorators: [(Story) => (
+      <div style={{ maxWidth: '300px' }}>
+        <Story />
+      </div>
+    )],
     tags: ['autodocs'],
 } satisfies Meta<typeof ChoiceList>;
 

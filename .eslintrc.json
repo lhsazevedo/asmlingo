@@ -5,5 +5,9 @@
     "plugin:react/all"
   ],
   "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "react/jsx-indent": [1, 2],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-literals": "off"
   }
 }

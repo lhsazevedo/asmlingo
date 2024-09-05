@@ -14,8 +14,10 @@ export interface ChoiceButtonProps {
   children: ReactNode,
 }
 
-export function ChoiceButton({ children, state }: ChoiceButtonProps) {
+export function ChoiceButton({ children, state }: Readonly<ChoiceButtonProps>) {
     return (
-        <div className={clsx(styles.root, styles[state])}>{children}</div>
+      <div className={clsx(styles.root, styles[state])}>
+        {children}
+      </div>
     )
 }
