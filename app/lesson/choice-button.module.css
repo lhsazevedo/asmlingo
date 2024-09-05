@@ -1,0 +1,42 @@
+.root {
+  background-color: white;
+  border: 2px solid hsl(0, 0%, 90%);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 19px;
+  color: hsl(0, 0%, 30%);
+  cursor: pointer;
+  font-family: sans-serif; /* TODO: Extract */
+  box-shadow: 0 2px 0 hsl(0, 0%, 90%);
+  text-align: center;
+}
+
+.root.normal:active, .root.selected:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+.root.normal:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+
+.selected {
+  background-color: #ddf4ff;
+  border-color: #84d8ff;
+  color: #1c9ad6;
+}
+
+.correct {
+  background-color: hsl(94, 100%, 86%);
+  border-color: hsl(94, 78%, 68%);
+  color: #58cc02;
+  cursor: default;
+}
+
+.wrong {
+  background-color: #ffdfe0;
+  border-color: #ea2c2c;
+  color: #ea2c2c;
+  cursor: default;
+}
