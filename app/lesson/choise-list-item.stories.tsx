@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ChoiceButton, ChoiceButtonState } from "./choice-button";
+import { ChoiceListItem, ChoiceListItemState } from "./choise-list-item";
 
 const meta = {
-    title: 'Lesson/Components/ChoiceButton',
-    component: ChoiceButton,
+    title: 'Lesson/Components/ChoiceListItem',
+    component: ChoiceListItem,
     tags: ['autodocs'],
     argTypes: {
       state: {
         control: 'select',
-        options: Object.values(ChoiceButtonState),
+        options: Object.values(ChoiceListItemState),
       },
     },
     args: {
@@ -17,31 +17,31 @@ const meta = {
     parameters: {
       layout: 'centered',
     },
-} satisfies Meta<typeof ChoiceButton>;
+} satisfies Meta<typeof ChoiceListItem>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Normal: Story = {
   args: {
-    state: ChoiceButtonState.Normal,
+    state: ChoiceListItemState.Normal,
   }
 }
 
 export const Selected: Story = {
   args: {
-    state: ChoiceButtonState.Selected,
+    state: ChoiceListItemState.Selected,
   }
 }
 
 export const Correct: Story = {
   args: {
-    state: ChoiceButtonState.Correct,
+    state: ChoiceListItemState.Correct,
   }
 }
 
 export const Wrong: Story = {
   args: {
-    state: ChoiceButtonState.Wrong,
+    state: ChoiceListItemState.Wrong,
   }
 }

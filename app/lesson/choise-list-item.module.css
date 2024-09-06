@@ -9,6 +9,7 @@
   font-family: sans-serif; /* TODO: Extract */
   box-shadow: 0 2px 0 hsl(0, 0%, 90%);
   text-align: center;
+  user-select: none;
 }
 
 .root.normal:active, .root.selected:active {

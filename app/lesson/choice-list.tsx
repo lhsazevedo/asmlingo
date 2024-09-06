@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChoiceButton, ChoiceButtonState } from './choice-button'
+import { ChoiceListItem, ChoiceListItemState } from './choise-list-item'
 import styles from "./choice-list.module.css";
 
 export interface ChoiceListProps {
@@ -12,14 +12,19 @@ export function ChoiceList({ choices, correctIndex, reveal }: Readonly<ChoiceLis
   const [value, setValue] = useState<number | null>(null);
 
   return (
-    <div className={styles.root}>
+    <div
+      className={styles.root}
+      role="radiogroup"
+    >
       {choices.map((choice, index) => (
-        <ChoiceButton
+        <ChoiceListItem
             key={choice}
-            state={index === (reveal && correctIndex) ? ChoiceButtonState.Correct : ChoiceButtonState.Normal}
+            role="radio"
+            state={index === (reveal && correctIndex) ? ChoiceListItemState.Correct : ChoiceListItemState.Normal}
+            onClick={e => console.log(e)}
         >
           {choice}
-        </ChoiceButton>
+        </ChoiceListItem>
       ))}
     </div>
   )
