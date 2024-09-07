@@ -12,7 +12,8 @@
   user-select: none;
 }
 
-.root.normal:active, .root.selected:active {
+.root.normal:active,
+.root.selected:active {
   box-shadow: none;
   transform: translateY(2px);
 }
@@ -20,7 +21,6 @@
 .root.normal:hover {
   background-color: rgb(247, 247, 247);
 }
-
 
 .selected {
   background-color: #ddf4ff;

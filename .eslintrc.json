@@ -2,12 +2,13 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:storybook/recommended",
-    "plugin:react/all"
+    "prettier"
   ],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
-    "react/jsx-indent": [1, 2],
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-no-literals": "off"
+    // "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    // "react/jsx-indent": [1, 2],
+    // "react/jsx-indent-props": [1, 2],
+    // "react/react-in-jsx-scope": "off",
+    // "react/jsx-no-literals": "off"
   }
 }

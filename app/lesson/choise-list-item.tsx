@@ -1,6 +1,6 @@
-import React, { ReactNode } from 'react'
-import styles from './choise-list-item.module.css'
-import clsx from 'clsx'
+import React, { ReactNode } from "react";
+import styles from "./choise-list-item.module.css";
+import clsx from "clsx";
 
 export enum ChoiceListItemState {
   Normal = "normal",
@@ -10,12 +10,17 @@ export enum ChoiceListItemState {
 }
 
 export interface ChoiceListItemProps {
-  state: ChoiceListItemState,
-  children: ReactNode,
-  onClick?: React.MouseEventHandler<HTMLButtonElement>,
+  state: ChoiceListItemState;
+  children: ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export function ChoiceListItem({ children, state, onClick, ...others }: Readonly<ChoiceListItemProps>) {
+export function ChoiceListItem({
+  children,
+  state,
+  onClick,
+  ...others
+}: Readonly<ChoiceListItemProps>) {
   /* eslint-disable react/jsx-props-no-spreading */
   return (
     <button
@@ -25,5 +30,5 @@ export function ChoiceListItem({ children, state, onClick, ...others }: Readonly
     >
       {children}
     </button>
-  )
+  );
 }

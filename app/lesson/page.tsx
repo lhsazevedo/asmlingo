@@ -4,31 +4,35 @@ export default function Page() {
       type: "gap_fill",
       translation: "Copy the value from Rm to Rn",
       prompt: [
-        { value: "mov", type: "operation", hint: "MOV Rm Rn: Copy value from Rm to Rn." },
-        { value : "r0", type: "register", hint: "Register r0" },
-        { value : "r4", type: "register", hint: "Register r4" },
+        {
+          value: "mov",
+          type: "operation",
+          hint: "MOV Rm Rn: Copy value from Rm to Rn.",
+        },
+        { value: "r0", type: "register", hint: "Register r0" },
+        { value: "r4", type: "register", hint: "Register r4" },
       ],
-      choices: [
-        'nop',
-        'mov.l',
-        'mov',
-      ],
+      choices: ["nop", "mov.l", "mov"],
       hiddenIndex: 0,
       correctIndex: 2,
     },
     {
       type: "translate",
       prompt: [
-        { value: "mov", type: "operation", hint: "MOV Rm Rn: Copy value from Rm to Rn." },
-        { value : "r0", type: "register", hint: "Register r0" },
-        { value : "r4", type: "register", hint: "Register r4" },
+        {
+          value: "mov",
+          type: "operation",
+          hint: "MOV Rm Rn: Copy value from Rm to Rn.",
+        },
+        { value: "r0", type: "register", hint: "Register r0" },
+        { value: "r4", type: "register", hint: "Register r4" },
       ],
       choices: [
         { value: "mov", type: "operation" },
-        { value: "r0", type: "register", },
+        { value: "r0", type: "register" },
         { value: "r4", type: "operation" },
         { value: "jump", type: "operation" },
-        { value: "value", type: "operation", },
+        { value: "value", type: "operation" },
         { value: "r4", type: "operation" },
       ],
     },
@@ -43,16 +47,14 @@ export default function Page() {
       ],
       choices: [
         { value: "mov", type: "operation" },
-        { value: "r0", type: "register", },
+        { value: "r0", type: "register" },
         { value: "r4", type: "operation" },
         { value: "jump", type: "operation" },
-        { value: "value", type: "operation", },
+        { value: "value", type: "operation" },
         { value: "r4", type: "operation" },
       ],
     },
   ];
 
-  return (
-    <div />
-  )
+  return <div />;
 }
