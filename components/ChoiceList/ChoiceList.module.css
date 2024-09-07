@@ -6,3 +6,7 @@
 .root > * + * {
   margin-top: 8px;
 }
+
+.root.reveal {
+  pointer-events: none;
+}

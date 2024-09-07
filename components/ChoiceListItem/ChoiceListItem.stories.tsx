@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ChoiceListItem, ChoiceListItemState } from "./choise-list-item";
+import { ChoiceListItem, ChoiceListItemState } from "./ChoiceListItem";
 
 const meta = {
   title: "Lesson/Components/ChoiceListItem",

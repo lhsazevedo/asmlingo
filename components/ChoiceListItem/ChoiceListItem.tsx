@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import styles from "./choise-list-item.module.css";
+import styles from "./ChoiceListItem.module.css";
 import clsx from "clsx";
 
 export enum ChoiceListItemState {
@@ -9,7 +9,8 @@ export enum ChoiceListItemState {
   Wrong = "wrong",
 }
 
-export interface ChoiceListItemProps {
+export interface ChoiceListItemProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   state: ChoiceListItemState;
   children: ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
