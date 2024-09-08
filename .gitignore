@@ -25,6 +25,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# env files
+.env
+
 # local env files
 .env*.local
 
@@ -36,3 +39,7 @@ yarn-error.log*
 next-env.d.ts
 
 *storybook.log
+
+# SQLite database files
+/prisma/*.db
+/prisma/*.db-journal
