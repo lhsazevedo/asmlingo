@@ -12,18 +12,20 @@ datasource db {
 
 model User {
   id             Int              @id @default(autoincrement())
-  email          String           @unique
-  password       String
+  email          String?          @unique
+  password       String?
   name           String?
+  isGuest        Boolean          @default(true)
   unitProgress   UnitProgress[]
   lessonProgress LessonProgress[]
+  createdAt      DateTime         @default(now())
 }
 
 model Unit {
   id           Int            @id @default(autoincrement())
   title        String
   order        Int            @unique
-  Lesson       Lesson[]
+  lessons      Lesson[]
   unitProgress UnitProgress[]
 }
 
