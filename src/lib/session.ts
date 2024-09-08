@@ -1,4 +1,7 @@
-import { SessionOptions } from 'iron-session';
+import { getIronSession, SessionOptions } from 'iron-session';
+import { cookies } from "next/headers";
+import { User } from "@prisma/client";
+import db from './db'
 import 'server-only'
 
 export interface SessionData {
@@ -17,4 +20,21 @@ export const sessionOptions: SessionOptions = {
     httpOnly: true,
   },
 };
+
+export async function getSession() {
+  const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+
+  let user: User;
+  if (!session.userId) {
+    user = await db.user.create({ data: { isGuest: true } });
+  } else {
+    // TODO: Handle user not found
+    user = await db.user.findUniqueOrThrow({
+      where: { id: session.userId },
+    });
+  }
+
+  // TODO: Rethink return type
+  return { session, user };
+}
 

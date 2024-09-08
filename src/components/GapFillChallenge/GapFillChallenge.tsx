@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useState } from "react";
 import { ChoiceList } from "../ChoiceList";
 import { PromptBox, PromptToken } from "../PromptBox";

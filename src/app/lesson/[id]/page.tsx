@@ -1,3 +1,4 @@
+import { GapFillChallenge } from "@/components/GapFillChallenge";
 import prisma from "@/lib/db";
 
 // const challenges = [
@@ -65,5 +66,19 @@ export default async function Page({ params }: { params: { id: string } }) {
     select: { challenges: true },
   });
 
-  return <pre>{JSON.stringify(JSON.parse(lesson.challenges), null, 2)}</pre>;
+  const challenges = JSON.parse(lesson.challenges);
+  const challenge = challenges[0];
+
+  return (
+    <div style={{width: '600px'}}>
+      <GapFillChallenge
+        choices={challenge.choices}
+        correctIndex={challenge.correctIndex}
+        fillableIndex={challenge.fillableIndex}
+        prompt={challenge.prompt}
+        translation={challenge.translation}
+      />
+      <pre>{JSON.stringify(JSON.parse(lesson.challenges), null, 2)}</pre>
+    </div>
+  );
 }
