@@ -15,7 +15,7 @@ import prisma from "@/lib/db";
 //       { value: "r4", type: "register", hint: "Register r4" },
 //     ],
 //     choices: ["nop", "mov.l", "mov"],
-//     hiddenIndex: 0,
+//     fillableIndex: 0,
 //     correctIndex: 2,
 //   },
 //   {

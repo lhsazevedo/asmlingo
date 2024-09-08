@@ -1,42 +1,29 @@
 'use client';
 
-import { useRef, useState } from "react";
 import { ChoiceList } from "../ChoiceList";
-import { PromptBox, PromptToken } from "../PromptBox";
+import { PromptBox } from "../PromptBox";
 import { InstructionTranslation } from "../InstructionTranslation";
+import { GapFillChallengeData } from "@/types";
 
 interface GapFillChallengeProps {
-  translation: string;
-  prompt: PromptToken[];
-  choices: string[];
-  fillableIndex: 0;
-  correctIndex: 2;
+  challengeData: GapFillChallengeData;
+  revealed: boolean;
+  value?: number;
+  onChange?: (value: number) => void;
 }
 
 export function GapFillChallenge({
-  translation,
-  prompt,
-  fillableIndex,
-  choices,
-  correctIndex,
+  challengeData: {
+    translation,
+    prompt,
+    fillableIndex,
+    choices,
+    correctIndex
+  },
+  revealed,
+  value,
+  onChange,
 }: GapFillChallengeProps) {
-  const [value, setValue] = useState<number | undefined>(undefined);
-  const [revealed, setRevealed] = useState(false);
-
-  const correctAudioRef = useRef<HTMLAudioElement | null>(null);
-  const wrongAudioRef = useRef<HTMLAudioElement | null>(null);
-
-  function handleVerify() {
-    if (revealed) return;
-    if (value === undefined) return;
-
-    setRevealed(true);
-
-    value === correctIndex
-      ? correctAudioRef.current?.play()
-      : wrongAudioRef.current?.play();
-  }
-
   return (
     <div>
       <h2>Fill the gap:</h2>
@@ -51,15 +38,8 @@ export function GapFillChallenge({
         correctIndex={correctIndex}
         reveal={revealed}
         value={value}
-        onChange={setValue}
+        onChange={onChange}
       />
-      <button onClick={handleVerify}>Verify</button>
-      <audio ref={correctAudioRef}>
-        <source src="/correct.wav" type="audio/wav" />
-      </audio>
-      <audio ref={wrongAudioRef}>
-        <source src="/wrong.wav" type="audio/wav" />
-      </audio>
     </div>
   );
 }

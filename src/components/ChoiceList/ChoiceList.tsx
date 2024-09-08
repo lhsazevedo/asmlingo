@@ -17,12 +17,12 @@ export function ChoiceList({
   value,
   onChange,
 }: Readonly<ChoiceListProps>) {
-  function handleClick(index: number) {
+  const handleClick = (index: number) => {
     // TODO: Test this condition
     !reveal && onChange?.(index);
   }
 
-  function isSelected(index: number) {
+  const isSelected = (index: number) => {
     return index === value;
   }
 

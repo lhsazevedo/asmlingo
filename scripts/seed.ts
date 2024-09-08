@@ -1,7 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 
-
-
 const units: Prisma.UnitCreateInput[] = [
   {
     title: "Data Transfer Instructions",
@@ -44,7 +42,7 @@ const units: Prisma.UnitCreateInput[] = [
                   { value: "r0", type: "register", hint: "Register r4" },
                 ],
                 choices: ["r8", "r0", "fr0"],
-                fillableIndmov: 2,
+                fillableIndex: 2,
                 correctIndex: 2,
               },
             ]),

@@ -1,11 +1,6 @@
 import clsx from "clsx";
 import styles from "./PromptBox.module.css";
-
-export interface PromptToken {
-  value: string;
-  type: "operation" | "register" | "memory";
-  hint: string;
-}
+import { PromptToken } from "@/types";
 
 interface PromptBoxProps {
   tokens: PromptToken[];
@@ -16,7 +11,7 @@ interface PromptBoxProps {
 export function PromptBox({
   tokens,
   fillableIndex,
-  filledPrompt: selectedPrompt,
+  filledPrompt,
 }: Readonly<PromptBoxProps>) {
   return (
     <div className={styles.root}>
@@ -24,8 +19,8 @@ export function PromptBox({
         const fillable = index === fillableIndex;
 
         let text = token.value;
-        if (selectedPrompt && fillable) {
-          text = selectedPrompt;
+        if (filledPrompt && fillable) {
+          text = filledPrompt;
         }
 
         return (
@@ -35,7 +30,7 @@ export function PromptBox({
               styles.token,
               token.hint && styles.hinted,
               fillable && styles.fillable,
-              fillable && selectedPrompt && styles.filled,
+              fillable && filledPrompt && styles.filled,
             )}
             title={fillable ? undefined : token.hint}
           >
