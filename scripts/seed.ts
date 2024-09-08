@@ -43,7 +43,7 @@ const units: Prisma.UnitCreateInput[] = [
                 ],
                 choices: ["r8", "r0", "fr0"],
                 fillableIndex: 2,
-                correctIndex: 2,
+                correctIndex: 1,
               },
             ]),
           },
