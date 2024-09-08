@@ -1,7 +1,8 @@
-import { ChallengeData, PromptToken } from "@/types";
+import { ChallengeData } from "@/types";
 import styles from "./LessonController.module.css";
 import { useRef, useState } from "react";
 import { GapFillChallenge } from "../GapFillChallenge";
+import { motion, AnimatePresence, easeOut } from "framer-motion";
 
 export interface LessonControllerProps {
   challenges: ChallengeData[];
@@ -59,12 +60,22 @@ export function LessonController({
 
   return (
     <div className={styles.root}>
-      <ChallengeComponent
-        challengeData={currentChallenge}
-        revealed={revealed}
-        value={value}
-        onChange={setValue}
-      />
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={currentChallengeIndex}
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: -50, opacity: 0 }}
+          transition={{ duration: 0.15, ease: easeOut }}
+        >
+          <ChallengeComponent
+            challengeData={currentChallenge}
+            revealed={revealed}
+            value={value}
+            onChange={setValue}
+          />
+        </motion.div>
+      </AnimatePresence>
       {revealed ? (
         <button
           onClick={handleNext}
