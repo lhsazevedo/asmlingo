@@ -4,6 +4,7 @@ import { ChoiceList } from "../ChoiceList";
 import { PromptBox } from "../PromptBox";
 import { InstructionTranslation } from "../InstructionTranslation";
 import { GapFillChallengeData } from "@/types";
+import styles from "./GapFillChallenge.module.css";
 
 interface GapFillChallengeProps {
   challengeData: GapFillChallengeData;
@@ -25,7 +26,7 @@ export function GapFillChallenge({
   onChange,
 }: GapFillChallengeProps) {
   return (
-    <div>
+    <div className={styles.root}>
       <h2>Fill the gap:</h2>
       <InstructionTranslation>{translation}</InstructionTranslation>
       <PromptBox
