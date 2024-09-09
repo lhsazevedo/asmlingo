@@ -5,6 +5,7 @@ import { LessonButton } from '../LessonButton';
 import styles from './LessonList.module.css';
 import { LessonButtonVariant } from '../LessonButton/LessonButton';
 import { useRouter } from 'next/navigation';
+import clsx from 'clsx';
 
 const unitWithRelations = Prisma.validator<Prisma.UnitDefaultArgs>()({
   include: {
@@ -33,7 +34,7 @@ export function LessonList({
   const router = useRouter();
 
   return (
-    <div className={styles.root}>
+    <div className={clsx('max-w-md mx-auto', styles.root)}>
       {units.map(unit => (
         <div key={unit.id} className="mb-16">
           <div className="text-lg text-gray-400 font-bold text-center">
@@ -52,7 +53,7 @@ export function LessonList({
             )
 
             return (
-              <div key={lesson.id} className="mt-10 flex items-center space-x-6">
+              <div key={lesson.id} className="mt-10 flex items-center space-x-4 md:space-x-6">
                 <LessonButton
                   variant={variant}
                   onClick={() => {
@@ -60,8 +61,8 @@ export function LessonList({
                   }}
                 />
                 <div>
-                  <div className='text-lg'>{ lesson.title }</div>
-                  <div className='text-md text-gray-400'>{ lesson.description }</div>
+                  <div className='sm:text-lg text-gray-600 font-semibold'>{ lesson.title }</div>
+                  <div className='hidden sm:block text-md text-gray-400'>{ lesson.description }</div>
                 </div>
               </div>
             );

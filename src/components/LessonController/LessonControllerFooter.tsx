@@ -18,31 +18,31 @@ export function LessonControllerFooter({
   onNext,
 }: LessonControllerFooterProps) {
   return (
-    <>
-      {revealed ? (
-        <div
-          className={clsx(
-            "-mx-4 px-4 -mb-6 py-6",
-            styles.footer,
-            isCorrect ? styles.correct : styles.wrong,
-          )}
-        >
-          <div className="text-2xl font-bold mb-4">
-            {isCorrect ? "Amazing!" : "Oops!"}
+    <div className={clsx(revealed && (isCorrect ? styles.correct : styles.wrong), styles.footer)}>
+      <div className={clsx('max-w-screen-md mx-auto px-4 py-6')}>
+        {revealed ? (
+          <>
+            <div className="text-2xl font-bold mb-4">
+              {isCorrect ? "Amazing!" : "Oops!"}
+            </div>
+            <div className="md:w-48 md:ml-auto">
+              <Button
+                onClick={onNext}
+                variant={revealed && !isCorrect ? "error" : "primary"}
+                block
+              >
+                Continue
+              </Button>
+            </div>
+          </>
+        ) : (
+          <div className="md:w-48 md:ml-auto">
+            <Button onClick={onVerify} block disabled={value === undefined}>
+              Verify
+            </Button>
           </div>
-          <Button
-            onClick={onNext}
-            variant={revealed && !isCorrect ? "error" : "primary"}
-            block
-          >
-            Continue
-          </Button>
-        </div>
-      ) : (
-        <Button onClick={onVerify} block disabled={value === undefined}>
-          Verify
-        </Button>
-      )}
-    </>
+        )}
+      </div>
+    </div>
   );
 }
