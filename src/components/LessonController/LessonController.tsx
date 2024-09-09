@@ -1,8 +1,10 @@
 import { ChallengeData } from "@/types";
 import styles from "./LessonController.module.css";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { GapFillChallenge } from "../GapFillChallenge";
 import { motion, AnimatePresence, easeOut } from "framer-motion";
+import clsx from "clsx";
+import { useChallengeController } from "./useChallengeController";
 
 export interface LessonControllerProps {
   challenges: ChallengeData[];
@@ -15,59 +17,66 @@ interface ChallengeComponentProps {
   onChange: (value: number) => void;
 }
 
-const challengeComponents: Record<string, React.ComponentType<ChallengeComponentProps>> = {
+const challengeComponents: Record<
+  string,
+  React.ComponentType<ChallengeComponentProps>
+> = {
   "gap-fill": GapFillChallenge,
-}
+};
+
+export type LessonMode = "normal" | "review";
 
 export function LessonController({
   challenges,
 }: Readonly<LessonControllerProps>) {
-  const [currentChallengeIndex, setCurrentChallengeIndex] = useState(0);
-  const [revealed, setRevealed] = useState(false);
-  const [value, setValue] = useState<number | undefined>(undefined);
-
-  const currentChallenge = challenges[currentChallengeIndex];
+  const {
+    currentChallenge,
+    revealed,
+    value,
+    setValue,
+    lessonMode,
+    handleVerify,
+    handleNext,
+    key,
+  } = useChallengeController(challenges);
 
   const correctAudioRef = useRef<HTMLAudioElement | null>(null);
   const wrongAudioRef = useRef<HTMLAudioElement | null>(null);
-
-  const handleVerify = () => {
-    if (revealed) return;
-    if (value === undefined) return;
-
-    setRevealed(true);
-
-    value === currentChallenge.correctIndex
-      ? correctAudioRef.current?.play()
-      : wrongAudioRef.current?.play();
-  }
-
-  const handleNext = () => {
-    if (currentChallengeIndex === challenges.length - 1) {
-      alert("All challenges completed!");
-      return;
-    }
-
-    setCurrentChallengeIndex(currentChallengeIndex + 1);
-    setValue(undefined);
-    setRevealed(false);
-  }
 
   const ChallengeComponent = challengeComponents[currentChallenge.type];
   if (!ChallengeComponent) {
     throw new Error(`Unknown challenge type: ${currentChallenge.type}`);
   }
 
+  const onVerify = () => {
+    const isCorrect = handleVerify();
+    const audioRef = isCorrect ? correctAudioRef : wrongAudioRef;
+    if (!audioRef.current?.paused) {
+      audioRef.current?.pause();
+    }
+    audioRef.current?.play();
+  }
+
+  const onNext = () => {
+    const isCompleted = handleNext();
+    if (isCompleted) {
+      alert("All challenges completed!");
+    }
+  }
+
   return (
     <div className={styles.root}>
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
-          key={currentChallengeIndex}
+          key={key}
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: -50, opacity: 0 }}
           transition={{ duration: 0.15, ease: easeOut }}
         >
+          {lessonMode === "review" && (
+            <div className={clsx(styles.previousMistake)}>Previous mistake</div>
+          )}
           <ChallengeComponent
             challengeData={currentChallenge}
             revealed={revealed}
@@ -77,13 +86,9 @@ export function LessonController({
         </motion.div>
       </AnimatePresence>
       {revealed ? (
-        <button
-          onClick={handleNext}
-        >
-          Next
-        </button>
+        <button onClick={onNext}>Next</button>
       ) : (
-        <button onClick={handleVerify}>Verify</button>
+        <button onClick={onVerify}>Verify</button>
       )}
 
       <audio ref={correctAudioRef}>
