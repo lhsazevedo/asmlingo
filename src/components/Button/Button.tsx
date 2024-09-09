@@ -9,7 +9,7 @@ export enum ButtonState {
   Wrong = "wrong",
 }
 
-export type ButtonVariant = "primary" | "secondary" | "text";
+export type ButtonVariant = "primary" | "secondary" | "error" | "text";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

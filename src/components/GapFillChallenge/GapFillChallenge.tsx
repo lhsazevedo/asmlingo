@@ -26,10 +26,11 @@ export function GapFillChallenge({
   onChange,
 }: GapFillChallengeProps) {
   return (
-    <div className={styles.root}>
-      <h2>Fill the gap:</h2>
-      <InstructionTranslation>{translation}</InstructionTranslation>
+    <div>
+      <div className="text-2xl font-bold mb-4">Fill the gap:</div>
+      <InstructionTranslation className="mb-4">{translation}</InstructionTranslation>
       <PromptBox
+        className="mb-16"
         tokens={prompt}
         fillableIndex={fillableIndex}
         filledPrompt={value !== undefined ? choices[value] : value}

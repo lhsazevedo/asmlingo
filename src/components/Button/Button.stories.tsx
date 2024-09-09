@@ -33,6 +33,12 @@ export const Secondary: Story = {
   },
 };
 
+export const Error: Story = {
+  args: {
+    variant: "error",
+  },
+};
+
 export const Block: Story = {
   args: {
     block: true,

@@ -1,8 +1,22 @@
 .root {
   /* Add your styles here */
+
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content 1fr min-content;
+  height: 100%;
 }
 
 .previousMistake {
   color: darkorange;
-  font-weight: 600;
+}
+
+.revealCard.correct {
+  background-color: hsl(94, 100%, 86%);
+  color: #58cc02;
+}
+
+.revealCard.wrong {
+  background-color: hsl(358, 100%, 94%);
+  color: #ea2c2c;
 }

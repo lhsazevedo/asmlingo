@@ -6,6 +6,12 @@ const meta = {
   title: "Lesson/LessonController",
   component: LessonController,
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
+  decorators: [
+    (Story) => <div style={{ height: "100vh" }}><Story /></div>,
+  ]
 } satisfies Meta<typeof LessonController>;
 
 export default meta;

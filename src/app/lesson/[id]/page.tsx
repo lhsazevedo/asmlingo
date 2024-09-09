@@ -1,5 +1,7 @@
 import { GapFillChallenge } from "@/components/GapFillChallenge";
+import { LessonController } from "@/components/LessonController";
 import prisma from "@/lib/db";
+import clsx from "clsx";
 
 // const challenges = [
 //   {
@@ -70,15 +72,18 @@ export default async function Page({ params }: { params: { id: string } }) {
   const challenge = challenges[0];
 
   return (
-    <div style={{width: '600px'}}>
-      <GapFillChallenge
-        choices={challenge.choices}
-        correctIndex={challenge.correctIndex}
-        fillableIndex={challenge.fillableIndex}
-        prompt={challenge.prompt}
-        translation={challenge.translation}
-      />
-      <pre>{JSON.stringify(JSON.parse(lesson.challenges), null, 2)}</pre>
+    <div className="max-w-md mx-auto h-screen">
+      <LessonController challenges={challenges} />
     </div>
+    // <div style={{width: '600px'}}>
+    //   <GapFillChallenge
+    //     choices={challenge.choices}
+    //     correctIndex={challenge.correctIndex}
+    //     fillableIndex={challenge.fillableIndex}
+    //     prompt={challenge.prompt}
+    //     translation={challenge.translation}
+    //   />
+    //   <pre>{JSON.stringify(JSON.parse(lesson.challenges), null, 2)}</pre>
+    // </div>
   );
 }

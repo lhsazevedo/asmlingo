@@ -9,6 +9,7 @@ export function useChallengeController(challenges: ChallengeData[]) {
   const [lessonMode, setLessonMode] = useState<LessonMode>("normal");
   const [missedIndexes, setMissedIndexes] = useState<number[]>([]);
   const [missedTryCount, setMissedTryCount] = useState(0);
+  const [isCorrect, setIsCorrect] = useState<boolean | undefined>(undefined);
 
   let currentChallenge = challenges[currentIndex];
   if (lessonMode === "review") {
@@ -20,18 +21,20 @@ export function useChallengeController(challenges: ChallengeData[]) {
 
     setRevealed(true);
 
-    const isCorrect = value === currentChallenge.correctIndex;
+    const correct = value === currentChallenge.correctIndex;
+    setIsCorrect(correct);
 
-    if (!isCorrect && lessonMode === "normal") {
+    if (!correct && lessonMode === "normal") {
       setMissedIndexes([...missedIndexes, currentIndex]);
     }
 
-    return isCorrect;
+    return correct;
   };
 
   const resetChallengeState = () => {
     setValue(undefined);
     setRevealed(false);
+    setIsCorrect(undefined);
   };
 
   const handleNext = (): boolean => {
@@ -71,6 +74,7 @@ export function useChallengeController(challenges: ChallengeData[]) {
     value,
     setValue,
     lessonMode,
+    isCorrect,
     handleVerify,
     handleNext,
     key,

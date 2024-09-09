@@ -1,5 +1,6 @@
+import clsx from "clsx";
 import styles from "./InstructionTranslation.module.css";
 
-export function InstructionTranslation({ children }) {
-  return <div className={styles.root}>{children}</div>;
+export function InstructionTranslation({ children, className }) {
+  return <div className={clsx(styles.root, 'text-lg', className)}>{children}</div>;
 }

@@ -1,7 +1,3 @@
 .root {
 
 }
-
-.root > * + * {
-  margin-top: 2rem;
-}

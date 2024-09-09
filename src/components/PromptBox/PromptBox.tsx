@@ -6,15 +6,17 @@ interface PromptBoxProps {
   tokens: PromptToken[];
   fillableIndex?: number;
   filledPrompt?: string;
+  className?: string;
 }
 
 export function PromptBox({
   tokens,
   fillableIndex,
   filledPrompt,
+  className,
 }: Readonly<PromptBoxProps>) {
   return (
-    <div className={styles.root}>
+    <div className={clsx(styles.root, className)}>
       {tokens.map((token, index) => {
         const fillable = index === fillableIndex;
 
