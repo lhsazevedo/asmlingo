@@ -13,6 +13,11 @@
   box-sizing: border-box;
 }
 
+.block {
+  display: block;
+  width: 100%;
+}
+
 .primary {
   background-color: rgb(88, 204, 2);
   border: none;

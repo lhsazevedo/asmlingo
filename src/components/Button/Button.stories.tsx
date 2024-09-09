@@ -12,10 +12,9 @@ const meta = {
     },
   },
   args: {
+    variant: "primary",
+    block: false,
     children: "Choose me!",
-  },
-  parameters: {
-    layout: "centered",
   },
 } satisfies Meta<typeof Button>;
 
@@ -31,6 +30,12 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     variant: "secondary",
+  },
+};
+
+export const Block: Story = {
+  args: {
+    block: true,
   },
 };
 

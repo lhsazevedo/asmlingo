@@ -14,22 +14,24 @@ export type ButtonVariant = "primary" | "secondary" | "text";
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
-  children: ReactNode;
+  block?: boolean;
   className?: string;
+  children: ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export function Button({
   variant = "primary",
-  children,
+  block = false,
   className,
+  children,
   onClick,
   ...others
 }: Readonly<ButtonProps>) {
   /* eslint-disable react/jsx-props-no-spreading */
   return (
     <button
-      className={clsx(styles.root, styles[variant], className)}
+      className={clsx(styles.root, styles[variant], block && styles.block, className)}
       onClick={onClick}
       {...others}
     >
