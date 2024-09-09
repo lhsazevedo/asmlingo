@@ -59,6 +59,43 @@
   transform: translateY(2px);
 }
 
+
+.action {
+  background-color: #ffffff;
+  border: 2px solid rgb(229, 229, 229);
+  box-shadow: 0 2px 0 rgb(229, 229, 229);
+  color: #1cb0f6;
+}
+
+.action:hover,
+.action:focus-visible {
+  filter: brightness(0.9);
+}
+
+.action:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+
+.text {
+  /* background-color: #ffffff; */
+  /* border: 2px solid rgb(229, 229, 229); */
+  box-shadow: none;
+  color: #1cb0f6;
+}
+
+.text:hover,
+.text:focus-visible {
+  filter: brightness(0.98);
+}
+
+.text:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+
 .error {
   background-color: #ff4b4b;
   /* border: 2px solid rgb(229, 229, 229); */

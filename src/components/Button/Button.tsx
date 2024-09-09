@@ -1,6 +1,9 @@
+"use client";
+
 import React, { ReactNode } from "react";
 import styles from "./Button.module.css";
 import clsx from "clsx";
+import Link from "next/link";
 
 export enum ButtonState {
   Normal = "normal",
@@ -9,7 +12,12 @@ export enum ButtonState {
   Wrong = "wrong",
 }
 
-export type ButtonVariant = "primary" | "secondary" | "error" | "text";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "action"
+  | "error"
+  | "text";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,6 +26,7 @@ export interface ButtonProps
   className?: string;
   children: ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  href?: string;
 }
 
 export function Button({
@@ -26,9 +35,24 @@ export function Button({
   className,
   children,
   onClick,
-  ...others
+  href,
 }: Readonly<ButtonProps>) {
-  /* eslint-disable react/jsx-props-no-spreading */
+  if (href) {
+    return (
+      <Link
+        href={href}
+        className={clsx(
+          styles.root,
+          styles[variant],
+          block && styles.block,
+          className,
+        )}
+      >
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <button
       className={clsx(
@@ -38,7 +62,6 @@ export function Button({
         className,
       )}
       onClick={onClick}
-      {...others}
     >
       {children}
     </button>

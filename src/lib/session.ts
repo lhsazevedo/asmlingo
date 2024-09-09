@@ -6,6 +6,7 @@ import "server-only";
 
 export interface SessionData {
   userId: number;
+  isGuest: boolean;
 }
 
 if (!process.env.SESSION_SECRET) {
@@ -27,7 +28,7 @@ export async function getSession() {
   let user = undefined;
   if (session.userId) {
     // Ensure the user exists
-    user = await db.user.findUniqueOrThrow({
+    user = await db.user.findUnique({
       where: { id: session.userId },
     });
   }
@@ -42,6 +43,7 @@ export async function getOrCreateSession() {
   if (!session.userId) {
     user = await db.user.create({ data: { isGuest: true } });
     session.userId = user.id;
+    session.isGuest = true;
     await session.save();
   } else {
     // Ensure the user exists

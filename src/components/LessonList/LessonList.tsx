@@ -11,10 +11,20 @@ const unitWithRelations = Prisma.validator<Prisma.UnitDefaultArgs>()({
   include: {
     lessons: {
       include: {
-        lessonProgress: true,
+        lessonProgress: {
+          where: {
+            userId: 0,
+          },
+          take: 1,
+        },
       },
     },
-    unitProgress: true,
+    unitProgress: {
+      where: {
+        userId: 0,
+      },
+      take: 1,
+    },
   },
 })
 
@@ -41,7 +51,7 @@ export function LessonList({
             Unit {unit.order + 1}: {unit.title}
           </div>
           {unit.lessons.map(lesson => {
-            const isCompleted = !!lesson.lessonProgress[0]?.finishedAt;
+            const isCompleted = !!lesson?.lessonProgress?.[0]?.finishedAt;
             const isCurrent = (currentLessonId && (lesson.id === currentLessonId))
               || (unit.order === 0 && lesson.order === 0);
 

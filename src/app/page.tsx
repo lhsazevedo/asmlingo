@@ -2,6 +2,9 @@ import styles from "./page.module.css";
 import db from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { LessonList } from "@/components/LessonList";
+import { Button } from "@/components/Button";
+import { redirect } from "next/navigation";
+// import { signout } from "./actions";
 
 export default async function Page() {
   let { session, user } = await getSession();
@@ -19,7 +22,7 @@ export default async function Page() {
                 },
                 take: 1,
               }
-            : {},
+            : false,
         },
       },
       unitProgress: session?.userId
@@ -29,13 +32,42 @@ export default async function Page() {
             },
             take: 1,
           }
-        : {},
+        : false,
     },
   });
 
+  async function signout() {
+    "use server";
+  
+    const { session } = await getSession();
+  
+    if (session) {
+      session.destroy();
+    }
+  
+    redirect("/");
+  }
+
+  const loggedIn = session && session?.isGuest === false;
+
   return (
     <main className={styles.main}>
-      <div>Id: {session.userId}</div>
+      {/* <pre>User: {JSON.stringify(user, null, 2)}</pre>
+      <pre>Session: {JSON.stringify(session, null, 2)}</pre> */}
+      <div className="flex justify-center">
+        { loggedIn ? (
+          <form action={signout}>
+            <Button variant="text" className="mb-8" type="submit">
+              Sign out
+            </Button>
+          </form>
+        ) : (
+          <Button variant="text" className="mb-8" href={`/signup`}>
+            Sign up to save your progress!
+          </Button>
+        )}
+        
+      </div>
       <LessonList
         units={units}
         currentUnitId={user?.currentUnitId ?? undefined}
