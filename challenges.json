@@ -1,0 +1,282 @@
+[
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R14 to R2",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r14",
+        "type": "register",
+        "hint": "Register r14"
+      },
+      {
+        "value": "r2",
+        "type": "register",
+        "hint": "Register r2"
+      }
+    ],
+    "choices": [
+      "r14",
+      "r12",
+      "pc"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R0 to R1",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r0",
+        "type": "register",
+        "hint": "Register r0"
+      },
+      {
+        "value": "r1",
+        "type": "register",
+        "hint": "Register r1"
+      }
+    ],
+    "choices": [
+      "xor",
+      "mov",
+      "rts"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R0 to R2",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r0",
+        "type": "register",
+        "hint": "Register r0"
+      },
+      {
+        "value": "r2",
+        "type": "register",
+        "hint": "Register r2"
+      }
+    ],
+    "choices": [
+      "mov",
+      "jmp",
+      "not"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R13 to R13",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      }
+    ],
+    "choices": [
+      "bra",
+      "mov",
+      "add"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R13 to R8",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      },
+      {
+        "value": "r8",
+        "type": "register",
+        "hint": "Register r8"
+      }
+    ],
+    "choices": [
+      "mov",
+      "sub",
+      "rts"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R13 to R1",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      },
+      {
+        "value": "r1",
+        "type": "register",
+        "hint": "Register r1"
+      }
+    ],
+    "choices": [
+      "r8",
+      "r1",
+      "r13"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R3 to R5",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r3",
+        "type": "register",
+        "hint": "Register r3"
+      },
+      {
+        "value": "r5",
+        "type": "register",
+        "hint": "Register r5"
+      }
+    ],
+    "choices": [
+      "add",
+      "xor",
+      "mov"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R15 to R0",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r15",
+        "type": "register",
+        "hint": "Register r15"
+      },
+      {
+        "value": "r0",
+        "type": "register",
+        "hint": "Register r0"
+      }
+    ],
+    "choices": [
+      "r6",
+      "r0",
+      "r14"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R10 to R13",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r10",
+        "type": "register",
+        "hint": "Register r10"
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      }
+    ],
+    "choices": [
+      "gbr",
+      "r10",
+      "r15"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R14 to R11",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r14",
+        "type": "register",
+        "hint": "Register r14"
+      },
+      {
+        "value": "r11",
+        "type": "register",
+        "hint": "Register r11"
+      }
+    ],
+    "choices": [
+      "r14",
+      "r13",
+      "r4"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 0
+  }
+]

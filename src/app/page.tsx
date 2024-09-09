@@ -54,13 +54,16 @@ export default async function Page() {
     <main className={styles.main}>
       {/* <pre>User: {JSON.stringify(user, null, 2)}</pre>
       <pre>Session: {JSON.stringify(session, null, 2)}</pre> */}
-      <div className="flex justify-center">
+      <div className="text-lg space-x-4 flex items-center justify-center mb-8">
         { loggedIn ? (
-          <form action={signout}>
-            <Button variant="text" className="mb-8" type="submit">
-              Sign out
-            </Button>
-          </form>
+          <>
+            <div>{ user?.name ? `Hi, ${user.name}!` : 'Hi!'}</div>
+            <form action={signout}>
+              <Button variant="text" type="submit">
+                Sign out
+              </Button>
+            </form>
+          </>
         ) : (
           <Button variant="text" className="mb-8" href={`/signup`}>
             Sign up to save your progress!

@@ -1,4 +1,5 @@
 import { Prisma, PrismaClient } from "@prisma/client";
+import u1l1c1 from "./seed/u1l1.json";
 
 const units: Prisma.UnitCreateInput[] = [
   {
@@ -12,43 +13,10 @@ const units: Prisma.UnitCreateInput[] = [
             title: "Copying values between registers",
             description: "Learn how to copy values between registers.",
             order: 0,
-            challenges: JSON.stringify([
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R0 to R4",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r0", type: "register", hint: "Register r0" },
-                  { value: "r4", type: "register", hint: "Register r4" },
-                ],
-                choices: ["nop", "mov.l", "mov"],
-                fillableIndex: 0,
-                correctIndex: 2,
-              },
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R8 to R0",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r8", type: "register", hint: "Register r0" },
-                  { value: "r0", type: "register", hint: "Register r4" },
-                ],
-                choices: ["r8", "r0", "fr0"],
-                fillableIndex: 2,
-                correctIndex: 1,
-              },
-            ]),
+            challenges: JSON.stringify(u1l1c1),
           },
           {
-            title: "Copying values between registers",
+            title: "Copying values between registers 2",
             description: "Learn how to copy values between registers.",
             order: 1,
             challenges: JSON.stringify([
@@ -98,7 +66,7 @@ const units: Prisma.UnitCreateInput[] = [
       createMany: {
         data: [
           {
-            title: "Copying values between registers",
+            title: "Copying values between registers 3",
             description: "Learn how to copy values between registers.",
             order: 0,
             challenges: JSON.stringify([
@@ -137,7 +105,7 @@ const units: Prisma.UnitCreateInput[] = [
             ]),
           },
           {
-            title: "Copying values between registers",
+            title: "Copying values between registers 4",
             description: "Learn how to copy values between registers.",
             order: 1,
             challenges: JSON.stringify([

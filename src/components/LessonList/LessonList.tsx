@@ -69,9 +69,10 @@ export function LessonList({
                   onClick={() => {
                     router.push(`/lesson/${lesson.id}`);
                   }}
+                  aria-labelledby={`lesson-${lesson.id}-title`}
                 />
                 <div>
-                  <div className='sm:text-lg text-gray-600 font-semibold'>{ lesson.title }</div>
+                  <div id={`lesson-${lesson.id}-title`} className='sm:text-lg text-gray-600 font-semibold'>{ lesson.title }</div>
                   <div className='hidden sm:block text-md text-gray-400'>{ lesson.description }</div>
                 </div>
               </div>

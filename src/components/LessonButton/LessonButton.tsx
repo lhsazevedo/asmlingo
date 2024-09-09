@@ -2,7 +2,8 @@ import styles from "./LessonButton.module.css";
 import clsx from "clsx";
 import StarIcon from "@/icons/StarIcon";
 
-export interface LessonButtonProps {
+export interface LessonButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: LessonButtonVariant;
   onClick?: () => void;
 }
@@ -12,11 +13,13 @@ export type LessonButtonVariant = "default" | "current" | "disabled";
 export function LessonButton({
   variant = "default",
   onClick,
+  ...others
 }: Readonly<LessonButtonProps>) {
   return (
     <div className={clsx(styles.root, styles[variant])}>
       <button
         onClick={onClick}
+        {...others}
       >
         <StarIcon size={32} />
       </button>

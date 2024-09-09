@@ -43,3 +43,7 @@ next-env.d.ts
 # SQLite database files
 /prisma/*.db
 /prisma/*.db-journal
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

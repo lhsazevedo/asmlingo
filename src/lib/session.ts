@@ -47,9 +47,16 @@ export async function getOrCreateSession() {
     await session.save();
   } else {
     // Ensure the user exists
-    user = await db.user.findUniqueOrThrow({
+    const maybeUser = await db.user.findUnique({
       where: { id: session.userId },
     });
+
+    if (!maybeUser) {
+      user = await db.user.create({ data: { isGuest: true } });
+      session.userId = user.id;
+      session.isGuest = true;
+      await session.save();
+    }
   }
 
   // TODO: Rethink return type

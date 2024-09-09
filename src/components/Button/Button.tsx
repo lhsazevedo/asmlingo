@@ -36,6 +36,7 @@ export function Button({
   children,
   onClick,
   href,
+  ...others
 }: Readonly<ButtonProps>) {
   if (href) {
     return (
@@ -62,6 +63,7 @@ export function Button({
         className,
       )}
       onClick={onClick}
+      {...others}
     >
       {children}
     </button>
