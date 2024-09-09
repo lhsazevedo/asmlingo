@@ -1,0 +1,46 @@
+.root {
+  background-color: white;
+  border: 2px solid hsl(0, 0%, 90%);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 19px;
+  color: hsl(0, 0%, 30%);
+  cursor: pointer;
+  font-family: sans-serif; /* TODO: Extract */
+  box-shadow: 0 2px 0 hsl(0, 0%, 90%);
+  text-align: center;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.primary {
+  background-color: rgb(88, 204, 2);
+  border: none;
+  box-shadow: 0 4px 0 rgb(88, 167, 0);
+  color: white;
+}
+
+.primary:hover, .primary:focus-visible{
+  filter: brightness(1.1);
+}
+
+.primary:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+.secondary {
+  background-color: #ffffff;
+  border: 2px solid rgb(229, 229, 229);
+  box-shadow: 0 2px 0 rgb(229, 229, 229);
+  color: #afafaf;
+}
+
+.secondary:hover, .secondary:focus-visible{
+  filter: brightness(0.9)
+}
+
+.secondary:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}

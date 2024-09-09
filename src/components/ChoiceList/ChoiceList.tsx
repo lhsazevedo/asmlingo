@@ -1,4 +1,4 @@
-import { ChoiceListItem, ChoiceListItemState } from "../ChoiceListItem";
+import { Button, ButtonState } from "../Button";
 import styles from "./ChoiceList.module.css";
 import clsx from "clsx";
 
@@ -26,15 +26,26 @@ export function ChoiceList({
     return index === value;
   }
 
-  function getChoiceState(index: number): ChoiceListItemState {
+  function getChoiceState(index: number): ButtonState {
     const selected = isSelected(index);
     const correct = index === correctIndex;
 
     if (reveal && selected && correct) {
-      return ChoiceListItemState.Correct;
+      return ButtonState.Correct;
     }
 
-    return selected ? ChoiceListItemState.Selected : ChoiceListItemState.Normal;
+    return selected ? ButtonState.Selected : ButtonState.Normal;
+  }
+
+  function getChoiceClass(index: number) {
+    const selected = isSelected(index);
+    const correct = index === correctIndex;
+
+    if (reveal && selected && correct) {
+      return styles.correct;
+    }
+
+    return selected ? styles.selected : false;
   }
 
   return (
@@ -43,15 +54,17 @@ export function ChoiceList({
       role="radiogroup"
     >
       {choices.map((choice, index) => (
-        <ChoiceListItem
+        <Button
           role="radio"
           key={choice}
-          state={getChoiceState(index)}
+          variant="secondary"
+          className={clsx(styles.choice, getChoiceClass(index))}
+          // state={getChoiceState(index)}
           onClick={() => handleClick(index)}
           aria-checked={isSelected(index)}
         >
           {choice}
-        </ChoiceListItem>
+        </Button>
       ))}
     </div>
   );

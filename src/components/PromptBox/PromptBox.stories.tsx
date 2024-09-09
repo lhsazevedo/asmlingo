@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { PromptBox } from "./PromptBox";
 
 const meta = {
-  title: "Lesson/Components/PromptBox",
+  title: "Lesson/PromptBox",
   component: PromptBox,
   tags: ["autodocs"],
 } satisfies Meta<typeof PromptBox>;
@@ -57,12 +57,12 @@ export const ReadOnly: Story = {
 
 // export const Correct: Story = {
 //   args: {
-//     state: ChoiceListItemState.Correct,
+//     state: ButtonState.Correct,
 //   },
 // };
 
 // export const Wrong: Story = {
 //   args: {
-//     state: ChoiceListItemState.Wrong,
+//     state: ButtonState.Wrong,
 //   },
 // };

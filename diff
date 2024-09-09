@@ -1,0 +1,455 @@
+diff --git a/src/components/Button/Button.module.css b/src/components/Button/Button.module.css
+new file mode 100644
+index 0000000..67214d3
+--- /dev/null
++++ b/src/components/Button/Button.module.css
+@@ -0,0 +1,50 @@
++.root {
++  background-color: white;
++  border: 2px solid hsl(0, 0%, 90%);
++  border-radius: 12px;
++  padding: 12px 16px;
++  font-size: 19px;
++  color: hsl(0, 0%, 30%);
++  cursor: pointer;
++  font-family: sans-serif; /* TODO: Extract */
++  box-shadow: 0 2px 0 hsl(0, 0%, 90%);
++  text-align: center;
++  user-select: none;
++  box-sizing: border-box;
++}
++
++.root.normal:hover {
++  background-color: rgb(247, 247, 247);
++}
++
++.primary {
++  background-color: rgb(88, 204, 2);
++  border: none;
++  box-shadow: 0 4px 0 rgb(88, 167, 0);
++  color: white;
++}
++
++.primary:hover, .primary:focus-visible{
++  filter: brightness(1.1);
++}
++
++.primary:active {
++  box-shadow: none;
++  transform: translateY(4px);
++}
++
++.secondary {
++  background-color: #ffffff;
++  border: 2px solid rgb(229, 229, 229);
++  box-shadow: 0 2px 0 rgb(229, 229, 229);
++  color: #afafaf;
++}
++
++.secondary:hover, .secondary:focus-visible{
++  filter: brightness(0.9)
++}
++
++.secondary:active {
++  box-shadow: none;
++  transform: translateY(2px);
++}
+diff --git a/src/components/Button/Button.stories.tsx b/src/components/Button/Button.stories.tsx
+new file mode 100644
+index 0000000..4201331
+--- /dev/null
++++ b/src/components/Button/Button.stories.tsx
+@@ -0,0 +1,53 @@
++import { Meta, StoryObj } from "@storybook/react";
++import { Button } from "./Button";
++
++const meta = {
++  title: "UI/Button",
++  component: Button,
++  tags: ["autodocs"],
++  argTypes: {
++    variant: {
++      options: ["primary", "secondary"],
++      control: { type: "select" },
++    },
++  },
++  args: {
++    children: "Choose me!",
++  },
++  parameters: {
++    layout: "centered",
++  },
++} satisfies Meta<typeof Button>;
++
++export default meta;
++type Story = StoryObj<typeof meta>;
++
++export const Primary: Story = {
++  args: {
++    variant: "primary",
++  },
++};
++
++export const Secondary: Story = {
++  args: {
++    variant: "secondary",
++  },
++};
++
++// export const Selected: Story = {
++//   args: {
++//     state: ButtonState.Selected,
++//   },
++// };
++
++// export const Correct: Story = {
++//   args: {
++//     state: ButtonState.Correct,
++//   },
++// };
++
++// export const Wrong: Story = {
++//   args: {
++//     state: ButtonState.Wrong,
++//   },
++// };
+diff --git a/src/components/ChoiceListItem/ChoiceListItem.tsx b/src/components/Button/Button.tsx
+similarity index 57%
+rename from src/components/ChoiceListItem/ChoiceListItem.tsx
+rename to src/components/Button/Button.tsx
+index e2b1394..63f9ead 100644
+--- a/src/components/ChoiceListItem/ChoiceListItem.tsx
++++ b/src/components/Button/Button.tsx
+@@ -1,31 +1,35 @@
+ import React, { ReactNode } from "react";
+-import styles from "./ChoiceListItem.module.css";
++import styles from "./Button.module.css";
+ import clsx from "clsx";
+ 
+-export enum ChoiceListItemState {
++export enum ButtonState {
+   Normal = "normal",
+   Selected = "selected",
+   Correct = "correct",
+   Wrong = "wrong",
+ }
+ 
+-export interface ChoiceListItemProps
++export type ButtonVariant = "primary" | "secondary" | "text";
++
++export interface ButtonProps
+   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+-  state: ChoiceListItemState;
++  variant?: ButtonVariant;
+   children: ReactNode;
++  className?: string;
+   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+ }
+ 
+-export function ChoiceListItem({
++export function Button({
++  variant = "primary",
+   children,
+-  state,
++  className,
+   onClick,
+   ...others
+-}: Readonly<ChoiceListItemProps>) {
++}: Readonly<ButtonProps>) {
+   /* eslint-disable react/jsx-props-no-spreading */
+   return (
+     <button
+-      className={clsx(styles.root, styles[state])}
++      className={clsx(styles.root, styles[variant], className)}
+       onClick={onClick}
+       {...others}
+     >
+diff --git a/src/components/Button/index.ts b/src/components/Button/index.ts
+new file mode 100644
+index 0000000..d90cd23
+--- /dev/null
++++ b/src/components/Button/index.ts
+@@ -0,0 +1 @@
++export { Button, ButtonState } from "./Button";
+diff --git a/src/components/ChoiceList/ChoiceList.module.css b/src/components/ChoiceList/ChoiceList.module.css
+index d276633..8d09be6 100644
+--- a/src/components/ChoiceList/ChoiceList.module.css
++++ b/src/components/ChoiceList/ChoiceList.module.css
+@@ -10,3 +10,33 @@
+ .root.reveal {
+   pointer-events: none;
+ }
++
++.choice {
++  color: hsl(0, 0%, 30%);
++}
++
++.choice:hover {
++  filter: none;
++  background-color: rgb(247, 247, 247);
++}
++
++.choice.selected {
++  background-color: #ddf4ff;
++  border-color: #84d8ff;
++  box-shadow: 0 2px 0 #84d8ff; /* TODO: Use CSS variables */
++  color: #1c9ad6;
++}
++
++.correct {
++  background-color: hsl(94, 100%, 86%);
++  border-color: hsl(94, 78%, 68%);
++  box-shadow: 0 2px 0 hsl(94, 78%, 68%);
++  color: #58cc02;
++}
++
++.wrong {
++  background-color: #ffdfe0;
++  border-color: #ea2c2c;
++  box-shadow: 0 2px 0 #ea2c2c;
++  color: #ea2c2c;
++}
+diff --git a/src/components/ChoiceList/ChoiceList.stories.tsx b/src/components/ChoiceList/ChoiceList.stories.tsx
+index b6f0851..48d31ae 100644
+--- a/src/components/ChoiceList/ChoiceList.stories.tsx
++++ b/src/components/ChoiceList/ChoiceList.stories.tsx
+@@ -4,7 +4,7 @@ import { ChoiceList } from "./ChoiceList";
+ import { useArgs } from "@storybook/preview-api";
+ 
+ const meta = {
+-  title: "Lesson/Components/ChoiceList",
++  title: "Lesson/ChoiceList",
+   component: ChoiceList,
+   decorators: [
+     (Story) => (
+diff --git a/src/components/ChoiceList/ChoiceList.tsx b/src/components/ChoiceList/ChoiceList.tsx
+index 6acb98b..381e477 100644
+--- a/src/components/ChoiceList/ChoiceList.tsx
++++ b/src/components/ChoiceList/ChoiceList.tsx
+@@ -1,4 +1,4 @@
+-import { ChoiceListItem, ChoiceListItemState } from "../ChoiceListItem";
++import { Button, ButtonState } from "../Button";
+ import styles from "./ChoiceList.module.css";
+ import clsx from "clsx";
+ 
+@@ -26,15 +26,26 @@ export function ChoiceList({
+     return index === value;
+   }
+ 
+-  function getChoiceState(index: number): ChoiceListItemState {
++  function getChoiceState(index: number): ButtonState {
+     const selected = isSelected(index);
+     const correct = index === correctIndex;
+ 
+     if (reveal && selected && correct) {
+-      return ChoiceListItemState.Correct;
++      return ButtonState.Correct;
+     }
+ 
+-    return selected ? ChoiceListItemState.Selected : ChoiceListItemState.Normal;
++    return selected ? ButtonState.Selected : ButtonState.Normal;
++  }
++
++  function getChoiceClass(index: number) {
++    const selected = isSelected(index);
++    const correct = index === correctIndex;
++
++    if (reveal && selected && correct) {
++      return styles.correct;
++    }
++
++    return selected ? styles.selected : false;
+   }
+ 
+   return (
+@@ -43,15 +54,17 @@ export function ChoiceList({
+       role="radiogroup"
+     >
+       {choices.map((choice, index) => (
+-        <ChoiceListItem
++        <Button
+           role="radio"
+           key={choice}
+-          state={getChoiceState(index)}
++          variant="secondary"
++          className={clsx(styles.choice, getChoiceClass(index))}
++          // state={getChoiceState(index)}
+           onClick={() => handleClick(index)}
+           aria-checked={isSelected(index)}
+         >
+           {choice}
+-        </ChoiceListItem>
++        </Button>
+       ))}
+     </div>
+   );
+diff --git a/src/components/ChoiceListItem/ChoiceListItem.module.css b/src/components/ChoiceListItem/ChoiceListItem.module.css
+deleted file mode 100644
+index 01dacec..0000000
+--- a/src/components/ChoiceListItem/ChoiceListItem.module.css
++++ /dev/null
+@@ -1,44 +0,0 @@
+-.root {
+-  background-color: white;
+-  border: 2px solid hsl(0, 0%, 90%);
+-  border-radius: 12px;
+-  padding: 12px 16px;
+-  font-size: 19px;
+-  color: hsl(0, 0%, 30%);
+-  cursor: pointer;
+-  font-family: sans-serif; /* TODO: Extract */
+-  box-shadow: 0 2px 0 hsl(0, 0%, 90%);
+-  text-align: center;
+-  user-select: none;
+-}
+-
+-.root:active,
+-.root:active {
+-  box-shadow: none;
+-  transform: translateY(2px);
+-}
+-
+-.root.normal:hover {
+-  background-color: rgb(247, 247, 247);
+-}
+-
+-.selected {
+-  background-color: #ddf4ff;
+-  border-color: #84d8ff;
+-  box-shadow: 0 2px 0 #84d8ff; /* TODO: Use CSS variables */
+-  color: #1c9ad6;
+-}
+-
+-.correct {
+-  background-color: hsl(94, 100%, 86%);
+-  border-color: hsl(94, 78%, 68%);
+-  box-shadow: 0 2px 0 hsl(94, 78%, 68%);
+-  color: #58cc02;
+-}
+-
+-.wrong {
+-  background-color: #ffdfe0;
+-  border-color: #ea2c2c;
+-  box-shadow: 0 2px 0 #ea2c2c;
+-  color: #ea2c2c;
+-}
+diff --git a/src/components/ChoiceListItem/ChoiceListItem.stories.tsx b/src/components/ChoiceListItem/ChoiceListItem.stories.tsx
+deleted file mode 100644
+index 59d90e4..0000000
+--- a/src/components/ChoiceListItem/ChoiceListItem.stories.tsx
++++ /dev/null
+@@ -1,47 +0,0 @@
+-import { Meta, StoryObj } from "@storybook/react";
+-import { ChoiceListItem, ChoiceListItemState } from "./ChoiceListItem";
+-
+-const meta = {
+-  title: "Lesson/Components/ChoiceListItem",
+-  component: ChoiceListItem,
+-  tags: ["autodocs"],
+-  argTypes: {
+-    state: {
+-      control: "select",
+-      options: Object.values(ChoiceListItemState),
+-    },
+-  },
+-  args: {
+-    children: "Choose me!",
+-  },
+-  parameters: {
+-    layout: "centered",
+-  },
+-} satisfies Meta<typeof ChoiceListItem>;
+-
+-export default meta;
+-type Story = StoryObj<typeof meta>;
+-
+-export const Normal: Story = {
+-  args: {
+-    state: ChoiceListItemState.Normal,
+-  },
+-};
+-
+-export const Selected: Story = {
+-  args: {
+-    state: ChoiceListItemState.Selected,
+-  },
+-};
+-
+-export const Correct: Story = {
+-  args: {
+-    state: ChoiceListItemState.Correct,
+-  },
+-};
+-
+-export const Wrong: Story = {
+-  args: {
+-    state: ChoiceListItemState.Wrong,
+-  },
+-};
+diff --git a/src/components/ChoiceListItem/index.ts b/src/components/ChoiceListItem/index.ts
+deleted file mode 100644
+index 52aff7a..0000000
+--- a/src/components/ChoiceListItem/index.ts
++++ /dev/null
+@@ -1 +0,0 @@
+-export { ChoiceListItem, ChoiceListItemState } from "./ChoiceListItem";
+diff --git a/src/components/GapFillChallenge/GapFillChallenge.stories.tsx b/src/components/GapFillChallenge/GapFillChallenge.stories.tsx
+index 04e4397..a4400e0 100644
+--- a/src/components/GapFillChallenge/GapFillChallenge.stories.tsx
++++ b/src/components/GapFillChallenge/GapFillChallenge.stories.tsx
+@@ -71,12 +71,12 @@ export const Default: Story = {
+ 
+ // export const Correct: Story = {
+ //   args: {
+-//     state: ChoiceListItemState.Correct,
++//     state: ButtonState.Correct,
+ //   },
+ // };
+ 
+ // export const Wrong: Story = {
+ //   args: {
+-//     state: ChoiceListItemState.Wrong,
++//     state: ButtonState.Wrong,
+ //   },
+ // };
+diff --git a/src/components/LessonController/LessonController.stories.tsx b/src/components/LessonController/LessonController.stories.tsx
+index 86c7cc0..b1de9b4 100644
+--- a/src/components/LessonController/LessonController.stories.tsx
++++ b/src/components/LessonController/LessonController.stories.tsx
+@@ -3,7 +3,7 @@ import { LessonController } from './';
+ import { ChallengeData } from "@/types";
+ 
+ const meta = {
+-  title: "Lesson/Components/LessonController",
++  title: "Lesson/LessonController",
+   component: LessonController,
+   tags: ["autodocs"],
+ } satisfies Meta<typeof LessonController>;
+diff --git a/src/components/PromptBox/PromptBox.stories.tsx b/src/components/PromptBox/PromptBox.stories.tsx
+index a96bda4..e153a95 100644
+--- a/src/components/PromptBox/PromptBox.stories.tsx
++++ b/src/components/PromptBox/PromptBox.stories.tsx
+@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
+ import { PromptBox } from "./PromptBox";
+ 
+ const meta = {
+-  title: "Lesson/Components/PromptBox",
++  title: "Lesson/PromptBox",
+   component: PromptBox,
+   tags: ["autodocs"],
+ } satisfies Meta<typeof PromptBox>;
+@@ -57,12 +57,12 @@ export const ReadOnly: Story = {
+ 
+ // export const Correct: Story = {
+ //   args: {
+-//     state: ChoiceListItemState.Correct,
++//     state: ButtonState.Correct,
+ //   },
+ // };
+ 
+ // export const Wrong: Story = {
+ //   args: {
+-//     state: ChoiceListItemState.Wrong,
++//     state: ButtonState.Wrong,
+ //   },
+ // };

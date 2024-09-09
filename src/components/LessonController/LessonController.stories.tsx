@@ -3,7 +3,7 @@ import { LessonController } from './';
 import { ChallengeData } from "@/types";
 
 const meta = {
-  title: "Lesson/Components/LessonController",
+  title: "Lesson/LessonController",
   component: LessonController,
   tags: ["autodocs"],
 } satisfies Meta<typeof LessonController>;

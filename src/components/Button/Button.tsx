@@ -1,31 +1,35 @@
 import React, { ReactNode } from "react";
-import styles from "./ChoiceListItem.module.css";
+import styles from "./Button.module.css";
 import clsx from "clsx";
 
-export enum ChoiceListItemState {
+export enum ButtonState {
   Normal = "normal",
   Selected = "selected",
   Correct = "correct",
   Wrong = "wrong",
 }
 
-export interface ChoiceListItemProps
+export type ButtonVariant = "primary" | "secondary" | "text";
+
+export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  state: ChoiceListItemState;
+  variant?: ButtonVariant;
   children: ReactNode;
+  className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export function ChoiceListItem({
+export function Button({
+  variant = "primary",
   children,
-  state,
+  className,
   onClick,
   ...others
-}: Readonly<ChoiceListItemProps>) {
+}: Readonly<ButtonProps>) {
   /* eslint-disable react/jsx-props-no-spreading */
   return (
     <button
-      className={clsx(styles.root, styles[state])}
+      className={clsx(styles.root, styles[variant], className)}
       onClick={onClick}
       {...others}
     >

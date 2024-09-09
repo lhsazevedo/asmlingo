@@ -71,12 +71,12 @@ export const Default: Story = {
 
 // export const Correct: Story = {
 //   args: {
-//     state: ChoiceListItemState.Correct,
+//     state: ButtonState.Correct,
 //   },
 // };
 
 // export const Wrong: Story = {
 //   args: {
-//     state: ChoiceListItemState.Wrong,
+//     state: ButtonState.Wrong,
 //   },
 // };

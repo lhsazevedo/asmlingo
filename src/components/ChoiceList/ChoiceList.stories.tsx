@@ -4,7 +4,7 @@ import { ChoiceList } from "./ChoiceList";
 import { useArgs } from "@storybook/preview-api";
 
 const meta = {
-  title: "Lesson/Components/ChoiceList",
+  title: "Lesson/ChoiceList",
   component: ChoiceList,
   decorators: [
     (Story) => (

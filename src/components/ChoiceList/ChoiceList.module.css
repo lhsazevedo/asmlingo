@@ -10,3 +10,33 @@
 .root.reveal {
   pointer-events: none;
 }
+
+.choice {
+  color: hsl(0, 0%, 30%);
+}
+
+.choice:hover {
+  filter: none;
+  background-color: rgb(247, 247, 247);
+}
+
+.choice.selected {
+  background-color: #ddf4ff;
+  border-color: #84d8ff;
+  box-shadow: 0 2px 0 #84d8ff; /* TODO: Use CSS variables */
+  color: #1c9ad6;
+}
+
+.correct {
+  background-color: hsl(94, 100%, 86%);
+  border-color: hsl(94, 78%, 68%);
+  box-shadow: 0 2px 0 hsl(94, 78%, 68%);
+  color: #58cc02;
+}
+
+.wrong {
+  background-color: #ffdfe0;
+  border-color: #ea2c2c;
+  box-shadow: 0 2px 0 #ea2c2c;
+  color: #ea2c2c;
+}
