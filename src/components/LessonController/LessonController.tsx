@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import RepeatIcon from "@/icons/RepeatIcon";
 import { LessonControllerFooter } from "./LessonControllerFooter";
 import { LessonControllerHeader } from "./LessonControllerHeader";
+import { finish } from "@/app/lesson/[id]/actions";
 
 interface ChallengeComponentProps {
   challengeData: ChallengeData;
@@ -29,9 +30,11 @@ const challengeComponents: Record<
 export type LessonMode = "normal" | "review";
 
 export interface LessonControllerProps {
+  lessonId: number;
   challenges: ChallengeData[];
 }
 export function LessonController({
+  lessonId,
   challenges,
 }: Readonly<LessonControllerProps>) {
   const {
@@ -47,7 +50,6 @@ export function LessonController({
     missedIndexes,
     currentIndex,
   } = useChallengeController(challenges);
-  const router = useRouter();
 
   const correctAudioRef = useRef<HTMLAudioElement | null>(null);
   const wrongAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -66,10 +68,10 @@ export function LessonController({
     audioRef.current?.play();
   };
 
-  const onNext = () => {
+  const onNext = async () => {
     const isCompleted = handleNext();
     if (isCompleted) {
-      router.push("/");
+      await finish({ lessonId });
     }
   };
 

@@ -4,26 +4,46 @@ import db from "@/lib/db";
 import { getSession } from "@/lib/session";
 
 export default async function Page() {
-  const { user } = await getSession();
+  const session = await getSession();
+
+  const includeProgress = session?.userId ? {
+    lessonProgress: {
+      where: {
+        userId: session.userId,
+      },
+      take: 1,
+    },
+  } : {};
 
   const units = await db.unit.findMany({
     orderBy: { order: "asc" },
-    include: { lessons: true },
+    include: {
+      lessons: {
+        include: includeProgress,
+      },
+    },
   });
 
   return (
     <main className={styles.main}>
-      <h1>Hi {user.isGuest ? "Guest" : user.name}!</h1>
-      {user.isGuest && <p><Link href="/signup">Sign up</Link> to save your progress.</p>}
+      <div>Id: { session.userId }</div>
+      {/* {user.isGuest && <p><Link href="/signup">Sign up</Link> to save your progress.</p>} */}
 
       {units.map((unit) => (
         <div key={unit.id}>
-          <h2>{unit.title}</h2>
-          {unit.lessons.map(lesson => (
-            <div key={lesson.id}>
-              <h3 key={lesson.id}>{lesson.title}</h3>
-              <Link href={`/lesson/${lesson.id}`}>Start</Link>
-            </div>
+          <div className="text-lg text-gray-400 font-bold mb-4">
+            {unit.title}
+          </div>
+          {unit.lessons.map((lesson) => (
+            <Link key={lesson.id} href={`/lesson/${lesson.id}`}>
+              <div className="flex space-x-4 items-center">
+                <div className="w-14 h-14 rounded-full bg-lime-500"></div>
+                <h3 key={lesson.id} className="text-gray-700">
+                  {lesson.title}
+                  <pre>{JSON.stringify(lesson.lessonProgress, null, 2)}</pre>
+                </h3>
+              </div>
+            </Link>
           ))}
         </div>
       ))}

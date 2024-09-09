@@ -1,6 +1,5 @@
 import { LessonController } from "@/components/LessonController";
 import prisma from "@/lib/db";
-import { redirect } from "next/navigation";
 
 export default async function Page({ params }: { params: { id: string } }) {
   // TODO: Handle non-numeric id
@@ -13,5 +12,10 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const challenges = JSON.parse(lesson.challenges);
 
-  return <LessonController challenges={challenges} />;
+  return (
+    <LessonController
+      lessonId={parsedId}
+      challenges={challenges}
+    />
+  );
 }
