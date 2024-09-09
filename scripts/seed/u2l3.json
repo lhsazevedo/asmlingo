@@ -1,0 +1,282 @@
+[
+  {
+    "type": "gap-fill",
+    "translation": "Add the immediate value #0x43 to R13",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x43",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      }
+    ],
+    "choices": [
+      "#0x43",
+      "#0x99",
+      "#0xf8"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the value in R1 to R3",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD Rm,Rn: Add the contents of Rm to Rn and store the result in Rn."
+      },
+      {
+        "value": "r1",
+        "type": "register",
+        "hint": "Register r1"
+      },
+      {
+        "value": "r3",
+        "type": "register",
+        "hint": "Register r3"
+      }
+    ],
+    "choices": [
+      "bra",
+      "add",
+      "or"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the immediate value #0xfe to R7",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xfe",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r7",
+        "type": "register",
+        "hint": "Register r7"
+      }
+    ],
+    "choices": [
+      "#0x54",
+      "#0xfe",
+      "#0x5d"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the immediate value #0x93 to R7",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x93",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r7",
+        "type": "register",
+        "hint": "Register r7"
+      }
+    ],
+    "choices": [
+      "#0x91",
+      "#0xe6",
+      "#0x93"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the immediate value #0xcd to R7",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xcd",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r7",
+        "type": "register",
+        "hint": "Register r7"
+      }
+    ],
+    "choices": [
+      "#0xcd",
+      "#0x15",
+      "#0xb3"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the value in R14 to R12",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD Rm,Rn: Add the contents of Rm to Rn and store the result in Rn."
+      },
+      {
+        "value": "r14",
+        "type": "register",
+        "hint": "Register r14"
+      },
+      {
+        "value": "r12",
+        "type": "register",
+        "hint": "Register r12"
+      }
+    ],
+    "choices": [
+      "rts",
+      "and",
+      "add"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the immediate value #0x79 to R13",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x79",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      }
+    ],
+    "choices": [
+      "#0x92",
+      "#0x79",
+      "#0x02"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the immediate value #0x1a to R0",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x1a",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r0",
+        "type": "register",
+        "hint": "Register r0"
+      }
+    ],
+    "choices": [
+      "r15",
+      "r10",
+      "r0"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the immediate value #0xb0 to R0",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xb0",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r0",
+        "type": "register",
+        "hint": "Register r0"
+      }
+    ],
+    "choices": [
+      "#0x15",
+      "#0xc0",
+      "#0xb0"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Add the value in R7 to R4",
+    "prompt": [
+      {
+        "value": "add",
+        "type": "operation",
+        "hint": "ADD Rm,Rn: Add the contents of Rm to Rn and store the result in Rn."
+      },
+      {
+        "value": "r7",
+        "type": "register",
+        "hint": "Register r7"
+      },
+      {
+        "value": "r4",
+        "type": "register",
+        "hint": "Register r4"
+      }
+    ],
+    "choices": [
+      "r4",
+      "pr",
+      "r2"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 0
+  }
+]

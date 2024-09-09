@@ -18,6 +18,7 @@ export function LessonButton({
   return (
     <div className={clsx(styles.root, styles[variant])}>
       <button
+        disabled={variant === "disabled"}
         onClick={onClick}
         {...others}
       >

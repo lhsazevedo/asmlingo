@@ -1,0 +1,562 @@
+[
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0xa7 to R3",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xa7",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r3",
+        "type": "register",
+        "hint": "Register r3"
+      }
+    ],
+    "choices": [
+      "r13",
+      "r3",
+      "r8"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R3 to R3",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r3",
+        "type": "register",
+        "hint": "Register r3"
+      },
+      {
+        "value": "r3",
+        "type": "register",
+        "hint": "Register r3"
+      }
+    ],
+    "choices": [
+      "r12",
+      "vbr",
+      "r3"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0x3d to R1",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x3d",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r1",
+        "type": "register",
+        "hint": "Register r1"
+      }
+    ],
+    "choices": [
+      "not",
+      "xor",
+      "mov"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0x51 to R12",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x51",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r12",
+        "type": "register",
+        "hint": "Register r12"
+      }
+    ],
+    "choices": [
+      "#0x85",
+      "#0x51",
+      "#0x30"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0x40 to R6",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x40",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r6",
+        "type": "register",
+        "hint": "Register r6"
+      }
+    ],
+    "choices": [
+      "mov",
+      "and",
+      "rts"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0xc5 to R2",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xc5",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r2",
+        "type": "register",
+        "hint": "Register r2"
+      }
+    ],
+    "choices": [
+      "#0xef",
+      "#0xa4",
+      "#0xc5"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0xa3 to R13",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xa3",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      }
+    ],
+    "choices": [
+      "#0xa3",
+      "#0xd0",
+      "#0xc9"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0x94 to R8",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x94",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r8",
+        "type": "register",
+        "hint": "Register r8"
+      }
+    ],
+    "choices": [
+      "or",
+      "mov",
+      "cmp"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R12 to R8",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r12",
+        "type": "register",
+        "hint": "Register r12"
+      },
+      {
+        "value": "r8",
+        "type": "register",
+        "hint": "Register r8"
+      }
+    ],
+    "choices": [
+      "r8",
+      "r12",
+      "r14"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R6 to R9",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r6",
+        "type": "register",
+        "hint": "Register r6"
+      },
+      {
+        "value": "r9",
+        "type": "register",
+        "hint": "Register r9"
+      }
+    ],
+    "choices": [
+      "r6",
+      "sr",
+      "vbr"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R7 to R6",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r7",
+        "type": "register",
+        "hint": "Register r7"
+      },
+      {
+        "value": "r6",
+        "type": "register",
+        "hint": "Register r6"
+      }
+    ],
+    "choices": [
+      "r14",
+      "r6",
+      "r3"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R3 to R6",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r3",
+        "type": "register",
+        "hint": "Register r3"
+      },
+      {
+        "value": "r6",
+        "type": "register",
+        "hint": "Register r6"
+      }
+    ],
+    "choices": [
+      "xor",
+      "mov",
+      "and"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R13 to R13",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      }
+    ],
+    "choices": [
+      "r7",
+      "r13",
+      "r11"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R13 to R10",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      },
+      {
+        "value": "r10",
+        "type": "register",
+        "hint": "Register r10"
+      }
+    ],
+    "choices": [
+      "and",
+      "mov",
+      "bra"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 1
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R0 to R4",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r0",
+        "type": "register",
+        "hint": "Register r0"
+      },
+      {
+        "value": "r4",
+        "type": "register",
+        "hint": "Register r4"
+      }
+    ],
+    "choices": [
+      "r4",
+      "r5",
+      "sp"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 0
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0xde to R4",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xde",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r4",
+        "type": "register",
+        "hint": "Register r4"
+      }
+    ],
+    "choices": [
+      "rts",
+      "not",
+      "mov"
+    ],
+    "fillableIndex": 0,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0xe8 to R15",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0xe8",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r15",
+        "type": "register",
+        "hint": "Register r15"
+      }
+    ],
+    "choices": [
+      "r11",
+      "sp",
+      "r15"
+    ],
+    "fillableIndex": 2,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the immediate value #0x53 to R13",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+      },
+      {
+        "value": "#0x53",
+        "type": "immediate",
+        "hint": "Immediate value"
+      },
+      {
+        "value": "r13",
+        "type": "register",
+        "hint": "Register r13"
+      }
+    ],
+    "choices": [
+      "#0x62",
+      "#0xf8",
+      "#0x53"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R9 to R6",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r9",
+        "type": "register",
+        "hint": "Register r9"
+      },
+      {
+        "value": "r6",
+        "type": "register",
+        "hint": "Register r6"
+      }
+    ],
+    "choices": [
+      "r1",
+      "macl",
+      "r9"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 2
+  },
+  {
+    "type": "gap-fill",
+    "translation": "Copy the value from R10 to R14",
+    "prompt": [
+      {
+        "value": "mov",
+        "type": "operation",
+        "hint": "MOV Rm Rn: Copy value from Rm to Rn."
+      },
+      {
+        "value": "r10",
+        "type": "register",
+        "hint": "Register r10"
+      },
+      {
+        "value": "r14",
+        "type": "register",
+        "hint": "Register r14"
+      }
+    ],
+    "choices": [
+      "r10",
+      "r7",
+      "r3"
+    ],
+    "fillableIndex": 1,
+    "correctIndex": 0
+  }
+]

@@ -40,6 +40,8 @@ export async function getOrCreateSession() {
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
 
   let user: User;
+
+  // TODO: Improve code flow
   if (!session.userId) {
     user = await db.user.create({ data: { isGuest: true } });
     session.userId = user.id;
@@ -56,9 +58,10 @@ export async function getOrCreateSession() {
       session.userId = user.id;
       session.isGuest = true;
       await session.save();
+    } else {
+      user = maybeUser;
     }
   }
 
-  // TODO: Rethink return type
   return { session, user };
 }

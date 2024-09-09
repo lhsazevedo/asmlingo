@@ -91,6 +91,7 @@ export default async function Page() {
 
   return (
     <form className="flex flex-col" action={signup}>
+      <div className="text-lg text-red-500">This UI is work in progress</div>
       <label>
         Name (optional)
         <input type="text" name="name" />

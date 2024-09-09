@@ -1,9 +1,15 @@
 import { Prisma, PrismaClient } from "@prisma/client";
-import u1l1c1 from "./seed/u1l1.json";
+import u1l1 from "./seed/u1l1.json";
+import u1l2 from "./seed/u1l2.json";
+import u1l3 from "./seed/u1l3.json";
+import u2l1 from "./seed/u1l1.json";
+import u2l2 from "./seed/u1l2.json";
+import u2l3 from "./seed/u1l3.json";
+import u2l4 from "./seed/u1l3.json";
 
 const units: Prisma.UnitCreateInput[] = [
   {
-    title: "Data Transfer Instructions",
+    title: "Basic register copy instructions",
     // description: "Instructions that move data between registers and memory.",
     order: 0,
     lessons: {
@@ -13,135 +19,54 @@ const units: Prisma.UnitCreateInput[] = [
             title: "Copying values between registers",
             description: "Learn how to copy values between registers.",
             order: 0,
-            challenges: JSON.stringify(u1l1c1),
+            challenges: JSON.stringify(u1l1),
           },
           {
-            title: "Copying values between registers 2",
-            description: "Learn how to copy values between registers.",
+            title: "Copying constant values to registers",
+            description: "Learn how to fill registers with immediate values.",
             order: 1,
-            challenges: JSON.stringify([
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R0 to R4",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r0", type: "register", hint: "Register r0" },
-                  { value: "r4", type: "register", hint: "Register r4" },
-                ],
-                choices: ["nop", "mov.l", "mov"],
-                fillableIndex: 0,
-                correctIndex: 2,
-              },
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R8 to R0",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r8", type: "register", hint: "Register r0" },
-                  { value: "r0", type: "register", hint: "Register r4" },
-                ],
-                choices: ["r8", "r0", "fr0"],
-                fillableIndex: 2,
-                correctIndex: 1,
-              },
-            ]),
+            challenges: JSON.stringify(u1l2),
+          },
+          {
+            title: "Register copy and immediate values review",
+            description: "Review copying values between registers and immediate values.",
+            order: 2,
+            challenges: JSON.stringify(u1l3),
           },
         ],
       },
     },
   },
   {
-    title: "More Data Transfer Instructions",
-    // description: "Instructions that move data between registers and memory.",
+    // Basic Arithmethc
+    title: "Fundamentals of Assembly Arithmetic",
     order: 1,
     lessons: {
       createMany: {
         data: [
           {
-            title: "Copying values between registers 3",
-            description: "Learn how to copy values between registers.",
+            title: "Adding two registers",
+            description: "Learn to add values stored in two different registers.",
             order: 0,
-            challenges: JSON.stringify([
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R0 to R4",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r0", type: "register", hint: "Register r0" },
-                  { value: "r4", type: "register", hint: "Register r4" },
-                ],
-                choices: ["nop", "mov.l", "mov"],
-                fillableIndex: 0,
-                correctIndex: 2,
-              },
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R8 to R0",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r8", type: "register", hint: "Register r0" },
-                  { value: "r0", type: "register", hint: "Register r4" },
-                ],
-                choices: ["r8", "r0", "fr0"],
-                fillableIndex: 2,
-                correctIndex: 1,
-              },
-            ]),
+            challenges: JSON.stringify(u2l1),
           },
           {
-            title: "Copying values between registers 4",
-            description: "Learn how to copy values between registers.",
+            title: "Adding numbers to registers",
+            description: "Discover how to add a fixed number directly to a register.",
             order: 1,
-            challenges: JSON.stringify([
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R0 to R4",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r0", type: "register", hint: "Register r0" },
-                  { value: "r4", type: "register", hint: "Register r4" },
-                ],
-                choices: ["nop", "mov.l", "mov"],
-                fillableIndex: 0,
-                correctIndex: 2,
-              },
-              {
-                type: "gap-fill",
-                translation: "Copy the value from R8 to R0",
-                prompt: [
-                  {
-                    value: "mov",
-                    type: "operation",
-                    hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-                  },
-                  { value: "r8", type: "register", hint: "Register r0" },
-                  { value: "r0", type: "register", hint: "Register r4" },
-                ],
-                choices: ["r8", "r0", "fr0"],
-                fillableIndex: 2,
-                correctIndex: 1,
-              },
-            ]),
+            challenges: JSON.stringify(u2l2),
+          },
+          {
+            title: "Addition practice",
+            description: "Reinforce your skills with various addition exercises.",
+            order: 2,
+            challenges: JSON.stringify(u2l3),
+          },
+          {
+            title: "Progress checkpoint",
+            description: "Review key concepts including register operations and basic addition.",
+            order: 3,
+            challenges: JSON.stringify(u2l4),
           },
         ],
       },
