@@ -91,11 +91,13 @@ export function LessonController({
         <button onClick={onVerify}>Verify</button>
       )}
 
-      <audio ref={correctAudioRef}>
-        <source src="/correct.wav" type="audio/wav" />
+      <audio ref={correctAudioRef} preload="auto">
+        <source src="/correct.ogg" type="audio/ogg" />
+        <source src="/correct.mp3" type="audio/mpeg" />
       </audio>
-      <audio ref={wrongAudioRef}>
-        <source src="/wrong.wav" type="audio/wav" />
+      <audio ref={wrongAudioRef} preload="auto">
+        <source src="/wrong.ogg" type="audio/ogg" />
+        <source src="/wrong.mp3" type="audio/mpeg" />
       </audio>
     </div>
   );
