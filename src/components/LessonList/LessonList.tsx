@@ -1,11 +1,11 @@
 "use client";
 
-import { Prisma } from '@prisma/client';
-import { LessonButton } from '../LessonButton';
-import styles from './LessonList.module.css';
-import { LessonButtonVariant } from '../LessonButton/LessonButton';
-import { useRouter } from 'next/navigation';
-import clsx from 'clsx';
+import { Prisma } from "@prisma/client";
+import { LessonButton } from "../LessonButton";
+import styles from "./LessonList.module.css";
+import { LessonButtonVariant } from "../LessonButton/LessonButton";
+import { useRouter } from "next/navigation";
+import clsx from "clsx";
 
 const unitWithRelations = Prisma.validator<Prisma.UnitDefaultArgs>()({
   include: {
@@ -26,9 +26,9 @@ const unitWithRelations = Prisma.validator<Prisma.UnitDefaultArgs>()({
       take: 1,
     },
   },
-})
+});
 
-type UnitWithRelations = Prisma.UnitGetPayload<typeof unitWithRelations>
+type UnitWithRelations = Prisma.UnitGetPayload<typeof unitWithRelations>;
 
 export interface LessonListProps {
   units: UnitWithRelations[];
@@ -44,26 +44,28 @@ export function LessonList({
   const router = useRouter();
 
   return (
-    <div className={clsx('max-w-md mx-auto', styles.root)}>
-      {units.map(unit => (
+    <div className={clsx("max-w-md mx-auto", styles.root)}>
+      {units.map((unit) => (
         <div key={unit.id} className="mb-16">
           <div className="text-lg text-gray-400 font-bold text-center">
             Unit {unit.order + 1}: {unit.title}
           </div>
-          {unit.lessons.map(lesson => {
+          {unit.lessons.map((lesson) => {
             const isCompleted = !!lesson?.lessonProgress?.[0]?.finishedAt;
-            const isCurrent = (currentLessonId && (lesson.id === currentLessonId))
-              || (unit.order === 0 && lesson.order === 0);
+            const isCurrent =
+              (currentLessonId && lesson.id === currentLessonId) ||
+              (unit.order === 0 && lesson.order === 0);
 
             let variant: LessonButtonVariant = "disabled";
             if (isCompleted) {
               variant = "default";
-            } else if (isCurrent) (
-              variant = "current"
-            )
+            } else if (isCurrent) variant = "current";
 
             return (
-              <div key={lesson.id} className="mt-10 flex items-center space-x-4 md:space-x-6">
+              <div
+                key={lesson.id}
+                className="mt-10 flex items-center space-x-4 md:space-x-6"
+              >
                 <LessonButton
                   variant={variant}
                   onClick={() => {
@@ -72,8 +74,15 @@ export function LessonList({
                   aria-labelledby={`lesson-${lesson.id}-title`}
                 />
                 <div>
-                  <div id={`lesson-${lesson.id}-title`} className='sm:text-lg text-gray-600 font-semibold'>{ lesson.title }</div>
-                  <div className='hidden sm:block text-md text-gray-400'>{ lesson.description }</div>
+                  <div
+                    id={`lesson-${lesson.id}-title`}
+                    className="sm:text-lg text-gray-600 font-semibold"
+                  >
+                    {lesson.title}
+                  </div>
+                  <div className="hidden sm:block text-md text-gray-400">
+                    {lesson.description}
+                  </div>
                 </div>
               </div>
             );
@@ -82,4 +91,4 @@ export function LessonList({
       ))}
     </div>
   );
-};
+}

@@ -19,11 +19,7 @@
         "hint": "Register r13"
       }
     ],
-    "choices": [
-      "#0x43",
-      "#0x99",
-      "#0xf8"
-    ],
+    "choices": ["#0x43", "#0x99", "#0xf8"],
     "fillableIndex": 1,
     "correctIndex": 0
   },
@@ -47,11 +43,7 @@
         "hint": "Register r3"
       }
     ],
-    "choices": [
-      "bra",
-      "add",
-      "or"
-    ],
+    "choices": ["bra", "add", "or"],
     "fillableIndex": 0,
     "correctIndex": 1
   },
@@ -75,11 +67,7 @@
         "hint": "Register r7"
       }
     ],
-    "choices": [
-      "#0x54",
-      "#0xfe",
-      "#0x5d"
-    ],
+    "choices": ["#0x54", "#0xfe", "#0x5d"],
     "fillableIndex": 1,
     "correctIndex": 1
   },
@@ -103,11 +91,7 @@
         "hint": "Register r7"
       }
     ],
-    "choices": [
-      "#0x91",
-      "#0xe6",
-      "#0x93"
-    ],
+    "choices": ["#0x91", "#0xe6", "#0x93"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -131,11 +115,7 @@
         "hint": "Register r7"
       }
     ],
-    "choices": [
-      "#0xcd",
-      "#0x15",
-      "#0xb3"
-    ],
+    "choices": ["#0xcd", "#0x15", "#0xb3"],
     "fillableIndex": 1,
     "correctIndex": 0
   },
@@ -159,11 +139,7 @@
         "hint": "Register r12"
       }
     ],
-    "choices": [
-      "rts",
-      "and",
-      "add"
-    ],
+    "choices": ["rts", "and", "add"],
     "fillableIndex": 0,
     "correctIndex": 2
   },
@@ -187,11 +163,7 @@
         "hint": "Register r13"
       }
     ],
-    "choices": [
-      "#0x92",
-      "#0x79",
-      "#0x02"
-    ],
+    "choices": ["#0x92", "#0x79", "#0x02"],
     "fillableIndex": 1,
     "correctIndex": 1
   },
@@ -215,11 +187,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "r15",
-      "r10",
-      "r0"
-    ],
+    "choices": ["r15", "r10", "r0"],
     "fillableIndex": 2,
     "correctIndex": 2
   },
@@ -243,11 +211,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "#0x15",
-      "#0xc0",
-      "#0xb0"
-    ],
+    "choices": ["#0x15", "#0xc0", "#0xb0"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -271,11 +235,7 @@
         "hint": "Register r4"
       }
     ],
-    "choices": [
-      "r4",
-      "pr",
-      "r2"
-    ],
+    "choices": ["r4", "pr", "r2"],
     "fillableIndex": 2,
     "correctIndex": 0
   }

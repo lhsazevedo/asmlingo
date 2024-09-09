@@ -18,8 +18,13 @@ export function LessonControllerFooter({
   onNext,
 }: LessonControllerFooterProps) {
   return (
-    <div className={clsx(revealed && (isCorrect ? styles.correct : styles.wrong), styles.footer)}>
-      <div className={clsx('max-w-screen-md mx-auto px-4 py-6')}>
+    <div
+      className={clsx(
+        revealed && (isCorrect ? styles.correct : styles.wrong),
+        styles.footer,
+      )}
+    >
+      <div className={clsx("max-w-screen-md mx-auto px-4 py-6")}>
         {revealed ? (
           <>
             <div className="text-2xl font-bold mb-4">

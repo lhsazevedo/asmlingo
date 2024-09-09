@@ -29,7 +29,8 @@ const units: Prisma.UnitCreateInput[] = [
           },
           {
             title: "Register copy and immediate values review",
-            description: "Review copying values between registers and immediate values.",
+            description:
+              "Review copying values between registers and immediate values.",
             order: 2,
             challenges: JSON.stringify(u1l3),
           },
@@ -46,25 +47,29 @@ const units: Prisma.UnitCreateInput[] = [
         data: [
           {
             title: "Adding two registers",
-            description: "Learn to add values stored in two different registers.",
+            description:
+              "Learn to add values stored in two different registers.",
             order: 0,
             challenges: JSON.stringify(u2l1),
           },
           {
             title: "Adding numbers to registers",
-            description: "Discover how to add a fixed number directly to a register.",
+            description:
+              "Discover how to add a fixed number directly to a register.",
             order: 1,
             challenges: JSON.stringify(u2l2),
           },
           {
             title: "Addition practice",
-            description: "Reinforce your skills with various addition exercises.",
+            description:
+              "Reinforce your skills with various addition exercises.",
             order: 2,
             challenges: JSON.stringify(u2l3),
           },
           {
             title: "Progress checkpoint",
-            description: "Review key concepts including register operations and basic addition.",
+            description:
+              "Review key concepts including register operations and basic addition.",
             order: 3,
             challenges: JSON.stringify(u2l4),
           },

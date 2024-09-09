@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { LessonButton } from './';
+import { LessonButton } from "./";
 
 const meta = {
   title: "UI/LessonButton",
@@ -25,5 +25,5 @@ export const Current: Story = {
 export const disabled: Story = {
   args: {
     variant: "disabled",
-  }
+  },
 };

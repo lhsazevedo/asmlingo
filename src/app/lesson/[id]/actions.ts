@@ -1,8 +1,8 @@
 "use server";
 
-import { getOrCreateSession } from '@/lib/session';
-import db from '@/lib/db';
-import { redirect } from 'next/navigation';
+import { getOrCreateSession } from "@/lib/session";
+import db from "@/lib/db";
+import { redirect } from "next/navigation";
 
 export async function finish({ lessonId }: { lessonId: number }) {
   const { user } = await getOrCreateSession();
@@ -38,11 +38,11 @@ export async function finish({ lessonId }: { lessonId: number }) {
   }
 
   const allUnits = await db.unit.findMany({
-    orderBy: { order: 'asc' },
+    orderBy: { order: "asc" },
     select: {
       id: true,
       lessons: {
-        orderBy: { order: 'asc' },
+        orderBy: { order: "asc" },
         select: {
           id: true,
           unitId: true,
@@ -51,17 +51,19 @@ export async function finish({ lessonId }: { lessonId: number }) {
     },
   });
 
-  const currentLesson = allUnits.flatMap(u => u.lessons).find(l => l.id === lessonId);
+  const currentLesson = allUnits
+    .flatMap((u) => u.lessons)
+    .find((l) => l.id === lessonId);
   if (!currentLesson) {
     throw new Error("Lesson not found");
   }
-  const currentUnit = allUnits.find(u => u.id === currentLesson.unitId);
+  const currentUnit = allUnits.find((u) => u.id === currentLesson.unitId);
   if (!currentUnit) {
     throw new Error("Unit not found");
   }
 
   // Pass if the lesson is already completed
-  if (userData.lessonProgress.some(lp => lp.lessonId === lessonId)) {
+  if (userData.lessonProgress.some((lp) => lp.lessonId === lessonId)) {
     redirect("/");
   }
 
@@ -74,9 +76,10 @@ export async function finish({ lessonId }: { lessonId: number }) {
     },
   });
 
-  const completedLessonsCount = userData.lessonProgress.filter(
-    lp => currentUnit.lessons.some(l => l.id === lp.lessonId)
-  ).length + 1;
+  const completedLessonsCount =
+    userData.lessonProgress.filter((lp) =>
+      currentUnit.lessons.some((l) => l.id === lp.lessonId),
+    ).length + 1;
 
   if (completedLessonsCount === currentUnit.lessons.length) {
     // All lessons in the unit are completed
@@ -88,7 +91,7 @@ export async function finish({ lessonId }: { lessonId: number }) {
       },
     });
     // Update user's current unit and lesson id
-    const nextUnit = allUnits.find(u => u.id === currentUnit.id + 1);
+    const nextUnit = allUnits.find((u) => u.id === currentUnit.id + 1);
     const nextLesson = nextUnit?.lessons[0];
     if (nextLesson) {
       await db.user.update({

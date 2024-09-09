@@ -39,7 +39,10 @@ export async function getUnitWithLessonsByLesson(lessonId: number) {
   return lesson;
 }
 
-export async function getCompletedLessonsCount(userId: number, unitLessons: { id: number }[]) {
+export async function getCompletedLessonsCount(
+  userId: number,
+  unitLessons: { id: number }[],
+) {
   return db.lessonProgress.count({
     where: {
       userId,
@@ -59,11 +62,14 @@ export async function createUnitProgress(userId: number, unitId: number) {
   });
 }
 
-export async function updateUserCurrentLesson(userId: number, newLessonId: number) {
+export async function updateUserCurrentLesson(
+  userId: number,
+  newLessonId: number,
+) {
   return db.user.update({
     where: { id: userId },
     data: {
-      currentLessonId: newLessonId
+      currentLessonId: newLessonId,
     },
   });
 }
@@ -72,7 +78,7 @@ export async function updateUserCurrentUnit(userId: number, newUnitId: number) {
   return db.user.update({
     where: { id: userId },
     data: {
-      currentUnitId: newUnitId
+      currentUnitId: newUnitId,
     },
   });
 }

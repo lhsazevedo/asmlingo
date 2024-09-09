@@ -4,7 +4,6 @@ import { ChoiceList } from "../ChoiceList";
 import { PromptBox } from "../PromptBox";
 import { InstructionTranslation } from "../InstructionTranslation";
 import { GapFillChallengeData } from "@/types";
-import styles from "./GapFillChallenge.module.css";
 
 interface GapFillChallengeProps {
   challengeData: GapFillChallengeData;

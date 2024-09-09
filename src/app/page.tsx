@@ -38,13 +38,13 @@ export default async function Page() {
 
   async function signout() {
     "use server";
-  
+
     const { session } = await getSession();
-  
+
     if (session) {
       session.destroy();
     }
-  
+
     redirect("/");
   }
 
@@ -55,9 +55,9 @@ export default async function Page() {
       {/* <pre>User: {JSON.stringify(user, null, 2)}</pre>
       <pre>Session: {JSON.stringify(session, null, 2)}</pre> */}
       <div className="text-lg space-x-4 flex items-center justify-center mb-8">
-        { loggedIn ? (
+        {loggedIn ? (
           <>
-            <div>{ user?.name ? `Hi, ${user.name}!` : 'Hi!'}</div>
+            <div>{user?.name ? `Hi, ${user.name}!` : "Hi!"}</div>
             <form action={signout}>
               <Button variant="text" type="submit">
                 Sign out
@@ -69,7 +69,6 @@ export default async function Page() {
             Sign up to save your progress!
           </Button>
         )}
-        
       </div>
       <LessonList
         units={units}

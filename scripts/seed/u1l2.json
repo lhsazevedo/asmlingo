@@ -19,11 +19,7 @@
         "hint": "Register r6"
       }
     ],
-    "choices": [
-      "#0xce",
-      "#0x97",
-      "#0x17"
-    ],
+    "choices": ["#0xce", "#0x97", "#0x17"],
     "fillableIndex": 1,
     "correctIndex": 1
   },
@@ -47,11 +43,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "bra",
-      "mov",
-      "and"
-    ],
+    "choices": ["bra", "mov", "and"],
     "fillableIndex": 0,
     "correctIndex": 1
   },
@@ -75,11 +67,7 @@
         "hint": "Register r7"
       }
     ],
-    "choices": [
-      "#0x93",
-      "#0x4d",
-      "#0x55"
-    ],
+    "choices": ["#0x93", "#0x4d", "#0x55"],
     "fillableIndex": 1,
     "correctIndex": 0
   },
@@ -103,11 +91,7 @@
         "hint": "Register r14"
       }
     ],
-    "choices": [
-      "mach",
-      "r14",
-      "r9"
-    ],
+    "choices": ["mach", "r14", "r9"],
     "fillableIndex": 2,
     "correctIndex": 1
   },
@@ -131,11 +115,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "add",
-      "mov",
-      "cmp"
-    ],
+    "choices": ["add", "mov", "cmp"],
     "fillableIndex": 0,
     "correctIndex": 1
   },
@@ -159,11 +139,7 @@
         "hint": "Register r10"
       }
     ],
-    "choices": [
-      "#0x96",
-      "#0xa4",
-      "#0xd9"
-    ],
+    "choices": ["#0x96", "#0xa4", "#0xd9"],
     "fillableIndex": 1,
     "correctIndex": 0
   },
@@ -187,11 +163,7 @@
         "hint": "Register r6"
       }
     ],
-    "choices": [
-      "rts",
-      "xor",
-      "mov"
-    ],
+    "choices": ["rts", "xor", "mov"],
     "fillableIndex": 0,
     "correctIndex": 2
   },
@@ -215,11 +187,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "#0x03",
-      "#0xe2",
-      "#0x39"
-    ],
+    "choices": ["#0x03", "#0xe2", "#0x39"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -243,11 +211,7 @@
         "hint": "Register r9"
       }
     ],
-    "choices": [
-      "r9",
-      "r14",
-      "r11"
-    ],
+    "choices": ["r9", "r14", "r11"],
     "fillableIndex": 2,
     "correctIndex": 0
   },
@@ -271,11 +235,7 @@
         "hint": "Register r11"
       }
     ],
-    "choices": [
-      "r11",
-      "pr",
-      "r8"
-    ],
+    "choices": ["r11", "pr", "r8"],
     "fillableIndex": 2,
     "correctIndex": 0
   },
@@ -299,11 +259,7 @@
         "hint": "Register r12"
       }
     ],
-    "choices": [
-      "r14",
-      "r12",
-      "pc"
-    ],
+    "choices": ["r14", "r12", "pc"],
     "fillableIndex": 2,
     "correctIndex": 1
   },
@@ -327,11 +283,7 @@
         "hint": "Register r11"
       }
     ],
-    "choices": [
-      "#0x45",
-      "#0xb2",
-      "#0xcd"
-    ],
+    "choices": ["#0x45", "#0xb2", "#0xcd"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -355,11 +307,7 @@
         "hint": "Register r10"
       }
     ],
-    "choices": [
-      "mov",
-      "rts",
-      "and"
-    ],
+    "choices": ["mov", "rts", "and"],
     "fillableIndex": 0,
     "correctIndex": 0
   },
@@ -383,11 +331,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "#0x99",
-      "#0xff",
-      "#0x07"
-    ],
+    "choices": ["#0x99", "#0xff", "#0x07"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -411,11 +355,7 @@
         "hint": "Register r1"
       }
     ],
-    "choices": [
-      "#0xde",
-      "#0xbd",
-      "#0xe0"
-    ],
+    "choices": ["#0xde", "#0xbd", "#0xe0"],
     "fillableIndex": 1,
     "correctIndex": 0
   },
@@ -439,11 +379,7 @@
         "hint": "Register r8"
       }
     ],
-    "choices": [
-      "#0x0e",
-      "#0x42",
-      "#0x94"
-    ],
+    "choices": ["#0x0e", "#0x42", "#0x94"],
     "fillableIndex": 1,
     "correctIndex": 1
   },
@@ -467,11 +403,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "bra",
-      "mov",
-      "and"
-    ],
+    "choices": ["bra", "mov", "and"],
     "fillableIndex": 0,
     "correctIndex": 1
   },
@@ -495,11 +427,7 @@
         "hint": "Register r10"
       }
     ],
-    "choices": [
-      "#0x63",
-      "#0x76",
-      "#0x1b"
-    ],
+    "choices": ["#0x63", "#0x76", "#0x1b"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -523,11 +451,7 @@
         "hint": "Register r13"
       }
     ],
-    "choices": [
-      "r13",
-      "r9",
-      "r14"
-    ],
+    "choices": ["r13", "r9", "r14"],
     "fillableIndex": 2,
     "correctIndex": 0
   },
@@ -551,11 +475,7 @@
         "hint": "Register r12"
       }
     ],
-    "choices": [
-      "r15",
-      "r12",
-      "r2"
-    ],
+    "choices": ["r15", "r12", "r2"],
     "fillableIndex": 2,
     "correctIndex": 1
   }

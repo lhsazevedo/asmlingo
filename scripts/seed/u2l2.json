@@ -19,11 +19,7 @@
         "hint": "Register r5"
       }
     ],
-    "choices": [
-      "#0x51",
-      "#0xda",
-      "#0x2d"
-    ],
+    "choices": ["#0x51", "#0xda", "#0x2d"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -47,11 +43,7 @@
         "hint": "Register r0"
       }
     ],
-    "choices": [
-      "#0xe6",
-      "#0x90",
-      "#0x04"
-    ],
+    "choices": ["#0xe6", "#0x90", "#0x04"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -75,11 +67,7 @@
         "hint": "Register r15"
       }
     ],
-    "choices": [
-      "#0x3d",
-      "#0xd1",
-      "#0x63"
-    ],
+    "choices": ["#0x3d", "#0xd1", "#0x63"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -103,11 +91,7 @@
         "hint": "Register r6"
       }
     ],
-    "choices": [
-      "#0x10",
-      "#0xac",
-      "#0xcc"
-    ],
+    "choices": ["#0x10", "#0xac", "#0xcc"],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -131,11 +115,7 @@
         "hint": "Register r10"
       }
     ],
-    "choices": [
-      "r5",
-      "mach",
-      "r10"
-    ],
+    "choices": ["r5", "mach", "r10"],
     "fillableIndex": 2,
     "correctIndex": 2
   },
@@ -159,11 +139,7 @@
         "hint": "Register r6"
       }
     ],
-    "choices": [
-      "#0x78",
-      "#0x63",
-      "#0xcd"
-    ],
+    "choices": ["#0x78", "#0x63", "#0xcd"],
     "fillableIndex": 1,
     "correctIndex": 0
   },
@@ -187,11 +163,7 @@
         "hint": "Register r3"
       }
     ],
-    "choices": [
-      "and",
-      "not",
-      "add"
-    ],
+    "choices": ["and", "not", "add"],
     "fillableIndex": 0,
     "correctIndex": 2
   },
@@ -215,11 +187,7 @@
         "hint": "Register r6"
       }
     ],
-    "choices": [
-      "#0xdc",
-      "#0x35",
-      "#0xef"
-    ],
+    "choices": ["#0xdc", "#0x35", "#0xef"],
     "fillableIndex": 1,
     "correctIndex": 0
   },
@@ -243,11 +211,7 @@
         "hint": "Register r5"
       }
     ],
-    "choices": [
-      "rts",
-      "jmp",
-      "add"
-    ],
+    "choices": ["rts", "jmp", "add"],
     "fillableIndex": 0,
     "correctIndex": 2
   },
@@ -271,11 +235,7 @@
         "hint": "Register r9"
       }
     ],
-    "choices": [
-      "#0x7d",
-      "#0xbe",
-      "#0x1e"
-    ],
+    "choices": ["#0x7d", "#0xbe", "#0x1e"],
     "fillableIndex": 1,
     "correctIndex": 2
   }

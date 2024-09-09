@@ -2,8 +2,10 @@ import { expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { LessonButton } from "./";
 
-it("renders the list of choices", () => {
-  render(<LessonButton/>);
+it("accepts button attributes", () => {
+  render(<LessonButton variant="default" aria-labelledby="label" />);
 
-  // Add your test here
+  expect(screen.getByRole("button").getAttribute("aria-labelledby")).toBe(
+    "label",
+  );
 });

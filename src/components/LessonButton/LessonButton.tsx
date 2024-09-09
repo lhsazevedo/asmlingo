@@ -17,11 +17,7 @@ export function LessonButton({
 }: Readonly<LessonButtonProps>) {
   return (
     <div className={clsx(styles.root, styles[variant])}>
-      <button
-        disabled={variant === "disabled"}
-        onClick={onClick}
-        {...others}
-      >
+      <button disabled={variant === "disabled"} onClick={onClick} {...others}>
         <StarIcon size={32} />
       </button>
       {variant === "current" && (

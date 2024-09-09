@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { LessonList } from './';
+import { LessonList } from "./";
 
 const meta = {
   title: "UI/LessonList",

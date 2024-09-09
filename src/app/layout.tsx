@@ -21,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={clsx("font-sans", nunito.variable)}>
-      <body className="min-h-screen flex flex-col px-4 py-6">
-        {children}
-      </body>
+      <body className="min-h-screen flex flex-col px-4 py-6">{children}</body>
     </html>
   );
 }

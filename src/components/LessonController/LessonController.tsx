@@ -7,7 +7,6 @@ import { GapFillChallenge } from "../GapFillChallenge";
 import { motion, AnimatePresence, easeOut } from "framer-motion";
 import clsx from "clsx";
 import { useChallengeController } from "./useChallengeController";
-import { useRouter } from "next/navigation";
 import RepeatIcon from "@/icons/RepeatIcon";
 import { LessonControllerFooter } from "./LessonControllerFooter";
 import { LessonControllerHeader } from "./LessonControllerHeader";
@@ -79,12 +78,12 @@ export function LessonController({
     lessonMode === "review" ? challenges.length + currentIndex : currentIndex;
 
   return (
-    <div className={clsx('flex-grow mb-32', styles.root)}>
+    <div className={clsx("flex-grow mb-32", styles.root)}>
       <LessonControllerHeader
         challengesCount={challenges.length + missedIndexes.length}
         currentChallengeIndex={realIndex}
       />
-      <div className="my-4 w-full" style={{ maxWidth: '600px' }}>
+      <div className="my-4 w-full" style={{ maxWidth: "600px" }}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             className="w-full"
