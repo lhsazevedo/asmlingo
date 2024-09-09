@@ -24,7 +24,15 @@ export const sessionOptions: SessionOptions = {
 export async function getSession() {
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
 
-  return session;
+  let user = undefined;
+  if (session.userId) {
+    // Ensure the user exists
+    user = await db.user.findUniqueOrThrow({
+      where: { id: session.userId },
+    });
+  }
+
+  return { session, user };
 }
 
 export async function getOrCreateSession() {

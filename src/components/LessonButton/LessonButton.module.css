@@ -1,0 +1,53 @@
+.root {
+  position: relative;
+  display: inline-flex;
+}
+
+.root button {
+  width: 68px;
+  height: 56px;
+
+  border-radius: 50%;
+  background-color: rgb(88, 204, 2);
+  border: none;
+  box-shadow: 0 8px 0 rgb(88, 167, 0);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.root button:hover,
+.root button:focus-visible {
+  filter: brightness(1.1);
+  transform: translateY(2px);
+  box-shadow: 0 6px 0 rgb(88, 167, 0);
+}
+
+.root button:active {
+  box-shadow: none;
+  transform: translateY(8px);
+}
+
+.root.disabled button {
+  background-color: rgb(229, 229, 229);
+  color: rgb(175, 175, 175);
+  box-shadow: 0 6px 0 rgb(175, 175, 175);
+  filter: none;
+}
+
+.root.disabled:hover button {
+  transform: none;
+}
+
+.currentCircle {
+  position: absolute;
+  width: 110px;
+  height: 100px;
+  stroke: rgb(229, 229, 229);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  z-index: -1;
+}

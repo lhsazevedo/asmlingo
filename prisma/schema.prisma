@@ -11,14 +11,18 @@ datasource db {
 }
 
 model User {
-  id             Int              @id @default(autoincrement())
-  email          String?          @unique
-  password       String?
-  name           String?
-  isGuest        Boolean          @default(true)
-  unitProgress   UnitProgress[]
-  lessonProgress LessonProgress[]
-  createdAt      DateTime         @default(now())
+  id              Int              @id @default(autoincrement())
+  email           String?          @unique
+  password        String?
+  name            String?
+  isGuest         Boolean          @default(true)
+  currentUnit     Unit?            @relation(fields: [currentUnitId], references: [id])
+  currentUnitId   Int?
+  currentLesson   Lesson?          @relation(fields: [currentLessonId], references: [id])
+  currentLessonId Int?
+  unitProgress    UnitProgress[]
+  lessonProgress  LessonProgress[]
+  createdAt       DateTime         @default(now())
 }
 
 model Unit {
@@ -27,6 +31,7 @@ model Unit {
   order        Int            @unique
   lessons      Lesson[]
   unitProgress UnitProgress[]
+  User         User[]
 }
 
 model Lesson {
@@ -38,6 +43,7 @@ model Lesson {
   unit           Unit             @relation(fields: [unitId], references: [id])
   unitId         Int
   lessonProgress LessonProgress[]
+  User           User[]
 
   @@unique([unitId, order])
 }
