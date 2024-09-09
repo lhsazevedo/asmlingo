@@ -78,5 +78,5 @@ export function useChallengeController(challenges: ChallengeData[]) {
     handleVerify,
     handleNext,
     key,
-  }
+  };
 }

@@ -20,11 +20,11 @@ export function ChoiceList({
   const handleClick = (index: number) => {
     // TODO: Test this condition
     !reveal && onChange?.(index);
-  }
+  };
 
   const isSelected = (index: number) => {
     return index === value;
-  }
+  };
 
   function getChoiceState(index: number): ButtonState {
     const selected = isSelected(index);

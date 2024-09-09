@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { LessonController } from "./";
 
 it("renders the list of choices", () => {
-  render(<LessonController/>);
+  render(<LessonController />);
 
   // Add your test here
 });

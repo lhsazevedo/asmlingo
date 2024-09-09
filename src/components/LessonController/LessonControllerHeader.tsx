@@ -15,7 +15,10 @@ export function LessonControllerHeader({
 
   return (
     <div className="flex justify-between items-center">
-      <button className="fill-gray-300 hover:bg-gray-100 rounded-full p-2 -ml-2" onClick={() => router.push('/')}>
+      <button
+        className="fill-gray-300 hover:bg-gray-100 rounded-full p-2 -ml-2"
+        onClick={() => router.push("/")}
+      >
         <CloseIcon size={28} />
       </button>
       <div className="w-full h-4 bg-gray-200 rounded-full overflow-hidden ml-2">

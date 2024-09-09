@@ -31,7 +31,12 @@ export function Button({
   /* eslint-disable react/jsx-props-no-spreading */
   return (
     <button
-      className={clsx(styles.root, styles[variant], block && styles.block, className)}
+      className={clsx(
+        styles.root,
+        styles[variant],
+        block && styles.block,
+        className,
+      )}
       onClick={onClick}
       {...others}
     >

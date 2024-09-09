@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { ChoiceList } from "../ChoiceList";
 import { PromptBox } from "../PromptBox";
@@ -14,13 +14,7 @@ interface GapFillChallengeProps {
 }
 
 export function GapFillChallenge({
-  challengeData: {
-    translation,
-    prompt,
-    fillableIndex,
-    choices,
-    correctIndex
-  },
+  challengeData: { translation, prompt, fillableIndex, choices, correctIndex },
   revealed,
   value,
   onChange,
@@ -28,7 +22,9 @@ export function GapFillChallenge({
   return (
     <div>
       <div className="text-2xl font-bold mb-4">Fill the gap:</div>
-      <InstructionTranslation className="mb-4">{translation}</InstructionTranslation>
+      <InstructionTranslation className="mb-4">
+        {translation}
+      </InstructionTranslation>
       <PromptBox
         className="mb-16"
         tokens={prompt}

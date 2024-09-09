@@ -25,7 +25,8 @@
   color: white;
 }
 
-.primary:hover, .primary:focus-visible{
+.primary:hover,
+.primary:focus-visible {
   filter: brightness(1.1);
 }
 
@@ -48,8 +49,9 @@
   color: #afafaf;
 }
 
-.secondary:hover, .secondary:focus-visible{
-  filter: brightness(0.9)
+.secondary:hover,
+.secondary:focus-visible {
+  filter: brightness(0.9);
 }
 
 .secondary:active {
@@ -64,8 +66,9 @@
   color: #ffffff;
 }
 
-.error:hover, .error:focus-visible{
-  filter: brightness(1.1)
+.error:hover,
+.error:focus-visible {
+  filter: brightness(1.1);
 }
 
 .error:active {

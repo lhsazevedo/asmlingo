@@ -6,7 +6,7 @@ import "./globals.css";
 const nunito = Nunito({
   subsets: ["latin"],
   display: "swap",
-  variable: '--font-nunito',
+  variable: "--font-nunito",
 });
 
 export const metadata: Metadata = {
@@ -20,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx('font-sans', nunito.variable)}>
-      <body className="bg-white max-w-md mx-auto h-screen px-4 py-6">{children}</body>
+    <html lang="en" className={clsx("font-sans", nunito.variable)}>
+      <body className="bg-white max-w-md mx-auto h-screen px-4 py-6">
+        {children}
+      </body>
     </html>
   );
 }

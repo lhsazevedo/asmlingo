@@ -9,7 +9,13 @@ const meta = {
   render(args) {
     const [{ value }, updateArgs] = useArgs();
 
-    return <GapFillChallenge {...args} value={value} onChange={newValue => updateArgs({ value: newValue })} />;
+    return (
+      <GapFillChallenge
+        {...args}
+        value={value}
+        onChange={(newValue) => updateArgs({ value: newValue })}
+      />
+    );
   },
 } satisfies Meta<typeof GapFillChallenge>;
 

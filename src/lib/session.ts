@@ -1,8 +1,8 @@
-import { User } from '@prisma/client';
-import { getIronSession, SessionOptions } from 'iron-session';
+import { User } from "@prisma/client";
+import { getIronSession, SessionOptions } from "iron-session";
 import { cookies } from "next/headers";
-import db from './db';
-import 'server-only'
+import db from "./db";
+import "server-only";
 
 export interface SessionData {
   userId: number;
@@ -45,4 +45,3 @@ export async function getOrCreateSession() {
   // TODO: Rethink return type
   return { session, user };
 }
-

@@ -4,8 +4,6 @@ export interface PromptToken {
   hint: string;
 }
 
-
-
 export interface GapFillChallengeData {
   type: "gap-fill";
   translation: string;

@@ -12,10 +12,5 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const challenges = JSON.parse(lesson.challenges);
 
-  return (
-    <LessonController
-      lessonId={parsedId}
-      challenges={challenges}
-    />
-  );
+  return <LessonController lessonId={parsedId} challenges={challenges} />;
 }

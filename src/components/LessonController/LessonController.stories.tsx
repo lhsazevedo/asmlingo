@@ -1,13 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { LessonController } from './';
+import { LessonController } from "./";
 import { ChallengeData } from "@/types";
 
 const meta = {
   title: "Lesson/LessonController",
   component: LessonController,
   tags: ["autodocs"],
-  parameters: {
-  },
+  parameters: {},
 } satisfies Meta<typeof LessonController>;
 
 export default meta;

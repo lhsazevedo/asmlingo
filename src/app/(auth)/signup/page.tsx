@@ -1,6 +1,6 @@
 export default function Page() {
   async function signup(formData: FormData) {
-    'use server'
+    "use server";
 
     // TODO: Validate input
   }
@@ -21,5 +21,5 @@ export default function Page() {
       </label>
       <button type="submit">Sign up</button>
     </form>
-  )
+  );
 }

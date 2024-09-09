@@ -18,7 +18,13 @@ const meta = {
   render(args) {
     const [{ value }, updateArgs] = useArgs();
 
-    return <ChoiceList {...args} value={value} onChange={newValue => updateArgs({ value: newValue })} />;
+    return (
+      <ChoiceList
+        {...args}
+        value={value}
+        onChange={(newValue) => updateArgs({ value: newValue })}
+      />
+    );
   },
 } satisfies Meta<typeof ChoiceList>;
 

@@ -10,7 +10,6 @@ interface LessonControllerFooterProps {
   onNext: () => void;
 }
 
-
 export function LessonControllerFooter({
   revealed,
   isCorrect,

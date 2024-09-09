@@ -1,1 +1,1 @@
-export { LessonController } from './LessonController';
+export { LessonController } from "./LessonController";

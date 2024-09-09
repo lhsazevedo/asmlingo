@@ -7,7 +7,7 @@ import "../src/app/globals.css";
 const nunito = Nunito({
   subsets: ["latin"],
   display: "swap",
-  variable: '--font-nunito',
+  variable: "--font-nunito",
 });
 
 const preview: Preview = {
@@ -24,8 +24,8 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <div className={clsx('font-sans', nunito.variable)}>
-        <Story/>
+      <div className={clsx("font-sans", nunito.variable)}>
+        <Story />
       </div>
     ),
   ],

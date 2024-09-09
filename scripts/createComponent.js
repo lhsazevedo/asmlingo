@@ -1,15 +1,18 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 function createComponent(componentName) {
-  const componentDir = path.join(process.cwd(), 'src/components', componentName);
+  const componentDir = path.join(
+    process.cwd(),
+    "src/components",
+    componentName,
+  );
 
   // Create component directory
   fs.mkdirSync(componentDir, { recursive: true });
 
   // Create component file
-  const componentContent =
-`import styles from './${componentName}.module.css';
+  const componentContent = `import styles from './${componentName}.module.css';
 
 export interface ${componentName}Props {
   // Add your props here
@@ -23,19 +26,23 @@ export function ${componentName}({}: Readonly<${componentName}Props>) {
   );
 };
 `;
-  fs.writeFileSync(path.join(componentDir, `${componentName}.tsx`), componentContent);
+  fs.writeFileSync(
+    path.join(componentDir, `${componentName}.tsx`),
+    componentContent,
+  );
 
   // Create CSS module file
-  const cssContent =
-`.root {
+  const cssContent = `.root {
   /* Add your styles here */
 }
 `;
-  fs.writeFileSync(path.join(componentDir, `${componentName}.module.css`), cssContent);
+  fs.writeFileSync(
+    path.join(componentDir, `${componentName}.module.css`),
+    cssContent,
+  );
 
   // Create story file
-  const storyContent =
-`import { Meta, StoryObj } from "@storybook/react";
+  const storyContent = `import { Meta, StoryObj } from "@storybook/react";
 import { ${componentName} } from './';
 
 const meta = {
@@ -53,11 +60,13 @@ export const Default: Story = {
   },
 };
 `;
-  fs.writeFileSync(path.join(componentDir, `${componentName}.stories.tsx`), storyContent);
+  fs.writeFileSync(
+    path.join(componentDir, `${componentName}.stories.tsx`),
+    storyContent,
+  );
 
   // Create test file
-  const testContent =
-`import { expect, it, vi } from "vitest";
+  const testContent = `import { expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { ${componentName} } from "./";
 
@@ -67,13 +76,15 @@ it("renders the list of choices", () => {
   // Add your test here
 });
 `;
-  fs.writeFileSync(path.join(componentDir, `${componentName}.test.tsx`), testContent);
+  fs.writeFileSync(
+    path.join(componentDir, `${componentName}.test.tsx`),
+    testContent,
+  );
 
   // Create index file
-  const indexContent =
-`export { ${componentName} } from './${componentName}';
+  const indexContent = `export { ${componentName} } from './${componentName}';
 `;
-  fs.writeFileSync(path.join(componentDir, 'index.ts'), indexContent);
+  fs.writeFileSync(path.join(componentDir, "index.ts"), indexContent);
 
   console.log(`Component ${componentName} created successfully!`);
 }
@@ -82,7 +93,7 @@ it("renders the list of choices", () => {
 const componentName = process.argv[2];
 
 if (!componentName) {
-  console.error('Please provide a component name');
+  console.error("Please provide a component name");
   process.exit(1);
 }
 
