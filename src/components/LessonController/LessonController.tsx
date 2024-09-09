@@ -2,16 +2,15 @@
 
 import { ChallengeData } from "@/types";
 import styles from "./LessonController.module.css";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { GapFillChallenge } from "../GapFillChallenge";
 import { motion, AnimatePresence, easeOut } from "framer-motion";
 import clsx from "clsx";
 import { useChallengeController } from "./useChallengeController";
-import { Button } from "../Button";
-
-export interface LessonControllerProps {
-  challenges: ChallengeData[];
-}
+import { useRouter } from "next/navigation";
+import RepeatIcon from "@/icons/RepeatIcon";
+import { LessonControllerFooter } from "./LessonControllerFooter";
+import { LessonControllerHeader } from "./LessonControllerHeader";
 
 interface ChallengeComponentProps {
   challengeData: ChallengeData;
@@ -29,6 +28,9 @@ const challengeComponents: Record<
 
 export type LessonMode = "normal" | "review";
 
+export interface LessonControllerProps {
+  challenges: ChallengeData[];
+}
 export function LessonController({
   challenges,
 }: Readonly<LessonControllerProps>) {
@@ -42,7 +44,10 @@ export function LessonController({
     handleNext,
     isCorrect,
     key,
+    missedIndexes,
+    currentIndex,
   } = useChallengeController(challenges);
+  const router = useRouter();
 
   const correctAudioRef = useRef<HTMLAudioElement | null>(null);
   const wrongAudioRef = useRef<HTMLAudioElement | null>(null);
@@ -64,14 +69,20 @@ export function LessonController({
   const onNext = () => {
     const isCompleted = handleNext();
     if (isCompleted) {
-      alert("All challenges completed!");
+      router.push("/");
     }
   };
 
+  const realIndex =
+    lessonMode === "review" ? challenges.length + currentIndex : currentIndex;
+
   return (
-    <div className={clsx("px-4 py-6", styles.root)}>
-      <div>Header</div>
-      <div>
+    <div className={clsx(styles.root)}>
+      <LessonControllerHeader
+        challengesCount={challenges.length + missedIndexes.length}
+        currentChallengeIndex={realIndex}
+      />
+      <div className="my-4">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={key}
@@ -81,7 +92,13 @@ export function LessonController({
             transition={{ duration: 0.15, ease: easeOut }}
           >
             {lessonMode === "review" && (
-              <div className={clsx('uppercase font-bold my-2', styles.previousMistake)}>
+              <div
+                className={clsx(
+                  "flex items-center uppercase font-bold mb-4",
+                  styles.previousMistake,
+                )}
+              >
+                <RepeatIcon />
                 Previous mistake
               </div>
             )}
@@ -95,30 +112,13 @@ export function LessonController({
         </AnimatePresence>
       </div>
 
-      {revealed ? (
-        <div
-          className={clsx(
-            "-mx-4 px-4 -mb-6 py-6",
-            styles.revealCard,
-            isCorrect ? styles.correct : styles.wrong,
-          )}
-        >
-          <div className="text-2xl font-bold mb-4">
-            {isCorrect ? "Amazing!" : "Oops!"}
-          </div>
-          <Button
-            onClick={onNext}
-            variant={revealed && !isCorrect ? "error" : "primary"}
-            block
-          >
-            Next
-          </Button>
-        </div>
-      ) : (
-        <Button onClick={onVerify} block disabled={value === undefined}>
-          Verify
-        </Button>
-      )}
+      <LessonControllerFooter
+        revealed={revealed}
+        isCorrect={isCorrect}
+        value={value}
+        onVerify={onVerify}
+        onNext={onNext}
+      />
 
       <audio ref={correctAudioRef} preload="auto">
         <source src="/correct.ogg" type="audio/ogg" />

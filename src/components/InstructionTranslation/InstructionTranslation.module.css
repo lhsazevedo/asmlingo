@@ -2,6 +2,7 @@
   box-sizing: border-box; /* TODO: Move to globals */
   border: 1px solid hsl(0, 0%, 75%);
   color: hsl(0, 0%, 30%);
-  padding: 8px;
+  background-color: hsl(0, 0%, 98%);
+  padding: 8px 12px;
   border-radius: 8px;
 }

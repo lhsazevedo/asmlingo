@@ -46,7 +46,6 @@ export function useChallengeController(challenges: ChallengeData[]) {
       }
 
       if (currentIndex >= missedIndexes.length - 1) {
-        // alert("All challenges completed!");
         return true;
       }
     } else if (currentIndex >= challenges.length - 1) {
@@ -57,7 +56,6 @@ export function useChallengeController(challenges: ChallengeData[]) {
         return false;
       }
 
-      // alert("All challenges completed!");
       return true;
     }
 
@@ -70,10 +68,12 @@ export function useChallengeController(challenges: ChallengeData[]) {
 
   return {
     currentChallenge,
+    currentIndex,
     revealed,
     value,
     setValue,
     lessonMode,
+    missedIndexes,
     isCorrect,
     handleVerify,
     handleNext,

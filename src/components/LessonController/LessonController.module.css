@@ -11,12 +11,12 @@
   color: darkorange;
 }
 
-.revealCard.correct {
+.footer.correct {
   background-color: hsl(94, 100%, 86%);
   color: #58cc02;
 }
 
-.revealCard.wrong {
+.footer.wrong {
   background-color: hsl(358, 100%, 94%);
   color: #ea2c2c;
 }

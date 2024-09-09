@@ -1,64 +1,7 @@
-import { GapFillChallenge } from "@/components/GapFillChallenge";
 import { LessonController } from "@/components/LessonController";
 import prisma from "@/lib/db";
-import clsx from "clsx";
+import { redirect } from "next/navigation";
 
-// const challenges = [
-//   {
-//     type: "gap_fill",
-//     translation: "Copy the value from Rm to Rn",
-//     prompt: [
-//       {
-//         value: "mov",
-//         type: "operation",
-//         hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-//       },
-//       { value: "r0", type: "register", hint: "Register r0" },
-//       { value: "r4", type: "register", hint: "Register r4" },
-//     ],
-//     choices: ["nop", "mov.l", "mov"],
-//     fillableIndex: 0,
-//     correctIndex: 2,
-//   },
-//   {
-//     type: "translate",
-//     prompt: [
-//       {
-//         value: "mov",
-//         type: "operation",
-//         hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-//       },
-//       { value: "r0", type: "register", hint: "Register r0" },
-//       { value: "r4", type: "register", hint: "Register r4" },
-//     ],
-//     choices: [
-//       { value: "mov", type: "operation" },
-//       { value: "r0", type: "register" },
-//       { value: "r4", type: "operation" },
-//       { value: "jump", type: "operation" },
-//       { value: "value", type: "operation" },
-//       { value: "r4", type: "operation" },
-//     ],
-//   },
-//   {
-//     type: "reverse_translate",
-//     prompt: [
-//       { value: "Copy", hint: null },
-//       { value: "from", hint: null },
-//       { value: "r0", hint: "Register r0" },
-//       { value: "to", hint: null },
-//       { value: "r4", hint: "Register r4" },
-//     ],
-//     choices: [
-//       { value: "mov", type: "operation" },
-//       { value: "r0", type: "register" },
-//       { value: "r4", type: "operation" },
-//       { value: "jump", type: "operation" },
-//       { value: "value", type: "operation" },
-//       { value: "r4", type: "operation" },
-//     ],
-//   },
-// ];
 export default async function Page({ params }: { params: { id: string } }) {
   // TODO: Handle non-numeric id
   const parsedId = parseInt(params.id);
@@ -69,21 +12,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   });
 
   const challenges = JSON.parse(lesson.challenges);
-  const challenge = challenges[0];
 
-  return (
-    <div className="max-w-md mx-auto h-screen">
-      <LessonController challenges={challenges} />
-    </div>
-    // <div style={{width: '600px'}}>
-    //   <GapFillChallenge
-    //     choices={challenge.choices}
-    //     correctIndex={challenge.correctIndex}
-    //     fillableIndex={challenge.fillableIndex}
-    //     prompt={challenge.prompt}
-    //     translation={challenge.translation}
-    //   />
-    //   <pre>{JSON.stringify(JSON.parse(lesson.challenges), null, 2)}</pre>
-    // </div>
-  );
+  return <LessonController challenges={challenges} />;
 }
