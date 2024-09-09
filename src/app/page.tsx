@@ -43,7 +43,7 @@ export default async function Page() {
       {units.map((unit, unitIndex) => (
         <div key={unit.id} className="mb-16">
           <div className="text-lg text-gray-400 font-bold text-center">
-            {unit.title}
+            Unit {unit.order + 1}: {unit.title}
           </div>
           {unit.lessons.map((lesson, lessonIndex) => {
             const previousUnit = units[unitIndex - 1];
