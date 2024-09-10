@@ -9,7 +9,9 @@ test("should have title", async ({ page }) => {
 test("should list lessons", async ({ page }) => {
   await page.goto("/");
 
-  const unit1 = await page.getByText("Unit 1: Basic register copy instructions");
+  const unit1 = await page.getByText(
+    "Unit 1: Basic register copy instructions",
+  );
   await expect(unit1).toBeVisible();
 
   const lesson1 = await page.getByText(/^Copying values between registers$/);
@@ -19,7 +21,9 @@ test("should list lessons", async ({ page }) => {
 test("should disable locked lesson", async ({ page }) => {
   await page.goto("/");
 
-  const lesson2 = await page.getByRole("button", { name: "Copying constant values to registers" });
+  const lesson2 = await page.getByRole("button", {
+    name: "Copying constant values to registers",
+  });
   await expect(lesson2).toBeDefined();
   await expect(lesson2).toBeDisabled();
 
@@ -43,7 +47,7 @@ const expectCorrectChoice = async (page: Page, choice: string) => {
 
   const nextButton = await page.getByRole("button", { name: "Continue" });
   await nextButton.click();
-}
+};
 
 const expectWrongChoice = async (page: Page, choice: string) => {
   await page.getByText("Fill the gap:");
@@ -61,7 +65,7 @@ const expectWrongChoice = async (page: Page, choice: string) => {
 
   const nextButton = await page.getByRole("button", { name: "Continue" });
   await nextButton.click();
-}
+};
 
 test("should play entire lesson", async ({ page }) => {
   await page.goto("/");

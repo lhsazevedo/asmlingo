@@ -4,7 +4,7 @@ import { LessonController } from "./";
 import { ChallengeData } from "@/types";
 
 vi.mock("server-only", () => {
-  return { };
+  return {};
 });
 
 vi.mock("next/navigation", async (importOriginal) => {
@@ -67,10 +67,7 @@ const challenges: ChallengeData[] = [
 ];
 
 it("renders the lesson", () => {
-  render(<LessonController
-    lessonId={42}
-    challenges={challenges}
-  />);
+  render(<LessonController lessonId={42} challenges={challenges} />);
 
   expect(screen.getByText("Fill the gap:")).toBeDefined();
   expect(screen.getByText("Copy the value from R11 to R12")).toBeDefined();

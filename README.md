@@ -25,7 +25,6 @@ into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
 - Responsive desing with CSS Modules for component styling and Tailwind CSS common utility classes.
 - Animated challenge transition with Framer Motion.
 
-
 ## Tech Stack
 
 - TypeScript
@@ -89,8 +88,8 @@ behaviors and edge cases, and adding e2e tests for authentication.
 - **Prisma ORM**: I have to be honest, having types for my queries and results on both the client
   and server side is something I'll really miss in other projects.
 
-
 ## Future improvements
+
 - [ ] Implement heart system for challenges.
 - [ ] Address TODOs in codebase.
 - [ ] Rethink the architecture to better separate concerns.

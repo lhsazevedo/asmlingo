@@ -39,7 +39,7 @@ export const SingleUnit: Story = {
           },
         ],
       },
-    ]
+    ],
   },
 };
 
@@ -98,6 +98,6 @@ export const MultiUnit: Story = {
           },
         ],
       },
-    ]
+    ],
   },
 };

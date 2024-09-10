@@ -52,7 +52,7 @@ export default async function Page() {
   const loggedIn = session && session?.isGuest === false;
 
   return (
-    <main className={clsx('px-2', styles.main)}>
+    <main className={clsx("px-2", styles.main)}>
       {/* <pre>User: {JSON.stringify(user, null, 2)}</pre>
       <pre>Session: {JSON.stringify(session, null, 2)}</pre> */}
       <div className="text-lg space-x-4 flex items-center justify-center mb-8">
