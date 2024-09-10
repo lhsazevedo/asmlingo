@@ -6,6 +6,9 @@ on:
     branches: [main, master]
 jobs:
   test:
+    env:
+      CI: true
+      SESSION_SECRET: secret
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
