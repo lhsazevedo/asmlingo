@@ -8,7 +8,7 @@ jobs:
   test:
     env:
       CI: true
-      SESSION_SECRET: secret
+      SESSION_SECRET: bebacafebebacafebebacafebebacafe
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
