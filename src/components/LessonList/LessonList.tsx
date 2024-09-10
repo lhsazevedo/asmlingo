@@ -64,7 +64,7 @@ export function LessonList({
             return (
               <div
                 key={lesson.id}
-                className="mt-10 flex items-center space-x-4 md:space-x-6"
+                className="mt-10 flex items-center space-x-6"
               >
                 <LessonButton
                   variant={variant}
