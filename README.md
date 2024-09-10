@@ -6,10 +6,14 @@ A Duolingo-like microlearning prototype for learning SuperH assembly (or any ass
 
 ## Overview
 
-> [!NOTE]
-> This project is a learning exercise developed over the course of one week to explore and gain hands-on experience with TypeScript, Next.js 14, and Prisma ORM. While functional, it is not intended for production use. The primary goals were rapid learning, technology exploration, and demonstration of newly acquired skills.
+> [!NOTE] This project is a learning exercise developed over the course of one week to explore and
+> gain hands-on experience with TypeScript, Next.js 14, and Prisma ORM. It is not intended for
+> production use. The primary goals were rapid learning, technology exploration, and demonstration
+> of newly acquired skills.
 
-Asmlingo is a educational app inspired by Duolingo's microlearning concept, designed to teach assembly language using a gamified approach. This project was developed as a week-long deep dive into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
+Asmlingo is a educational app inspired by Duolingo's microlearning concept, designed to teach
+assembly language using a gamified approach. This project was developed as a week-long deep dive
+into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
 
 ## Features
 
@@ -65,15 +69,21 @@ Asmlingo is a educational app inspired by Duolingo's microlearning concept, desi
 
 ## Testing
 
-This projects uses both unit and end-to-end tests. Unit tests are written with Vitest and React Testing Library, while end-to-end tests are written with Playwright.
+This projects uses both unit and end-to-end tests. Unit tests are written with Vitest and React
+Testing Library, while end-to-end tests are written with Playwright.
 
-There is much more to be done in terms of testing, such as adding more unit tests for expected behaviors and edge cases, and adding e2e tests for authentication.
+There is much more to be done in terms of testing, such as adding more unit tests for expected
+behaviors and edge cases, and adding e2e tests for authentication.
 
 ## Challenges and Learnings
 
-- **TypeScript**: Really powerful for avoiding run time errors and improving code readability, I'm looking forward to using it in more projects.
-- **Next.js 14**: First time using Next.js. Easy to start with, but took some time to adapt to the opinionated structure and data fetching patterns. I should revisit this project in the future now that I have a better understanding of the framework.
-- **Prisma ORM**: I have to be honest, having types for my queries and results on both the client and server side is something I'll really miss in other projects.
+- **TypeScript**: Really powerful for avoiding run time errors and improving code readability, I'm
+  looking forward to using it in more projects.
+- **Next.js 14**: First time using Next.js. Easy to start with, but took some time to adapt to the
+  opinionated structure and data fetching patterns. I should revisit this project in the future now
+  that I have a better understanding of the framework.
+- **Prisma ORM**: I have to be honest, having types for my queries and results on both the client
+  and server side is something I'll really miss in other projects.
 
 
 ## Future improvements
@@ -88,4 +98,5 @@ There is much more to be done in terms of testing, such as adding more unit test
 
 ## Final thoughts
 
-This project was a fun learning experience. I'm happy with the result, but I would like to revisit now that I can focus more on the architecture instead of learning the tech stack.
+This project was a fun learning experience. I'm happy with the result, but I would like to revisit
+now that I can focus more on the architecture instead of learning the tech stack.
