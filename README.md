@@ -19,8 +19,9 @@ into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
 ## Features
 
 - Interactive challenges for learning assembly.
+- Extensible challenge system (only gap-fill implemented for now).
 - Progress tracking.
-- Guest mode with optional user promotion (Sign In to save your progress).
+- Guest mode with optional user promotion (Sign Up to save your progress).
 - Responsive desing with CSS Modules for component styling and Tailwind CSS common utility classes.
 - Animated challenge transition with Framer Motion.
 
