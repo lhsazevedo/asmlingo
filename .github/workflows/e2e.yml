@@ -9,6 +9,7 @@ jobs:
     env:
       CI: true
       SESSION_SECRET: bebacafebebacafebebacafebebacafe
+      DATABASE_URL: "file:./dev.db"
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
