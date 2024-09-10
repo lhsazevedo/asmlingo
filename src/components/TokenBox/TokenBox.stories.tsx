@@ -1,11 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { PromptBox } from "./PromptBox";
+import { TokenBox } from "./TokenBox";
 
 const meta = {
-  title: "Lesson/PromptBox",
-  component: PromptBox,
+  title: "Lesson/TokenBox",
+  component: TokenBox,
   tags: ["autodocs"],
-} satisfies Meta<typeof PromptBox>;
+} satisfies Meta<typeof TokenBox>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

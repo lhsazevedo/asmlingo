@@ -1,0 +1,1 @@
+export { TranslateChallenge } from "./TranslateChallenge";

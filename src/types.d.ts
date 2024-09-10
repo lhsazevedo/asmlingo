@@ -13,4 +13,12 @@ export interface GapFillChallengeData {
   correctIndex: number;
 }
 
-export type ChallengeData = GapFillChallengeData;
+export interface TranslateChallengeData {
+  type: "translate";
+  translation: string;
+  prompt: PromptToken[];
+  words: string[];
+  correctIndexes: number[];
+}
+
+export type ChallengeData = GapFillChallengeData | TranslateChallengeData;

@@ -1,20 +1,20 @@
 import clsx from "clsx";
-import styles from "./PromptBox.module.css";
+import styles from "./TokenBox.module.css";
 import { PromptToken } from "@/types";
 
-interface PromptBoxProps {
+interface TokenBoxProps {
   tokens: PromptToken[];
   fillableIndex?: number;
   filledPrompt?: string;
   className?: string;
 }
 
-export function PromptBox({
+export function TokenBox({
   tokens,
   fillableIndex,
   filledPrompt,
   className,
-}: Readonly<PromptBoxProps>) {
+}: Readonly<TokenBoxProps>) {
   return (
     <div className={clsx(styles.root, className)}>
       {tokens.map((token, index) => {

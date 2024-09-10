@@ -3,40 +3,39 @@
 import { ChoiceList } from "../ChoiceList";
 import { TokenBox } from "../TokenBox";
 import { InstructionTranslation } from "../InstructionTranslation";
-import { GapFillChallengeData } from "@/types";
+import { TranslateChallengeData } from "@/types";
 
-interface GapFillChallengeProps {
-  challengeData: GapFillChallengeData;
+interface TranslateChallengeProps {
+  challengeData: TranslateChallengeData;
   revealed: boolean;
   value?: number;
   onChange?: (value: number) => void;
 }
 
-export function GapFillChallenge({
-  challengeData: { translation, prompt, fillableIndex, choices, correctIndex },
+export function TranslateChallenge({
+  challengeData: { translation, prompt, words, correctIndexes },
   revealed,
   value,
   onChange,
-}: GapFillChallengeProps) {
+}: TranslateChallengeProps) {
   return (
     <div>
-      <div className="text-2xl font-bold mb-4">Fill the gap:</div>
-      <InstructionTranslation className="mb-4">
+      <div className="text-2xl font-bold mb-4">Write in english:</div>
+      {/* <InstructionTranslation className="mb-4">
         {translation}
-      </InstructionTranslation>
+      </InstructionTranslation> */}
       <TokenBox
         className="mb-16"
         tokens={prompt}
-        fillableIndex={fillableIndex}
         filledPrompt={value !== undefined ? choices[value] : value}
       />
-      <ChoiceList
+      {/* <ChoiceList
         choices={choices}
         correctIndex={correctIndex}
         reveal={revealed}
         value={value}
         onChange={onChange}
-      />
+      /> */}
     </div>
   );
 }
