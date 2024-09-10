@@ -50,10 +50,10 @@ into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
    ```
 5. Run the development server with `npm run dev`.
 6. Explore tooling:
-   1. Run Storybook with `npm run storybook`.
-   2. Run tests with `npm test`.
-   3. Run e2e tests with `npm run e2e`.
-   4. Run Prisma Studio with `npx prisma studio`.
+   - Run Storybook with `npm run storybook`.
+   - Run tests with `npm test`.
+   - Run e2e tests with `npm run e2e`.
+   - Run Prisma Studio with `npx prisma studio`.
 
 ## Projct Structure
 
