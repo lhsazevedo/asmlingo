@@ -6,7 +6,8 @@ A Duolingo-like microlearning prototype for learning SuperH assembly (or any ass
 
 ## Overview
 
-> [!NOTE] This project is a learning exercise developed over the course of one week to explore and
+> [!NOTE]
+> This project is a learning exercise developed over the course of one week to explore and
 > gain hands-on experience with TypeScript, Next.js 14, and Prisma ORM. It is not intended for
 > production use. The primary goals were rapid learning, technology exploration, and demonstration
 > of newly acquired skills.
