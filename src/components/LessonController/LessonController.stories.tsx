@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { LessonController } from "./";
-import { ChallengeData } from "@/types";
 
 const meta = {
   title: "Lesson/LessonController",
@@ -14,6 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    lessonId: 1,
     challenges: [
       {
         type: "gap-fill",
