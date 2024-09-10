@@ -41,13 +41,15 @@ into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
 
 1. Clone the repository.
 2. Install dependencies with `npm install`.
-3. Migrate and seed the database:
+3. Copy the `.env.example` file to `.env` and set the environment variables.
+4. Migrate and seed the database:
    ```bash
+   $ npx prisma generate
    $ npx prisma migrate dev
    $ npx tsx scripts/seed.ts
    ```
-4. Run the development server with `npm run dev`.
-5. Explore tooling:
+5. Run the development server with `npm run dev`.
+6. Explore tooling:
    1. Run Storybook with `npm run storybook`.
    2. Run tests with `npm test`.
    3. Run e2e tests with `npm run e2e`.
