@@ -87,6 +87,7 @@ behaviors and edge cases, and adding e2e tests for authentication.
 
 
 ## Future improvements
+- [ ] Implement heart system for challenges.
 - [ ] Address TODOs in codebase.
 - [ ] Rethink the architecture to better separate concerns.
 - [ ] Add styles to the Sign Up page.
