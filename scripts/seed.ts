@@ -2,10 +2,10 @@ import { Prisma, PrismaClient } from "@prisma/client";
 import u1l1 from "./seed/u1l1.json";
 import u1l2 from "./seed/u1l2.json";
 import u1l3 from "./seed/u1l3.json";
-import u2l1 from "./seed/u1l1.json";
-import u2l2 from "./seed/u1l2.json";
-import u2l3 from "./seed/u1l3.json";
-import u2l4 from "./seed/u1l3.json";
+import u2l1 from "./seed/u2l1.json";
+import u2l2 from "./seed/u2l2.json";
+import u2l3 from "./seed/u2l3.json";
+import u2l4 from "./seed/u2l4.json";
 
 const units: Prisma.UnitCreateInput[] = [
   {
@@ -23,14 +23,14 @@ const units: Prisma.UnitCreateInput[] = [
           },
           {
             title: "Copying constant values to registers",
-            description: "Learn how to fill registers with immediate values.",
+            description: "Learn how to fill registers with constant values.",
             order: 1,
             challenges: JSON.stringify(u1l2),
           },
           {
-            title: "Register copy and immediate values review",
+            title: "Register copy and constant values review",
             description:
-              "Review copying values between registers and immediate values.",
+              "Review copying values between registers and constant values.",
             order: 2,
             challenges: JSON.stringify(u1l3),
           },

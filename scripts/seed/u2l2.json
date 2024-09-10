@@ -1,17 +1,17 @@
 [
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x2d to R5",
+    "translation": "Add the constant value #0x2d to R5",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x2d",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r5",
@@ -25,17 +25,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x04 to R0",
+    "translation": "Add the constant value #0x04 to R0",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x04",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
@@ -49,17 +49,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x63 to R15",
+    "translation": "Add the constant value #0x63 to R15",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x63",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r15",
@@ -73,17 +73,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0xcc to R6",
+    "translation": "Add the constant value #0xcc to R6",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0xcc",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r6",
@@ -97,17 +97,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0xff to R10",
+    "translation": "Add the constant value #0xff to R10",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0xff",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r10",
@@ -121,17 +121,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x78 to R6",
+    "translation": "Add the constant value #0x78 to R6",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x78",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r6",
@@ -145,17 +145,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0xf8 to R3",
+    "translation": "Add the constant value #0xf8 to R3",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0xf8",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r3",
@@ -169,17 +169,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0xdc to R6",
+    "translation": "Add the constant value #0xdc to R6",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0xdc",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r6",
@@ -193,17 +193,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x4a to R5",
+    "translation": "Add the constant value #0x4a to R5",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x4a",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r5",
@@ -217,17 +217,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x1e to R9",
+    "translation": "Add the constant value #0x1e to R9",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x1e",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r9",

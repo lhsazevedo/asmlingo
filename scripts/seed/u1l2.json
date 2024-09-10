@@ -1,17 +1,17 @@
 [
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x97 to R6",
+    "translation": "Copy the constant value #0x97 to R6",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x97",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r6",
@@ -25,17 +25,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x51 to R0",
+    "translation": "Copy the constant value #0x51 to R0",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x51",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
@@ -49,17 +49,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x93 to R7",
+    "translation": "Copy the constant value #0x93 to R7",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x93",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r7",
@@ -73,17 +73,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x25 to R14",
+    "translation": "Copy the constant value #0x25 to R14",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x25",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r14",
@@ -97,17 +97,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xb3 to R0",
+    "translation": "Copy the constant value #0xb3 to R0",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xb3",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
@@ -121,17 +121,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x96 to R10",
+    "translation": "Copy the constant value #0x96 to R10",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x96",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r10",
@@ -145,17 +145,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x21 to R6",
+    "translation": "Copy the constant value #0x21 to R6",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x21",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r6",
@@ -169,17 +169,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x39 to R0",
+    "translation": "Copy the constant value #0x39 to R0",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x39",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
@@ -193,17 +193,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xca to R9",
+    "translation": "Copy the constant value #0xca to R9",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xca",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r9",
@@ -217,17 +217,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x26 to R11",
+    "translation": "Copy the constant value #0x26 to R11",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x26",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r11",
@@ -241,17 +241,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xfb to R12",
+    "translation": "Copy the constant value #0xfb to R12",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xfb",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r12",
@@ -265,17 +265,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xcd to R11",
+    "translation": "Copy the constant value #0xcd to R11",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xcd",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r11",
@@ -289,17 +289,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xca to R10",
+    "translation": "Copy the constant value #0xca to R10",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xca",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r10",
@@ -313,17 +313,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x07 to R0",
+    "translation": "Copy the constant value #0x07 to R0",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x07",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
@@ -337,17 +337,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xde to R1",
+    "translation": "Copy the constant value #0xde to R1",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xde",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r1",
@@ -361,17 +361,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x42 to R8",
+    "translation": "Copy the constant value #0x42 to R8",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x42",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r8",
@@ -385,17 +385,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xa3 to R0",
+    "translation": "Copy the constant value #0xa3 to R0",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xa3",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
@@ -409,17 +409,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0x1b to R10",
+    "translation": "Copy the constant value #0x1b to R10",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0x1b",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r10",
@@ -433,17 +433,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xd3 to R13",
+    "translation": "Copy the constant value #0xd3 to R13",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xd3",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r13",
@@ -457,17 +457,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Copy the immediate value #0xeb to R12",
+    "translation": "Copy the constant value #0xeb to R12",
     "prompt": [
       {
         "value": "mov",
         "type": "operation",
-        "hint": "MOV #imm,Rn: Copy immediate signed byte to register Rn."
+        "hint": "MOV #imm,Rn: Copy constant signed byte to register Rn."
       },
       {
         "value": "#0xeb",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r12",

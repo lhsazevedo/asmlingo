@@ -22,7 +22,7 @@ function generateChallenges(count) {
   ];
 
   for (let i = 0; i < count; i++) {
-    const isImmediateMove = Math.random() < 0.5; // 50% chance for immediate move instruction
+    const isImmediateMove = Math.random() < 0.5; // 50% chance for constant move instruction
 
     // if (isImmediateMove) {
     challenges.push(generateImmediateMoveChallenge(registers));
@@ -79,14 +79,14 @@ function generateImmediateMoveChallenge(registers) {
 
   return {
     type: "gap-fill",
-    translation: `Copy the immediate value ${immediateHex} to ${destReg.toUpperCase()}`,
+    translation: `Copy the constant value ${immediateHex} to ${destReg.toUpperCase()}`,
     prompt: [
       {
         value: "mov",
         type: "operation",
-        hint: "MOV #imm,Rn: Copy immediate signed byte to register Rn.",
+        hint: "MOV #imm,Rn: Copy constant signed byte to register Rn.",
       },
-      { value: immediateHex, type: "immediate", hint: "Immediate value" },
+      { value: immediateHex, type: "constant", hint: "Constant value" },
       { value: destReg, type: "register", hint: `Register ${destReg}` },
     ],
     choices: distractors,
@@ -152,7 +152,7 @@ function generateChoices(fillableIndex, correctChoice, isImmediate = false) {
       }
     }
   } else if (fillableIndex === 1 && isImmediate) {
-    // For immediate values
+    // For constant values
     while (choices.length < 2) {
       const randomImmediate = `#0x${Math.floor(Math.random() * 256)
         .toString(16)

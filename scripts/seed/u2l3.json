@@ -1,17 +1,17 @@
 [
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x43 to R13",
+    "translation": "Add the constant value #0x43 to R13",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x43",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r13",
@@ -49,17 +49,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0xfe to R7",
+    "translation": "Add the constant value #0xfe to R7",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0xfe",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r7",
@@ -73,17 +73,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x93 to R7",
+    "translation": "Add the constant value #0x93 to R7",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x93",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r7",
@@ -97,17 +97,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0xcd to R7",
+    "translation": "Add the constant value #0xcd to R7",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0xcd",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r7",
@@ -145,17 +145,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x79 to R13",
+    "translation": "Add the constant value #0x79 to R13",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x79",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r13",
@@ -169,17 +169,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0x1a to R0",
+    "translation": "Add the constant value #0x1a to R0",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0x1a",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
@@ -193,17 +193,17 @@
   },
   {
     "type": "gap-fill",
-    "translation": "Add the immediate value #0xb0 to R0",
+    "translation": "Add the constant value #0xb0 to R0",
     "prompt": [
       {
         "value": "add",
         "type": "operation",
-        "hint": "ADD #imm,Rn: Add immediate signed byte to register Rn."
+        "hint": "ADD #imm,Rn: Add constant signed byte to register Rn."
       },
       {
         "value": "#0xb0",
-        "type": "immediate",
-        "hint": "Immediate value"
+        "type": "constant",
+        "hint": "Constant value"
       },
       {
         "value": "r0",
