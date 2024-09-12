@@ -22,7 +22,7 @@ export const Current: Story = {
   },
 };
 
-export const disabled: Story = {
+export const Disabled: Story = {
   args: {
     variant: "disabled",
   },

@@ -1,9 +1,8 @@
 import { expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { LessonList } from "./";
-import { execPath } from "process";
 
-vi.mock("next/navigation", async (importOriginal) => {
+vi.mock("next/navigation", async () => {
   const useRouterMock = vi.fn();
 
   return {

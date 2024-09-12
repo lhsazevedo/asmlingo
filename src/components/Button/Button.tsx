@@ -5,13 +5,6 @@ import styles from "./Button.module.css";
 import clsx from "clsx";
 import Link from "next/link";
 
-export enum ButtonState {
-  Normal = "normal",
-  Selected = "selected",
-  Correct = "correct",
-  Wrong = "wrong",
-}
-
 export type ButtonVariant =
   | "primary"
   | "secondary"

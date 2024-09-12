@@ -8,9 +8,9 @@ import clsx from "clsx";
 // import { signout } from "./actions";
 
 export default async function Page() {
-  let { session, user } = await getSession();
+  const { session, user } = await getSession();
 
-  let units = await db.unit.findMany({
+  const units = await db.unit.findMany({
     orderBy: { order: "asc" },
     include: {
       lessons: {
@@ -73,7 +73,6 @@ export default async function Page() {
       </div>
       <LessonList
         units={units}
-        currentUnitId={user?.currentUnitId ?? undefined}
         currentLessonId={user?.currentLessonId ?? undefined}
       />
     </main>

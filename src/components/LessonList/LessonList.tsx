@@ -33,13 +33,11 @@ type UnitWithRelations = Prisma.UnitGetPayload<typeof unitWithRelations>;
 export interface LessonListProps {
   units: UnitWithRelations[];
   currentLessonId?: number;
-  currentUnitId?: number;
 }
 
 export function LessonList({
   units,
   currentLessonId,
-  currentUnitId,
 }: Readonly<LessonListProps>) {
   const router = useRouter();
 

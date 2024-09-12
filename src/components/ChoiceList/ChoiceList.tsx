@@ -1,4 +1,4 @@
-import { Button, ButtonState } from "../Button";
+import { Button } from "../Button";
 import styles from "./ChoiceList.module.css";
 import clsx from "clsx";
 
@@ -26,17 +26,6 @@ export function ChoiceList({
     return index === value;
   };
 
-  function getChoiceState(index: number): ButtonState {
-    const selected = isSelected(index);
-    const correct = index === correctIndex;
-
-    if (reveal && selected && correct) {
-      return ButtonState.Correct;
-    }
-
-    return selected ? ButtonState.Selected : ButtonState.Normal;
-  }
-
   function getChoiceClass(index: number) {
     const selected = isSelected(index);
     const correct = index === correctIndex;
@@ -59,7 +48,6 @@ export function ChoiceList({
           key={choice}
           variant="secondary"
           className={clsx(styles.choice, getChoiceClass(index))}
-          // state={getChoiceState(index)}
           onClick={() => handleClick(index)}
           aria-checked={isSelected(index)}
         >

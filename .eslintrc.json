@@ -1,14 +1,8 @@
 {
   "extends": [
     "next/core-web-vitals",
+    "next/typescript",
     "plugin:storybook/recommended",
     "prettier"
-  ],
-  "rules": {
-    // "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
-    // "react/jsx-indent": [1, 2],
-    // "react/jsx-indent-props": [1, 2],
-    // "react/react-in-jsx-scope": "off",
-    // "react/jsx-no-literals": "off"
-  }
+  ]
 }

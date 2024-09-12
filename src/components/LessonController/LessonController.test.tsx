@@ -7,7 +7,7 @@ vi.mock("server-only", () => {
   return {};
 });
 
-vi.mock("next/navigation", async (importOriginal) => {
+vi.mock("next/navigation", async () => {
   const useRouterMock = vi.fn();
 
   return {
