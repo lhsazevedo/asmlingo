@@ -19,7 +19,11 @@
         "hint": "Register r13"
       }
     ],
-    "choices": ["r13", "r8", "r6"],
+    "choices": [
+      "r13",
+      "r8",
+      "r6"
+    ],
     "fillableIndex": 2,
     "correctIndex": 0
   },
@@ -43,7 +47,11 @@
         "hint": "Register r14"
       }
     ],
-    "choices": ["jmp", "add", "bra"],
+    "choices": [
+      "jmp",
+      "add",
+      "bra"
+    ],
     "fillableIndex": 0,
     "correctIndex": 1
   },
@@ -67,7 +75,11 @@
         "hint": "Register r6"
       }
     ],
-    "choices": ["r4", "sr", "r6"],
+    "choices": [
+      "r4",
+      "sr",
+      "r6"
+    ],
     "fillableIndex": 2,
     "correctIndex": 2
   },
@@ -91,7 +103,11 @@
         "hint": "Register r9"
       }
     ],
-    "choices": ["sr", "r1", "r9"],
+    "choices": [
+      "sr",
+      "r1",
+      "r9"
+    ],
     "fillableIndex": 2,
     "correctIndex": 2
   },
@@ -115,7 +131,11 @@
         "hint": "Register r7"
       }
     ],
-    "choices": ["sp", "r13", "r5"],
+    "choices": [
+      "sp",
+      "r13",
+      "r5"
+    ],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -139,7 +159,11 @@
         "hint": "Register r13"
       }
     ],
-    "choices": ["r5", "sp", "r12"],
+    "choices": [
+      "r5",
+      "sp",
+      "r12"
+    ],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -163,7 +187,11 @@
         "hint": "Register r7"
       }
     ],
-    "choices": ["sp", "r7", "r14"],
+    "choices": [
+      "sp",
+      "r7",
+      "r14"
+    ],
     "fillableIndex": 1,
     "correctIndex": 2
   },
@@ -187,7 +215,11 @@
         "hint": "Register r6"
       }
     ],
-    "choices": ["r5", "r6", "sr"],
+    "choices": [
+      "r5",
+      "r6",
+      "sr"
+    ],
     "fillableIndex": 2,
     "correctIndex": 1
   },
@@ -211,7 +243,11 @@
         "hint": "Register r14"
       }
     ],
-    "choices": ["add", "and", "rts"],
+    "choices": [
+      "add",
+      "and",
+      "rts"
+    ],
     "fillableIndex": 0,
     "correctIndex": 0
   },
@@ -235,7 +271,11 @@
         "hint": "Register r13"
       }
     ],
-    "choices": ["mach", "r11", "r13"],
+    "choices": [
+      "mach",
+      "r11",
+      "r13"
+    ],
     "fillableIndex": 2,
     "correctIndex": 2
   }
