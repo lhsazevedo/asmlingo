@@ -1,10 +1,13 @@
-"use server";
-
 import { getOrCreateSession } from "@/lib/session";
 import db from "@/lib/db";
-import { redirect } from "next/navigation";
 
-export async function finish({ lessonId }: { lessonId: number }) {
+export async function POST(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
+  // TODO: Validate int
+  const lessonId = parseInt(params.id);
+
   const { user } = await getOrCreateSession();
 
   // Eager load user progress
@@ -64,7 +67,7 @@ export async function finish({ lessonId }: { lessonId: number }) {
 
   // Pass if the lesson is already completed
   if (userData.lessonProgress.some((lp) => lp.lessonId === lessonId)) {
-    redirect("/");
+    return new Response(null, { status: 204 });
   }
 
   // Create lesson progress
@@ -113,5 +116,5 @@ export async function finish({ lessonId }: { lessonId: number }) {
     });
   }
 
-  redirect("/");
+  return new Response(null, { status: 204 });
 }
