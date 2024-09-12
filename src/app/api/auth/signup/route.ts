@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { errorMap } from "zod-validation-error";
 import db from "@/lib/db";
 import { getSession } from "@/lib/session";
 import { hash, argon2id } from "argon2";
@@ -13,11 +12,8 @@ export interface SignUpRouteFields {
 
 export type SignUpRouteErrors = {
   [K in keyof SignUpRouteFields]?: string;
-} & {
-  form?: string;
 };
 
-z.setErrorMap(errorMap);
 const schema = z.object({
   name: z
     .string()

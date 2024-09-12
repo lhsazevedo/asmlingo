@@ -7,23 +7,22 @@ import {
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-interface SignUpFormState extends SignUpRouteFields {
-  errors: SignUpRouteErrors;
-}
-
 export default function SignUpForm() {
   const router = useRouter();
-  const [state, setState] = useState<SignUpFormState>({
+  const [state, setState] = useState<SignUpRouteFields>({
     name: "",
     email: "",
     password: "",
-    errors: {},
   });
+  const [errors, setErrors] = useState<SignUpRouteErrors>({});
 
   const handleSignUp = async () => {
     const res = await fetch("/api/auth/signup", {
       method: "POST",
       body: JSON.stringify(state),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
     if (res.ok) {
@@ -34,7 +33,7 @@ export default function SignUpForm() {
     // Form validation errors
     if (res.status === 422) {
       const json = await res.json();
-      setState({ ...state, errors: json.errors });
+      setErrors(json.errors);
       return;
     }
 
@@ -48,9 +47,8 @@ export default function SignUpForm() {
       }
     }
 
-    setState({
-      ...state,
-      errors: { form: "Something went wrong, please try again later" },
+    setErrors({
+      form: "Something went wrong, please try again later",
     });
   };
 
@@ -73,9 +71,7 @@ export default function SignUpForm() {
           value={state.name}
           onChange={(event) => setState({ ...state, name: event.target.value })}
         />
-        {state.errors.name && (
-          <div className="text-red-500">{state.errors.name}</div>
-        )}
+        {errors.name && <div className="text-red-500">{errors.name}</div>}
       </div>
       <div className="mb-4">
         <label htmlFor="emailInput" className="block mb-2">
@@ -91,9 +87,7 @@ export default function SignUpForm() {
             setState({ ...state, email: event.target.value })
           }
         />
-        {state.errors.email && (
-          <div className="text-red-500">{state.errors.email}</div>
-        )}
+        {errors.email && <div className="text-red-500">{errors.email}</div>}
       </div>
       <div className="mb-4">
         <label htmlFor="passwordInput" className="block mb-2">
@@ -109,8 +103,8 @@ export default function SignUpForm() {
             setState({ ...state, password: event.target.value })
           }
         />
-        {state.errors.password && (
-          <div className="text-red-500">{state.errors.password}</div>
+        {errors.password && (
+          <div className="text-red-500">{errors.password}</div>
         )}
       </div>
       <button onClick={handleSignUp}>Sign up</button>
