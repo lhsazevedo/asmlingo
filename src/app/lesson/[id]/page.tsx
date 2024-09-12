@@ -10,7 +10,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     select: { challenges: true },
   });
 
-  const challenges = JSON.parse(lesson.challenges);
+  const challenges = JSON.parse(lesson.challenges).slice(0, 2);
 
   return <LessonController lessonId={parsedId} challenges={challenges} />;
 }
