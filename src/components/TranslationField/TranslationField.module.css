@@ -1,0 +1,27 @@
+.root {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.lines {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.line {
+  border-bottom: 2px solid rgb(229, 229, 229);
+  width: 100%;
+  height: 60px;
+}
+
+.words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 8px;
+}
+
+.readonly {
+  pointer-events: none;
+}

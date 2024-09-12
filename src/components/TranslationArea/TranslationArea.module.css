@@ -1,0 +1,6 @@
+.root {
+  display: grid;
+  grid-auto-rows: 1fr;
+
+  gap: 40px 0;
+}

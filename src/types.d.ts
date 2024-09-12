@@ -15,7 +15,6 @@ export interface GapFillChallengeData {
 
 export interface TranslateChallengeData {
   type: "translate";
-  translation: string;
   prompt: PromptToken[];
   words: string[];
   correctIndexes: number[];

@@ -1,0 +1,1 @@
+export { WordBank } from './WordBank';

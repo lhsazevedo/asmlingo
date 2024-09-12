@@ -26,7 +26,6 @@ export const Default: Story = {
   args: {
     challengeData: {
       type: "translate",
-      translation: "Copy the value from R0 to R4",
       prompt: [
         {
           value: "mov",
@@ -36,9 +35,8 @@ export const Default: Story = {
         { value: "r0", type: "register", hint: "Register r0" },
         { value: "r4", type: "register", hint: "Register r4" },
       ],
-      choices: ["nop", "mov.l", "mov"],
-      fillableIndex: 0,
-      correctIndex: 2,
+      words: ["The", "Copy", "r4", "dog", "value", "r0", "from", "to", "lazy" ],
+      correctIndexes: [1, 4, 6, 5, 7, 2],
     },
     value: undefined,
     revealed: false,

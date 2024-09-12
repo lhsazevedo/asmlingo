@@ -11,9 +11,10 @@ import RepeatIcon from "@/icons/RepeatIcon";
 import { LessonControllerFooter } from "./LessonControllerFooter";
 import { LessonControllerHeader } from "./LessonControllerHeader";
 import { finish } from "@/app/lesson/[id]/actions";
+import { TranslateChallenge } from "../TranslateChallenge";
 
-interface ChallengeComponentProps {
-  challengeData: ChallengeData;
+interface ChallengeComponentProps<T extends ChallengeData> {
+  challengeData: T;
   revealed: boolean;
   value: number | undefined;
   onChange: (value: number) => void;
@@ -24,6 +25,7 @@ const challengeComponents: Record<
   React.ComponentType<ChallengeComponentProps>
 > = {
   "gap-fill": GapFillChallenge,
+  "translate": TranslateChallenge,
 };
 
 export type LessonMode = "normal" | "review";
