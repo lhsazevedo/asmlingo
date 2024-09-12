@@ -7,6 +7,10 @@ import {
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+interface SignUpFormErrors extends SignUpRouteErrors {
+  form?: string;
+}
+
 export default function SignUpForm() {
   const router = useRouter();
   const [state, setState] = useState<SignUpRouteFields>({
@@ -14,7 +18,7 @@ export default function SignUpForm() {
     email: "",
     password: "",
   });
-  const [errors, setErrors] = useState<SignUpRouteErrors>({});
+  const [errors, setErrors] = useState<SignUpFormErrors>({});
 
   const handleSignUp = async () => {
     const res = await fetch("/api/auth/signup", {
@@ -59,6 +63,7 @@ export default function SignUpForm() {
       role="form"
       aria-label="Sign up form"
     >
+      {errors.form && <div className="text-red-500">{errors.form}</div>}
       <div className="mb-4">
         <label htmlFor="nameInput" className="block mb-2">
           Name (optional)
