@@ -35,7 +35,7 @@ into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
 - Zod for schema validation
 - Vitest and React Testing Library for unit testing
 - Playwright for end-to-end testing
-- Storybook for component developement documentation
+- Storybook for component developement and documentation
 - Tailwind CSS
 
 ## Setup
@@ -56,7 +56,7 @@ into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
    - Run e2e tests with `npm run e2e`.
    - Run Prisma Studio with `npx prisma studio`.
 
-## Projct Structure
+## Project Structure
 
 ```
 ├── prisma ........... Prisma schema and migrations
