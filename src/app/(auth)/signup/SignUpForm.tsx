@@ -1,6 +1,9 @@
 "use client";
 
-import { SignUpRouteErrors, SignUpRouteFields } from "@/app/api/auth/signup/route";
+import {
+  SignUpRouteErrors,
+  SignUpRouteFields,
+} from "@/app/api/auth/signup/route";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -84,7 +87,9 @@ export default function SignUpForm() {
           type="email"
           name="email"
           value={state.email}
-          onChange={(event) => setState({ ...state, email: event.target.value })}
+          onChange={(event) =>
+            setState({ ...state, email: event.target.value })
+          }
         />
         {state.errors.email && (
           <div className="text-red-500">{state.errors.email}</div>
@@ -100,15 +105,15 @@ export default function SignUpForm() {
           type="password"
           name="password"
           value={state.password}
-          onChange={(event) => setState({ ...state, password: event.target.value })}
+          onChange={(event) =>
+            setState({ ...state, password: event.target.value })
+          }
         />
         {state.errors.password && (
           <div className="text-red-500">{state.errors.password}</div>
         )}
       </div>
-      <button onClick={handleSignUp}>
-        Sign up
-      </button>
+      <button onClick={handleSignUp}>Sign up</button>
     </div>
   );
 }

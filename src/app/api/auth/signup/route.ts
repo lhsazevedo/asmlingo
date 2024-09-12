@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
   const validated = schema.safeParse(await request.json());
   if (!validated.success) {
     const errors: SignUpRouteErrors = {};
-    const zodErrors = validated.error.flatten().fieldErrors
+    const zodErrors = validated.error.flatten().fieldErrors;
     Object.entries(zodErrors).forEach(([field, messages]) => {
       if (field in errors) {
         return;
@@ -54,7 +54,9 @@ export async function POST(request: NextRequest) {
   }
 
   if (await db.user.findUnique({ where: { email: validated.data.email } })) {
-    const errors = { email: "Email already in use" } satisfies SignUpRouteErrors;
+    const errors = {
+      email: "Email already in use",
+    } satisfies SignUpRouteErrors;
     return NextResponse.json({ errors }, { status: 422 });
   }
 

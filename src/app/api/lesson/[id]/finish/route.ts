@@ -1,7 +1,10 @@
 import { getOrCreateSession } from "@/lib/session";
 import db from "@/lib/db";
 
-export async function POST(request: Request, { params }: { params: { id: string } }) {
+export async function POST(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
   // TODO: Validate int
   const lessonId = parseInt(params.id);
 

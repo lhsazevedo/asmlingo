@@ -72,7 +72,7 @@ export function LessonController({
     const isCompleted = handleNext();
     if (isCompleted) {
       await fetch(`/api/lesson/${lessonId}/finish`, { method: "POST" });
-      router.push("/")
+      router.push("/");
     }
   };
 
