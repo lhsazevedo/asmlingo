@@ -1,14 +1,13 @@
 import styles from "./page.module.css";
 import db from "@/lib/db";
-import { getSession } from "@/lib/session";
 import { LessonList } from "@/components/LessonList";
 import { Button } from "@/components/Button";
 import { redirect } from "next/navigation";
 import clsx from "clsx";
-// import { signout } from "./actions";
+import { container } from "@/container";
 
 export default async function Page() {
-  const { session, user } = await getSession();
+  const session = await container.resolve("session");
 
   const units = await db.unit.findMany({
     orderBy: { order: "asc" },
@@ -16,20 +15,20 @@ export default async function Page() {
       lessons: {
         orderBy: { order: "asc" },
         include: {
-          lessonProgress: session?.userId
+          lessonProgress: session.get("userId")
             ? {
                 where: {
-                  userId: session.userId,
+                  userId: session.get("userId"),
                 },
                 take: 1,
               }
             : false,
         },
       },
-      unitProgress: session?.userId
+      unitProgress: session.get("userId")
         ? {
             where: {
-              userId: session.userId,
+              userId: session.get("userId"),
             },
             take: 1,
           }
@@ -40,8 +39,7 @@ export default async function Page() {
   async function signout() {
     "use server";
 
-    const { session } = await getSession();
-
+    const session = await container.resolve("session");
     if (session) {
       session.destroy();
     }
@@ -49,16 +47,23 @@ export default async function Page() {
     redirect("/");
   }
 
-  const loggedIn = session && session?.isGuest === false;
+  const loggedIn = session && session.get("isGuest") === false;
+
+  const userRepo = await container.resolve("userRepository");
+
+  let user;
+  if (session.get("userId")) {
+    user = await userRepo.find(session.get("userId"));
+  }
 
   return (
     <main className={clsx("px-2", styles.main)}>
-      {/* <pre>User: {JSON.stringify(user, null, 2)}</pre>
-      <pre>Session: {JSON.stringify(session, null, 2)}</pre> */}
+      <pre>User: {JSON.stringify(user, null, 2)}</pre>
+      <pre>Session: {JSON.stringify(session.all(), null, 2)}</pre>
       <div className="text-lg space-x-4 flex items-center justify-center mb-8">
         {loggedIn ? (
           <>
-            <div>{user?.name ? `Hi, ${user.name}!` : "Hi!"}</div>
+            {/* <div>{user?.name ? `Hi, ${user.name}!` : "Hi!"}</div> */}
             <form action={signout}>
               <Button variant="text" type="submit">
                 Sign out

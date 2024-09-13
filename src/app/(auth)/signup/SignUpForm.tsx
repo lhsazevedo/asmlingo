@@ -31,6 +31,7 @@ export default function SignUpForm() {
 
     if (res.ok) {
       router.push("/");
+      router.refresh();
       return;
     }
 

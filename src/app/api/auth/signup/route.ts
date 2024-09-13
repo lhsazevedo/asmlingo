@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import db from "@/lib/db";
-import { getSession } from "@/lib/session";
-import { hash, argon2id } from "argon2";
+import { container } from "@/container";
+import signUpActionFactory from "@/core/actions/signUpAction";
+import {
+  AlreadyLoggedInError,
+  EmailAlreadyTakenError,
+} from "@/core/auth/Errors";
+import { redirect } from "next/navigation";
 
 export interface SignUpRouteFields {
   name: string;
@@ -24,14 +28,6 @@ const schema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  const { session } = await getSession();
-  if (session.isGuest === false) {
-    return NextResponse.json(
-      { error: "already_logged_in", message: "You are already logged in" },
-      { status: 400 },
-    );
-  }
-
   const validated = schema.safeParse(await request.json());
   if (!validated.success) {
     const errors: SignUpRouteErrors = {};
@@ -49,51 +45,28 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ errors }, { status: 422 });
   }
 
-  if (await db.user.findUnique({ where: { email: validated.data.email } })) {
-    const errors = {
-      email: "Email already in use",
-    } satisfies SignUpRouteErrors;
-    return NextResponse.json({ errors }, { status: 422 });
+  const signUpAction = signUpActionFactory(
+    await container.resolve("session"),
+    container.resolve("userRepository"),
+  );
+
+  try {
+    await signUpAction(validated.data);
+  } catch (err) {
+    if (err instanceof AlreadyLoggedInError) {
+      return NextResponse.json(
+        { error: "already_logged_in", message: "You are already logged in" },
+        { status: 400 },
+      );
+    }
+
+    if (err instanceof EmailAlreadyTakenError) {
+      const errors = {
+        email: "Email already in use",
+      } satisfies SignUpRouteErrors;
+      return NextResponse.json({ errors }, { status: 422 });
+    }
   }
 
-  // See OWASP Password Storage Cheat Sheet
-  // https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
-  const hashed = await hash(validated.data.password, {
-    type: argon2id,
-    memoryCost: 19 * 1024,
-    timeCost: 2,
-    parallelism: 1,
-  });
-
-  if (session.userId) {
-    // Promote guest user to full user
-    await db.user.update({
-      where: { id: session.userId },
-      data: {
-        isGuest: false,
-        email: validated.data.email,
-        name: validated.data.name,
-        password: hashed,
-      },
-    });
-
-    session.isGuest = false;
-    session.save();
-  } else {
-    // Create new user
-    const user = await db.user.create({
-      data: {
-        isGuest: false,
-        email: validated.data.email,
-        name: validated.data.name,
-        password: hashed,
-      },
-    });
-
-    session.userId = user.id;
-    session.isGuest = false;
-    session.save();
-  }
-
-  return new Response(null, { status: 204 });
+  redirect("/");
 }
