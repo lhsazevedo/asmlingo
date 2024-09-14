@@ -3,7 +3,7 @@ export interface SessionData {
   isGuest: boolean;
 }
 
-export interface SessionServiceContract {
+export interface SessionContract {
   all: () => SessionData;
   get: <K extends keyof SessionData>(key: K) => SessionData[K];
   set: <K extends keyof SessionData>(key: K, value: SessionData[K]) => void;

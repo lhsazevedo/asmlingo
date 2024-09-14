@@ -2,6 +2,9 @@ import { UserRepositoryContract } from "../contracts/UserRepositoryContract";
 import db from "@/lib/db";
 import { User } from "../entities/User";
 
+export type CreateUserDto = Omit<User, "id">;
+export type UpdateUserDto = Partial<CreateUserDto>;
+
 export default class UserRepository implements UserRepositoryContract {
   async find(id: number) {
     return db.user.findUnique({ where: { id } }) as Promise<User | null>;
@@ -11,7 +14,7 @@ export default class UserRepository implements UserRepositoryContract {
     return db.user.findUnique({ where: { email } }) as Promise<User | null>;
   }
 
-  async create(user: Omit<User, "id">) {
+  async create(user: CreateUserDto) {
     return db.user.create({
       data: {
         isGuest: false,
@@ -22,7 +25,7 @@ export default class UserRepository implements UserRepositoryContract {
     }) as Promise<User>;
   }
 
-  async update(id: number, data: Partial<Omit<User, "id">>) {
+  async update(id: number, data: UpdateUserDto) {
     return db.user.update({
       where: { id },
       data,

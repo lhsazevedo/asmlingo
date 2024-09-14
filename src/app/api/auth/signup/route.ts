@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { container } from "@/container";
-import signUpActionFactory from "@/core/actions/signUpAction";
 import {
   AlreadyLoggedInError,
   EmailAlreadyTakenError,
 } from "@/core/auth/Errors";
-import { redirect } from "next/navigation";
 
 export interface SignUpRouteFields {
   name: string;
@@ -45,13 +43,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ errors }, { status: 422 });
   }
 
-  const signUpAction = signUpActionFactory(
-    await container.resolve("session"),
-    container.resolve("userRepository"),
-  );
-
   try {
-    await signUpAction(validated.data);
+    await container
+      .createScope()
+      .resolve("SignUpAction")
+      .execute(validated.data);
   } catch (err) {
     if (err instanceof AlreadyLoggedInError) {
       return NextResponse.json(
@@ -66,7 +62,9 @@ export async function POST(request: NextRequest) {
       } satisfies SignUpRouteErrors;
       return NextResponse.json({ errors }, { status: 422 });
     }
+
+    throw err;
   }
 
-  redirect("/");
+  return new Response(null, { status: 204 });
 }

@@ -1,7 +1,4 @@
-import {
-  SessionServiceContract,
-  SessionData,
-} from "@/core/contracts/SessionServiceContract";
+import { SessionContract, SessionData } from "@/core/contracts/SessionContract";
 import { getIronSession, IronSession, SessionOptions } from "iron-session";
 import { cookies } from "next/headers";
 
@@ -9,6 +6,7 @@ if (!process.env.SESSION_SECRET) {
   throw new Error("SESSION_SECRET must be set");
 }
 
+// TODO: Move to config in container
 export const sessionOptions: SessionOptions = {
   password: process.env.SESSION_SECRET,
   cookieName: "asmlingo-session",
@@ -18,15 +16,19 @@ export const sessionOptions: SessionOptions = {
   },
 };
 
-class SessionService implements SessionServiceContract {
+export class SessionProvider implements SessionContract {
   private session: IronSession<SessionData>;
 
-  constructor(session: IronSession<SessionData>) {
+  private constructor(session: IronSession<SessionData>) {
     this.session = session;
 
     if (this.session.isGuest === undefined) {
       this.session.isGuest = true;
     }
+  }
+
+  static async instance() {
+    return new SessionProvider(await getIronSession(cookies(), sessionOptions));
   }
 
   all(): SessionData {
@@ -38,7 +40,6 @@ class SessionService implements SessionServiceContract {
   }
 
   set<K extends keyof SessionData>(key: K, value: SessionData[K]) {
-    // cookies().set("test", key);
     (this.session as SessionData)[key] = value;
   }
 
@@ -49,9 +50,4 @@ class SessionService implements SessionServiceContract {
   destroy() {
     this.session.destroy();
   }
-}
-
-export async function makeSessionService(): Promise<SessionServiceContract> {
-  const session = await getIronSession<SessionData>(cookies(), sessionOptions);
-  return new SessionService(session);
 }
