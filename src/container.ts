@@ -1,6 +1,7 @@
 import {
   asClass,
   asFunction,
+  asValue,
   createContainer,
   InjectionMode,
   Lifetime,
@@ -13,6 +14,8 @@ import Argon2HashProvider from "@/core/providers/HashProvider";
 import { SessionProvider } from "@/core/providers/SessionProvider";
 import SignUpAction from "@/core/actions/SignUpAction";
 import SignOutAction from "@/core/actions/SignOutAction";
+import { z } from "zod";
+import { UserService } from "./core/services/UserService";
 
 export type ContainerEntries = {
   // Providers
@@ -25,6 +28,12 @@ export type ContainerEntries = {
   // Use cases
   SignUpAction: InstanceType<typeof SignUpAction>;
   SignOutAction: InstanceType<typeof SignOutAction>;
+
+  // Services
+  UserService: UserService;
+
+  // Libraries
+  validator: typeof z;
 };
 
 const container = createContainer<ContainerEntries>({
@@ -58,5 +67,12 @@ container.register(
   "SignOutAction",
   asClass(SignOutAction).setLifetime(Lifetime.TRANSIENT),
 );
+
+container.register(
+  "UserService",
+  asClass(UserService).setLifetime(Lifetime.SINGLETON),
+);
+
+container.register("validator", asValue(z));
 
 export { container };

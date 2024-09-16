@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
-import { z } from "zod";
+import { z, ZodError } from "zod";
+
 import { container } from "@/container";
 import {
   AlreadyLoggedInError,
   EmailAlreadyTakenError,
 } from "@/core/auth/Errors";
+import { CreateUserValidationError } from "@/core/services/UserService";
+import {
+  ApiErrorResponse,
+  badRequest,
+  unprocessableEntity,
+} from "@/app/api/util";
 
 export interface SignUpRouteFields {
   name: string;
@@ -12,59 +19,44 @@ export interface SignUpRouteFields {
   password: string;
 }
 
-export type SignUpRouteErrors = {
-  [K in keyof SignUpRouteFields]?: string;
+export type SignUpRouteValidationErrorResponse = {
+  errors: { [K in keyof SignUpRouteFields]?: string };
 };
 
-const schema = z.object({
-  name: z
-    .string()
-    .min(2, "Name must be at least 2 characters long")
-    .max(50, "Name cannot exceed 50 characters"),
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters long"),
-});
+export type SignUpRouteErrors =
+  | ApiErrorResponse
+  | SignUpRouteValidationErrorResponse;
 
 export async function POST(request: NextRequest) {
-  const validated = schema.safeParse(await request.json());
-  if (!validated.success) {
-    const errors: SignUpRouteErrors = {};
-    const zodErrors = validated.error.flatten().fieldErrors;
-    Object.entries(zodErrors).forEach(([field, messages]) => {
-      if (field in errors) {
-        return;
-      }
-      const message = messages?.[0];
-      if (message) {
-        errors[field as keyof SignUpRouteFields] = message;
-      }
-    });
-
-    return NextResponse.json({ errors }, { status: 422 });
-  }
-
   try {
-    await container
-      .createScope()
-      .resolve("SignUpAction")
-      .execute(validated.data);
+    const json = z
+      .object({
+        name: z.string(),
+        email: z.string(),
+        password: z.string(),
+      })
+      .parse(await request.json());
+
+    await container.createScope().resolve("SignUpAction").execute(json);
   } catch (err) {
+    if (err instanceof ZodError) {
+      return badRequest("invalid_input", "Invalid input");
+    }
+
     if (err instanceof AlreadyLoggedInError) {
-      return NextResponse.json(
-        { error: "already_logged_in", message: "You are already logged in" },
-        { status: 400 },
-      );
+      return badRequest("already_logged_in", "You are already logged in");
     }
 
     if (err instanceof EmailAlreadyTakenError) {
-      const errors = {
-        email: "Email already in use",
-      } satisfies SignUpRouteErrors;
-      return NextResponse.json({ errors }, { status: 422 });
+      return unprocessableEntity({ email: "Email already in use" });
+    }
+
+    if (err instanceof CreateUserValidationError) {
+      return unprocessableEntity(err.messages);
     }
 
     throw err;
   }
 
-  return new Response(null, { status: 204 });
+  return new NextResponse(null, { status: 204 });
 }

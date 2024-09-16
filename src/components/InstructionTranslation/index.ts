@@ -1,1 +1,1 @@
-export { InstructionTranslation } from "./InstructionTranslation.jsx";
+export { InstructionTranslation } from "./InstructionTranslation";

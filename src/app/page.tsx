@@ -37,7 +37,7 @@ export default async function Page() {
     },
   });
 
-  const userRepo = await container.resolve("userRepository");
+  const userRepo = container.resolve("userRepository");
 
   const userId = session.get("userId");
   const user = userId ? await userRepo.find(userId) : null;

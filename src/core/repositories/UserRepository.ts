@@ -1,34 +1,24 @@
 import { UserRepositoryContract } from "../contracts/UserRepositoryContract";
 import db from "@/lib/db";
-import { User } from "../entities/User";
-
-export type CreateUserDto = Omit<User, "id">;
-export type UpdateUserDto = Partial<CreateUserDto>;
+import { Prisma } from "@prisma/client";
 
 export default class UserRepository implements UserRepositoryContract {
-  async find(id: number) {
-    return db.user.findUnique({ where: { id } }) as Promise<User | null>;
+  find(id: number) {
+    return db.user.findUnique({ where: { id } });
   }
 
-  async findByEmail(email: string) {
-    return db.user.findUnique({ where: { email } }) as Promise<User | null>;
+  findByEmail(email: string) {
+    return db.user.findUnique({ where: { email } });
   }
 
-  async create(user: CreateUserDto) {
-    return db.user.create({
-      data: {
-        isGuest: false,
-        email: user.email,
-        name: user.name,
-        password: user.password,
-      },
-    }) as Promise<User>;
+  create(data: Prisma.UserCreateInput) {
+    return db.user.create({ data });
   }
 
-  async update(id: number, data: UpdateUserDto) {
+  update(id: number, data: Prisma.UserUpdateInput) {
     return db.user.update({
       where: { id },
       data,
-    }) as Promise<User>;
+    });
   }
 }

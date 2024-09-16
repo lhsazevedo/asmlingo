@@ -1,15 +1,16 @@
 "use client";
 
 import {
-  SignUpRouteErrors,
+  SignUpRouteValidationErrorResponse,
   SignUpRouteFields,
 } from "@/app/api/auth/signup/route";
+import { ApiErrorResponse } from "@/app/api/util";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-interface SignUpFormErrors extends SignUpRouteErrors {
+type SignUpFormErrors = {
   form?: string;
-}
+} & SignUpRouteValidationErrorResponse["errors"];
 
 export default function SignUpForm() {
   const router = useRouter();
@@ -37,14 +38,15 @@ export default function SignUpForm() {
 
     // Form validation errors
     if (res.status === 422) {
-      const json = await res.json();
+      // Note: Should we validate the response schema here?
+      const json = (await res.json()) as SignUpRouteValidationErrorResponse;
       setErrors(json.errors);
       return;
     }
 
     // Other bad request errors
     if (res.status === 400) {
-      const json = await res.json();
+      const json = (await res.json()) as ApiErrorResponse;
       if (json.error === "already_logged_in") {
         // TODO: Display a message to the user
         router.push("/");
@@ -113,7 +115,7 @@ export default function SignUpForm() {
           <div className="text-red-500">{errors.password}</div>
         )}
       </div>
-      <button onClick={handleSignUp}>Sign up</button>
+      <button onClick={() => void handleSignUp()}>Sign up</button>
     </div>
   );
 }

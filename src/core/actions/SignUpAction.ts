@@ -1,57 +1,48 @@
 import { AlreadyLoggedInError, EmailAlreadyTakenError } from "../auth/Errors";
 import { SessionContract } from "../contracts/SessionContract";
 import { UserRepositoryContract } from "../contracts/UserRepositoryContract";
-import { User } from "../entities/User";
-import { CreateUserDto } from "../repositories/UserRepository";
-import { HashContract } from "../contracts/HashContract";
+import { UserService } from "../services/UserService";
+
+export interface SignUpActionDto {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export type SignUpActionErrors = {
+  [K in keyof SignUpActionDto]?: string;
+};
 
 export default class SignUpAction {
-  private pendingSession: Promise<SessionContract>;
-  private hash: HashContract;
-  private userRepository: UserRepositoryContract;
-
   constructor(
-    pendingSession: Promise<SessionContract>,
-    hash: HashContract,
-    userRepository: UserRepositoryContract,
-  ) {
-    this.pendingSession = pendingSession;
-    this.hash = hash;
-    this.userRepository = userRepository;
-  }
+    private pendingSession: Promise<SessionContract>,
+    private userRepository: UserRepositoryContract,
+    private userService: UserService,
+  ) {}
 
-  async execute({
-    name,
-    email,
-    password,
-  }: {
-    name: string;
-    email: string;
-    password: string;
-  }): Promise<User> {
+  async execute(input: SignUpActionDto) {
     const session = await this.pendingSession;
     if (session.get("isGuest") === false) {
       throw new AlreadyLoggedInError();
     }
 
-    if (await this.userRepository.findByEmail(email)) {
+    if (
+      input.email !== "" &&
+      (await this.userRepository.findByEmail(input.email))
+    ) {
       throw new EmailAlreadyTakenError();
     }
 
-    const hashed = await this.hash.make(password);
-
-    const userData: CreateUserDto = {
-      email,
-      name,
-      password: hashed,
-      isGuest: false,
-    };
-
     // Promote guest or create new user
     const user = session.get("userId")
-      ? await this.userRepository.update(session.get("userId"), userData)
-      : await this.userRepository.create(userData);
+      ? await this.userService.update(session.get("userId"), input)
+      : await this.userService.create(input);
 
+    if (!user) {
+      throw new Error("Failed to create user");
+    }
+
+    // TODO: Move the Auth service
     session.set("userId", user.id);
     session.set("isGuest", false);
     await session.save();

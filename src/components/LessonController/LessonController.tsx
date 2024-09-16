@@ -65,7 +65,7 @@ export function LessonController({
     if (!audioRef.current?.paused) {
       audioRef.current?.pause();
     }
-    audioRef.current?.play();
+    void audioRef.current?.play();
   };
 
   const onNext = async () => {
@@ -121,7 +121,7 @@ export function LessonController({
         isCorrect={isCorrect}
         value={value}
         onVerify={onVerify}
-        onNext={onNext}
+        onNext={() => void onNext}
       />
 
       <audio ref={correctAudioRef} preload="auto">

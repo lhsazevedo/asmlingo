@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/Button";
-import { User } from "@/core/entities/User";
+import { User } from "@prisma/client";
 import { SessionData } from "@/lib/session";
 import { useRouter } from "next/navigation";
 
@@ -18,18 +18,17 @@ export function HomeHeader({
 
   const handleSignOut = async () => {
     await fetch("/api/auth/signout", { method: "POST" });
+    router.push("/");
     router.refresh();
   };
 
   return (
     <>
-      <pre>User: {JSON.stringify(user, null, 2)}</pre>
-      <pre>Session: {JSON.stringify(session, null, 2)}</pre>
       <div className="text-lg space-x-4 flex items-center justify-center mb-8">
         {loggedIn ? (
           <>
             {<div>{user?.name ? `Hi, ${user.name}!` : "Hi!"}</div>}
-            <Button variant="text" onClick={handleSignOut}>
+            <Button variant="text" onClick={() => void handleSignOut()}>
               Sign out
             </Button>
           </>

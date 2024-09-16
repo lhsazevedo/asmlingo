@@ -5,7 +5,7 @@ import { PromptBox } from "../PromptBox";
 import { InstructionTranslation } from "../InstructionTranslation";
 import { GapFillChallengeData } from "@/types";
 
-interface GapFillChallengeProps {
+export interface GapFillChallengeProps {
   challengeData: GapFillChallengeData;
   revealed: boolean;
   value?: number;
