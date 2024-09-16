@@ -99,12 +99,22 @@ export class UserService {
     return errors;
   }
 
+  /*
+   * Create a new regular user.
+   */
   async create(data: CreateUserDto) {
     this.validateCreate(data);
     data.password = await this.hash.make(data.password);
     return this.userRepository.create({ ...data, isGuest: false });
   }
 
+  async createGuest() {
+    return this.userRepository.create({ isGuest: true });
+  }
+
+  /**
+   * Update a user's information.
+   */
   async update(id: number, data: UpdateUserDto) {
     this.validateUpdate(data);
     if (data.password) {
@@ -113,6 +123,9 @@ export class UserService {
     return this.userRepository.update(id, data);
   }
 
+  /**
+   * Promote a guest user to a regular user.
+   */
   async promote(id: number, data: CreateUserDto) {
     this.validateUpdate(data);
     if (data.password) {

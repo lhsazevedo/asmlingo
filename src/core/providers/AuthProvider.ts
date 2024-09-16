@@ -1,3 +1,4 @@
+import { User } from "@prisma/client";
 import { AuthContract, AuthCredentials } from "../contracts/AuthContract";
 import { HashContract } from "../contracts/HashContract";
 import { SessionContract } from "../contracts/SessionContract";
@@ -23,10 +24,7 @@ export default class AuthProvider implements AuthContract {
       return false;
     }
 
-    const session = await this.pendingSession;
-
-    session.set("userId", user.id);
-    session.set("isGuest", user.isGuest);
+    await this.login(user);
     return true;
   }
 
@@ -38,6 +36,13 @@ export default class AuthProvider implements AuthContract {
     }
 
     return this.userRepository.find(session.get("userId"));
+  }
+
+  async login(user: User) {
+    const session = await this.pendingSession;
+
+    session.set("userId", user.id);
+    session.set("isGuest", user.isGuest);
   }
 
   async logout(): Promise<void> {

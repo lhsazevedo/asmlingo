@@ -18,6 +18,7 @@ import { z } from "zod";
 import { UserService } from "./core/services/UserService";
 import { AuthContract } from "./core/contracts/AuthContract";
 import AuthProvider from "./core/providers/AuthProvider";
+import FinishLessonAction from "./core/actions/FinishLessonAction";
 
 export type ContainerEntries = {
   // Providers
@@ -31,6 +32,7 @@ export type ContainerEntries = {
   // Use cases
   SignUpAction: InstanceType<typeof SignUpAction>;
   SignOutAction: InstanceType<typeof SignOutAction>;
+  FinishLessonAction: FinishLessonAction;
 
   // Services
   UserService: UserService;
@@ -71,6 +73,11 @@ container.register(
 container.register(
   "SignOutAction",
   asClass(SignOutAction).setLifetime(Lifetime.TRANSIENT),
+);
+
+container.register(
+  "FinishLessonAction",
+  asClass(FinishLessonAction).setLifetime(Lifetime.TRANSIENT),
 );
 
 container.register(

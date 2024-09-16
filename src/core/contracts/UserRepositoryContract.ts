@@ -1,4 +1,4 @@
-import type { Prisma, User } from "@prisma/client";
+import type { Prisma, User, LessonProgress, UnitProgress } from "@prisma/client";
 
 export interface UserRepositoryContract {
   /**
@@ -14,10 +14,15 @@ export interface UserRepositoryContract {
   /**
    * Create a new user.
    */
-  create(data: Prisma.UserCreateInput): Promise<User | null>;
+  create(data: Prisma.UserCreateInput): Promise<User>;
 
   /**
    * Update an existing user.
    */
-  update(id: number, data: Prisma.UserUpdateInput): Promise<User | null>;
+  update(id: number, data: Prisma.UserUncheckedUpdateInput): Promise<User>;
+
+  /**
+   * Get progress for a given user
+   */
+  getProgress(userId: number): Promise<{ lessonProgress: LessonProgress[], unitProgress: UnitProgress[]}>;
 }

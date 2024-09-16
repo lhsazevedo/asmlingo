@@ -15,10 +15,32 @@ export default class UserRepository implements UserRepositoryContract {
     return db.user.create({ data });
   }
 
-  update(id: number, data: Prisma.UserUpdateInput) {
+  update(id: number, data: Prisma.UserUncheckedUpdateInput) {
     return db.user.update({
       where: { id },
       data,
     });
+  }
+
+  async getProgress(userId: number) {
+    const [lessonProgress, unitProgress] = await Promise.all([
+      db.lessonProgress.findMany({
+        where: {
+          userId,
+          finishedAt: { not: null },
+        },
+      }),
+      db.unitProgress.findMany({
+        where: {
+          userId,
+          finishedAt: { not: null },
+        },
+      })
+    ]);
+
+    return {
+      lessonProgress,
+      unitProgress
+    }
   }
 }
