@@ -2,9 +2,7 @@ import type { PrismaClient } from "@prisma/client";
 import { UnitRepositoryContract } from "../contracts/UnitRepositoryContract";
 
 export class UnitRepository implements UnitRepositoryContract {
-  constructor (
-    private readonly db: PrismaClient
-  ) {}
+  constructor(private readonly db: PrismaClient) {}
 
   get() {
     return this.db.unit.findMany({
@@ -12,7 +10,7 @@ export class UnitRepository implements UnitRepositoryContract {
         order: "asc",
       },
     });
-  };
+  }
 
   getWithLessons() {
     return this.db.unit.findMany({

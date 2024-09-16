@@ -1,4 +1,9 @@
-import type { Prisma, User, LessonProgress, UnitProgress } from "@prisma/client";
+import type {
+  Prisma,
+  User,
+  LessonProgress,
+  UnitProgress,
+} from "@prisma/client";
 
 export interface UserRepositoryContract {
   /**
@@ -24,5 +29,10 @@ export interface UserRepositoryContract {
   /**
    * Get progress for a given user
    */
-  getProgress(userId: number): Promise<{ lessonProgress: LessonProgress[], unitProgress: UnitProgress[]}>;
+  getProgress(
+    userId: number,
+  ): Promise<{
+    lessonProgress: LessonProgress[];
+    unitProgress: UnitProgress[];
+  }>;
 }

@@ -48,7 +48,10 @@ const container = createContainer<ContainerEntries>({
 
 container.register("auth", asClass(AuthProvider).setLifetime(Lifetime.SCOPED));
 
-container.register("db", asFunction(() => new PrismaClient()).setLifetime(Lifetime.SINGLETON));
+container.register(
+  "db",
+  asFunction(() => new PrismaClient()).setLifetime(Lifetime.SINGLETON),
+);
 
 container.register(
   "pendingSession",

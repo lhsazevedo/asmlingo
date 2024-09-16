@@ -6,7 +6,7 @@ import { UnitRepositoryContract } from "../contracts/UnitRepositoryContract";
 
 /**
  * Finish a lesson.
- * 
+ *
  * This action updates the user's current lesson, advancing to the next unit when appropriate.
  */
 export default class FinishLessonAction {
@@ -46,7 +46,9 @@ export default class FinishLessonAction {
       },
     });
 
-    const lesson = await this.db.lesson.findUniqueOrThrow({ where: { id: lessonId } });
+    const lesson = await this.db.lesson.findUniqueOrThrow({
+      where: { id: lessonId },
+    });
     const unit = await this.unitRepository.findWithLessons(lesson.unitId);
     if (!unit) {
       throw new Error("Unit not found");
@@ -72,7 +74,9 @@ export default class FinishLessonAction {
       },
     });
 
-    const nextUnit = await this.unitRepository.findByOrderWithLessons(unit.order + 1);
+    const nextUnit = await this.unitRepository.findByOrderWithLessons(
+      unit.order + 1,
+    );
     const nextLesson = nextUnit?.lessons[0];
 
     // Fail silently if this was the last unit.

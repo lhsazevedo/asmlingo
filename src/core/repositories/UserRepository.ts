@@ -36,12 +36,12 @@ export default class UserRepository implements UserRepositoryContract {
           userId,
           finishedAt: { not: null },
         },
-      })
+      }),
     ]);
 
     return {
       lessonProgress,
-      unitProgress
-    }
+      unitProgress,
+    };
   }
 }
