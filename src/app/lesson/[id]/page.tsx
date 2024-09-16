@@ -1,12 +1,14 @@
 import { LessonController } from "@/components/LessonController";
-import prisma from "@/lib/db";
+import { container } from "@/container";
 import { GapFillChallengeData } from "@/types";
 
 export default async function Page({ params }: { params: { id: string } }) {
   // TODO: Handle non-numeric id
   const parsedId = parseInt(params.id);
 
-  const lesson = await prisma.lesson.findUniqueOrThrow({
+  const db = container.resolve("db");
+
+  const lesson = await db.lesson.findUniqueOrThrow({
     where: { id: parsedId },
     select: { challenges: true },
   });

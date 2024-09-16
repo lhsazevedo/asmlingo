@@ -14,17 +14,20 @@ import Argon2HashProvider from "@/core/providers/HashProvider";
 import { SessionProvider } from "@/core/providers/SessionProvider";
 import SignUpAction from "@/core/actions/SignUpAction";
 import SignOutAction from "@/core/actions/SignOutAction";
-import { z } from "zod";
+import { z as Zod } from "zod";
 import { UserService } from "./core/services/UserService";
 import { AuthContract } from "./core/contracts/AuthContract";
 import AuthProvider from "./core/providers/AuthProvider";
 import FinishLessonAction from "./core/actions/FinishLessonAction";
+import { PrismaClient } from "@prisma/client";
 
 export type ContainerEntries = {
   // Providers
   auth: AuthContract;
+  db: PrismaClient;
   hash: HashContract;
   pendingSession: Promise<SessionContract>; // Awiilix doesn't support async factories
+  validator: typeof Zod;
 
   // Repositories
   userRepository: UserRepositoryContract;
@@ -36,9 +39,6 @@ export type ContainerEntries = {
 
   // Services
   UserService: UserService;
-
-  // Libraries
-  validator: typeof z;
 };
 
 const container = createContainer<ContainerEntries>({
@@ -47,6 +47,8 @@ const container = createContainer<ContainerEntries>({
 });
 
 container.register("auth", asClass(AuthProvider).setLifetime(Lifetime.SCOPED));
+
+container.register("db", asFunction(() => new PrismaClient()).setLifetime(Lifetime.SINGLETON));
 
 container.register(
   "pendingSession",
@@ -85,6 +87,6 @@ container.register(
   asClass(UserService).setLifetime(Lifetime.SINGLETON),
 );
 
-container.register("validator", asValue(z));
+container.register("validator", asValue(Zod));
 
 export { container };

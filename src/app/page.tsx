@@ -1,7 +1,6 @@
 export const dynamic = "force-dynamic";
 
 import styles from "./page.module.css";
-import db from "@/lib/db";
 import { LessonList } from "@/components/LessonList";
 import clsx from "clsx";
 import { container } from "@/container";
@@ -9,6 +8,8 @@ import { HomeHeader } from "@/components/HomeHeader";
 
 export default async function Page() {
   const session = await container.resolve("pendingSession");
+
+  const db = container.resolve("db");
 
   const units = await db.unit.findMany({
     orderBy: { order: "asc" },

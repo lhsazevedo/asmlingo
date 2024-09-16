@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/Button";
 import { User } from "@prisma/client";
-import { SessionData } from "@/lib/session";
+import { SessionData } from "@/core/contracts/SessionContract";
 import { useRouter } from "next/navigation";
 
 export function HomeHeader({
