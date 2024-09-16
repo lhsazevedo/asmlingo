@@ -1,4 +1,5 @@
 import { AlreadyLoggedInError, EmailAlreadyTakenError } from "../auth/Errors";
+import { AuthContract } from "../contracts/AuthContract";
 import { SessionContract } from "../contracts/SessionContract";
 import { UserRepositoryContract } from "../contracts/UserRepositoryContract";
 import { UserService } from "../services/UserService";
@@ -15,6 +16,7 @@ export type SignUpActionErrors = {
 
 export default class SignUpAction {
   constructor(
+    private auth: AuthContract,
     private pendingSession: Promise<SessionContract>,
     private userRepository: UserRepositoryContract,
     private userService: UserService,
@@ -22,7 +24,10 @@ export default class SignUpAction {
 
   async execute(input: SignUpActionDto) {
     const session = await this.pendingSession;
-    if (session.get("isGuest") === false) {
+
+    const existingUser = await this.auth.user();
+
+    if (existingUser && existingUser.isGuest === false) {
       throw new AlreadyLoggedInError();
     }
 
@@ -34,8 +39,8 @@ export default class SignUpAction {
     }
 
     // Promote guest or create new user
-    const user = session.get("userId")
-      ? await this.userService.update(session.get("userId"), input)
+    const user = existingUser
+      ? await this.userService.update(existingUser.id, input)
       : await this.userService.create(input);
 
     if (!user) {

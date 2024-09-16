@@ -1,14 +1,9 @@
-import { SessionContract } from "../contracts/SessionContract";
+import { AuthContract } from "../contracts/AuthContract";
 
 export default class SignOutAction {
-  private pendingSession: Promise<SessionContract>;
-
-  constructor(pendingSession: Promise<SessionContract>) {
-    this.pendingSession = pendingSession;
-  }
+  constructor(private auth: AuthContract) {}
 
   async execute() {
-    const session = await this.pendingSession;
-    session.destroy();
+    await this.auth.logout();
   }
 }

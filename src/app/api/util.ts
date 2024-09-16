@@ -15,6 +15,8 @@ export type ApiErrorResponse = {
   message: string;
 };
 
+// 4xx
+
 export function badRequest(error: string, message?: string) {
   return NextResponse.json({ error, message } as ApiErrorResponse, {
     status: 400,
@@ -23,4 +25,18 @@ export function badRequest(error: string, message?: string) {
 
 export function unprocessableEntity<T>(errors: T) {
   return NextResponse.json({ errors }, { status: 422 });
+}
+
+// 5xx
+
+export function internalServerError() {
+  return NextResponse.json(
+    {
+      error: "internal_server_error",
+      message: "Something went wrong, try again later!",
+    } as ApiErrorResponse,
+    {
+      status: 500,
+    },
+  );
 }

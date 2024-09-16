@@ -10,6 +10,7 @@ import { CreateUserValidationError } from "@/core/services/UserService";
 import {
   ApiErrorResponse,
   badRequest,
+  internalServerError,
   unprocessableEntity,
 } from "@/app/api/util";
 
@@ -55,7 +56,7 @@ export async function POST(request: NextRequest) {
       return unprocessableEntity(err.messages);
     }
 
-    throw err;
+    return internalServerError();
   }
 
   return new NextResponse(null, { status: 204 });
