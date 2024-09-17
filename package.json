@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@prisma/client": "^5.19.1",
+    "argon2": "^0.41.1",
     "awilix": "^11.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
@@ -44,7 +45,6 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vitejs/plugin-react": "^4.3.1",
-    "argon2": "^0.41.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
     "eslint-config-next": "^14.2.11",
