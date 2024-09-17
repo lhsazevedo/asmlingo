@@ -1,31 +1,20 @@
 "use client";
 
 import { Button } from "@/components/Button";
-import { User } from "@prisma/client";
-import { SessionData } from "@/core/contracts/SessionContract";
-import { useRouter } from "next/navigation";
+import { PublicUser } from "@/app/api/auth/me/route";
+import { useAuth } from "@/app/AuthProvider";
 
-export function HomeHeader({
-  user,
-  session,
-}: {
-  user?: User | null;
-  session: SessionData;
-}) {
-  const router = useRouter();
+export function HomeHeader({ user }: { user?: PublicUser | null }) {
+  const { logout } = useAuth();
 
-  const loggedIn = session && session.isGuest === false;
+  const loggedIn = user && user.isGuest === false;
 
   const handleSignOut = async () => {
-    await fetch("/api/auth/signout", { method: "POST" });
-    router.push("/");
-    router.refresh();
+    await logout();
   };
 
   return (
     <>
-      <pre>{JSON.stringify(user, null, 2)}</pre>
-      <pre>{JSON.stringify(session, null, 2)}</pre>
       <div className="text-lg space-x-4 flex items-center justify-center mb-8">
         {loggedIn ? (
           <>

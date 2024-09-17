@@ -1,5 +1,5 @@
 import { User } from "@prisma/client";
-import { AuthContract, AuthCredentials } from "../contracts/AuthContract";
+import { AuthContract } from "../contracts/AuthContract";
 import { HashContract } from "../contracts/HashContract";
 import { SessionContract } from "../contracts/SessionContract";
 import UserRepository from "../repositories/UserRepository";
@@ -11,16 +11,13 @@ export default class AuthProvider implements AuthContract {
     private userRepository: UserRepository,
   ) {}
 
-  async attempt(credentials: AuthCredentials) {
-    const user = await this.userRepository.findByEmail(credentials.email);
+  async attempt(email: string, password: string) {
+    const user = await this.userRepository.findByEmail(email);
     if (!user) {
       return false;
     }
 
-    if (
-      !user.password ||
-      !(await this.hash.check(credentials.password, user.password))
-    ) {
+    if (!user.password || !(await this.hash.check(password, user.password))) {
       return false;
     }
 
@@ -43,6 +40,7 @@ export default class AuthProvider implements AuthContract {
 
     session.set("userId", user.id);
     session.set("isGuest", user.isGuest);
+    await session.save();
   }
 
   async logout(): Promise<void> {

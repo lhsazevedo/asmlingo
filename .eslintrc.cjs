@@ -6,9 +6,19 @@ module.exports = {
     "plugin:storybook/recommended",
     "prettier",
   ],
+  parser: `@typescript-eslint/parser`,
   parserOptions: {
     projectService: true,
-    tsconfigRootDir: __dirname,
     project: "./tsconfig.json",
+    tsconfigRootDir: __dirname,
+  },
+  rules: {
+    "no-unused-vars": ["off"],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "^_",
+      }
+    ]
   },
 };

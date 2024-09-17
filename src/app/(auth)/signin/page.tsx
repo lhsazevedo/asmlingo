@@ -3,36 +3,37 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/AuthProvider";
-import {
-  SignUpRouteValidationErrorResponse,
-  SignUpRouteFields,
-} from "@/app/api/auth/signup/route";
-import { ApiErrorResponse } from "@/app/api/util";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { TextInput } from "@/components/TextInput";
 
-type SignUpFormErrors = {
-  form?: string;
-} & SignUpRouteValidationErrorResponse["errors"];
+type SignInFields = {
+  email: string;
+  password: string;
+};
 
-export default function SignUpForm() {
+type SignInFormErrors = {
+  form?: string;
+  email?: string;
+  password?: string;
+};
+
+export default function SignInForm() {
   const router = useRouter();
-  const [state, setState] = useState<SignUpRouteFields>({
-    name: "",
+  const { recheckAuth } = useAuth();
+  const [state, setState] = useState<SignInFields>({
     email: "",
     password: "",
   });
-  const { recheckAuth } = useAuth();
-  const [errors, setErrors] = useState<SignUpFormErrors>({});
+  const [errors, setErrors] = useState<SignInFormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignUp = async () => {
+  const handleSignIn = async () => {
     setIsLoading(true);
     setErrors({});
 
     try {
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch("/api/auth/signin", {
         method: "POST",
         body: JSON.stringify(state),
         headers: {
@@ -47,22 +48,15 @@ export default function SignUpForm() {
       }
 
       if (res.status === 422) {
-        const json = (await res.json()) as SignUpRouteValidationErrorResponse;
-        setErrors(json.errors);
+        setErrors({
+          form: "Invalid email or password. Please try again.",
+        });
         return;
-      }
-
-      if (res.status === 400) {
-        const json = (await res.json()) as ApiErrorResponse;
-        if (json.error === "already_logged_in") {
-          router.push("/");
-          return;
-        }
       }
 
       throw new Error("Unexpected error occurred");
     } catch (error) {
-      console.error("Signup error:", error);
+      console.error("Signin error:", error);
       setErrors({
         form: "An unexpected error occurred. Please try again later.",
       });
@@ -74,7 +68,7 @@ export default function SignUpForm() {
   return (
     <Card>
       <h2 className="text-3xl font-bold text-center text-gray-500 mb-6">
-        Create your profile
+        Welcome back!
       </h2>
       {errors.form && (
         <div
@@ -85,14 +79,6 @@ export default function SignUpForm() {
         </div>
       )}
       <div className="space-y-8">
-        <TextInput
-          id="nameInput"
-          label="Name"
-          name="name"
-          value={state.name}
-          onChange={(event) => setState({ ...state, name: event.target.value })}
-          error={errors.name}
-        />
         <TextInput
           id="emailInput"
           label="Email"
@@ -116,19 +102,18 @@ export default function SignUpForm() {
           error={errors.password}
         />
         <Button
-          onClick={() => void handleSignUp()}
+          onClick={() => void handleSignIn()}
           disabled={isLoading}
           block={true}
         >
-          {isLoading ? "Creating profile..." : "Create profile"}
+          {isLoading ? "Signing in..." : "Sign in"}
         </Button>
-
         <Button
-          onClick={() => router.push("/signin")}
+          onClick={() => router.push("/signup")}
           variant="text"
           block={true}
         >
-          Already have an account?
+          Or create an account
         </Button>
 
         <Button

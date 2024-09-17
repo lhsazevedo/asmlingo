@@ -6,7 +6,7 @@ export interface AuthCredentials {
 }
 
 export interface AuthContract {
-  attempt(credentials: AuthCredentials): Promise<boolean>;
+  attempt(email: string, password: string): Promise<boolean>;
   user(): Promise<User | null>;
   login(user: User): Promise<void>;
   logout(): Promise<void>;

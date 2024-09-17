@@ -39,7 +39,7 @@ export default class SignUpAction {
 
     // Promote guest or create new user
     const user = existingUser
-      ? await this.userService.update(existingUser.id, input)
+      ? await this.userService.promote(existingUser.id, input)
       : await this.userService.create(input);
 
     if (!user) {

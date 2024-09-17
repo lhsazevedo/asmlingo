@@ -1,26 +1,47 @@
-export const dynamic = "force-dynamic";
+"use client";
 
-import styles from "./page.module.css";
+import { useState, useEffect, useCallback } from "react";
 import { LessonList } from "@/components/LessonList";
-import clsx from "clsx";
-import { container } from "@/container";
 import { HomeHeader } from "@/components/HomeHeader";
+import { Roadmap } from "@/core/actions/GetRoadmapAction";
+import { useAuth } from "./AuthProvider";
 
-export default async function Page() {
-  const scoped = container.createScope();
-  const auth = scoped.resolve("auth");
-  const session = await scoped.resolve("pendingSession");
-  const user = await auth.user();
+export default function Home() {
+  const { user } = useAuth();
+  const [roadmap, setRoadmap] = useState<Roadmap>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const roadmap = await scoped.resolve("GetRoadmapAction").execute();
+  const fetchRoadmap = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch("/api/roadmap");
+      if (!response.ok) {
+        throw new Error("Failed to fetch roadmap");
+      }
+      const data = (await response.json()) as { data: Roadmap };
+      setRoadmap(data.data);
+    } catch (error) {
+      console.error("Error fetching roadmap:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void fetchRoadmap();
+  }, [fetchRoadmap, user]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <main className={clsx("px-2", styles.main)}>
-      <HomeHeader user={user} session={{ ...session.all() }} />
+    <>
+      <HomeHeader user={user} />
       <LessonList
         units={roadmap}
         currentLessonId={user?.currentLessonId ?? undefined}
       />
-    </main>
+    </>
   );
 }

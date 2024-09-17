@@ -60,6 +60,7 @@ export default class FinishLessonAction {
       const nextLesson = unit.lessons[lesson.order + 1];
       await this.userRepository.update(user.id, {
         currentLessonId: nextLesson.id,
+        currentUnitId: unit.id,
       });
 
       return;

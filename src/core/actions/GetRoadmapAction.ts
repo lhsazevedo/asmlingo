@@ -49,7 +49,7 @@ export default class GetRoadmapAction {
       ...unit,
       lessons: unit.lessons.map((lesson) => ({
         ...lesson,
-        isCurrent: unit.id === currentUnit.id,
+        isCurrent: lesson.id === currentLessonId,
         isFinished: this.isLessonFinished(
           unit,
           lesson,

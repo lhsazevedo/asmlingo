@@ -10,7 +10,7 @@ export async function POST(
     return notFound();
   }
 
-  await container.resolve("FinishLessonAction").execute(lessonId);
+  await container.createScope().resolve("FinishLessonAction").execute(lessonId);
 
-  return created(null);
+  return created({});
 }
