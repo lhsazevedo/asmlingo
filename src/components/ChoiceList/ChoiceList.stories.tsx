@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { ChoiceList } from "./ChoiceList";
+import { ChoiceList, ChoiceListProps } from "./ChoiceList";
 // import { userEvent, within } from "@storybook/test";
 import { useArgs } from "@storybook/preview-api";
 
@@ -16,7 +16,7 @@ const meta = {
   tags: ["autodocs"],
   parameters: { docs: { story: { autoplay: true } } },
   render(args) {
-    const [{ value }, updateArgs] = useArgs();
+    const [{ value }, updateArgs] = useArgs<ChoiceListProps>();
 
     return (
       <ChoiceList

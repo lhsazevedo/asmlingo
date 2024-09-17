@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import styles from "./PromptBox.module.css";
-import { PromptToken } from "@/types";
+import { PromptToken } from "../GapFillChallenge/GapFillChallenge";
 
 interface PromptBoxProps {
   tokens: PromptToken[];

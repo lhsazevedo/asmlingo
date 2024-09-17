@@ -1,13 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { GapFillChallenge } from "./";
 import { useArgs } from "storybook/internal/preview-api";
+import { GapFillChallengeProps } from "./GapFillChallenge";
 
 const meta = {
   title: "Lesson/Challenges/GapFillChallenge",
   component: GapFillChallenge,
   tags: ["autodocs"],
   render(args) {
-    const [{ value }, updateArgs] = useArgs();
+    const [{ value }, updateArgs] = useArgs<GapFillChallengeProps>();
 
     return (
       <GapFillChallenge
@@ -44,45 +45,3 @@ export const Default: Story = {
     revealed: false,
   },
 };
-
-// export const Selected: Story = {
-//   args: {
-//     tokens: [
-//       {
-//         value: "mov",
-//         type: "operation",
-//         hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-//       },
-//       { value: "r0", type: "register", hint: "Register r0" },
-//       { value: "r4", type: "register", hint: "Register r4" },
-//     ],
-//     fillableIndex: 0,
-//     filledPrompt: "shll",
-//   },
-// };
-
-// export const ReadOnly: Story = {
-//   args: {
-//     tokens: [
-//       {
-//         value: "mov",
-//         type: "operation",
-//         hint: "MOV Rm Rn: Copy value from Rm to Rn.",
-//       },
-//       { value: "r0", type: "register", hint: "Register r0" },
-//       { value: "r4", type: "register", hint: "Register r4" },
-//     ],
-//   },
-// };
-
-// export const Correct: Story = {
-//   args: {
-//     state: ButtonState.Correct,
-//   },
-// };
-
-// export const Wrong: Story = {
-//   args: {
-//     state: ButtonState.Wrong,
-//   },
-// };

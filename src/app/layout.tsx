@@ -1,6 +1,8 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import clsx from "clsx";
+import { AuthProvider } from "./AuthProvider";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -21,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={clsx("font-sans", nunito.variable)}>
-      <body className="min-h-screen flex flex-col px-4 py-6">{children}</body>
+      <body className="min-h-screen flex flex-col px-4 py-6">
+        <AuthProvider>{children}</AuthProvider>
+      </body>
     </html>
   );
 }

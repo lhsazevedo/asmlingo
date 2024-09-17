@@ -1,6 +1,6 @@
 "use client";
 
-import { ChallengeData } from "@/types";
+import { ChallengeData } from "../GapFillChallenge/GapFillChallenge";
 import styles from "./LessonController.module.css";
 import { useRef } from "react";
 import { GapFillChallenge } from "../GapFillChallenge";
@@ -65,7 +65,7 @@ export function LessonController({
     if (!audioRef.current?.paused) {
       audioRef.current?.pause();
     }
-    audioRef.current?.play();
+    void audioRef.current?.play();
   };
 
   const onNext = async () => {
@@ -73,6 +73,7 @@ export function LessonController({
     if (isCompleted) {
       await fetch(`/api/lesson/${lessonId}/finish`, { method: "POST" });
       router.push("/");
+      router.refresh();
     }
   };
 
@@ -121,7 +122,7 @@ export function LessonController({
         isCorrect={isCorrect}
         value={value}
         onVerify={onVerify}
-        onNext={onNext}
+        onNext={() => void onNext()}
       />
 
       <audio ref={correctAudioRef} preload="auto">

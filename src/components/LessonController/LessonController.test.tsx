@@ -1,13 +1,13 @@
 import { expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { LessonController } from "./";
-import { ChallengeData } from "@/types";
+import { ChallengeData } from "../GapFillChallenge/GapFillChallenge";
 
 vi.mock("server-only", () => {
   return {};
 });
 
-vi.mock("next/navigation", async () => {
+vi.mock("next/navigation", () => {
   const useRouterMock = vi.fn();
 
   return {

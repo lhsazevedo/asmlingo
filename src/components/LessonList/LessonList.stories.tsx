@@ -17,7 +17,6 @@ export const SingleUnit: Story = {
         id: 1,
         order: 0,
         title: "Unit 1",
-        unitProgress: [],
         lessons: [
           {
             id: 1,
@@ -26,7 +25,6 @@ export const SingleUnit: Story = {
             challenges: "",
             unitId: 1,
             order: 0,
-            lessonProgress: [],
           },
           {
             id: 2,
@@ -35,7 +33,6 @@ export const SingleUnit: Story = {
             challenges: "",
             unitId: 1,
             order: 1,
-            lessonProgress: [],
           },
         ],
       },
@@ -50,7 +47,6 @@ export const MultiUnit: Story = {
         id: 1,
         order: 0,
         title: "Unit 1",
-        unitProgress: [],
         lessons: [
           {
             id: 1,
@@ -59,7 +55,6 @@ export const MultiUnit: Story = {
             challenges: "",
             unitId: 1,
             order: 0,
-            lessonProgress: [],
           },
           {
             id: 2,
@@ -68,7 +63,6 @@ export const MultiUnit: Story = {
             challenges: "",
             unitId: 1,
             order: 1,
-            lessonProgress: [],
           },
         ],
       },
@@ -76,7 +70,6 @@ export const MultiUnit: Story = {
         id: 2,
         order: 1,
         title: "Unit 2",
-        unitProgress: [],
         lessons: [
           {
             id: 3,
@@ -85,7 +78,6 @@ export const MultiUnit: Story = {
             challenges: "",
             unitId: 2,
             order: 0,
-            lessonProgress: [],
           },
           {
             id: 4,
@@ -94,7 +86,6 @@ export const MultiUnit: Story = {
             challenges: "",
             unitId: 2,
             order: 1,
-            lessonProgress: [],
           },
         ],
       },

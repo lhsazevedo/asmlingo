@@ -1,44 +1,17 @@
 "use client";
 
-import { Prisma } from "@prisma/client";
 import { LessonButton } from "../LessonButton";
 import styles from "./LessonList.module.css";
 import { LessonButtonVariant } from "../LessonButton/LessonButton";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-
-const unitWithRelations = Prisma.validator<Prisma.UnitDefaultArgs>()({
-  include: {
-    lessons: {
-      include: {
-        lessonProgress: {
-          where: {
-            userId: 0,
-          },
-          take: 1,
-        },
-      },
-    },
-    unitProgress: {
-      where: {
-        userId: 0,
-      },
-      take: 1,
-    },
-  },
-});
-
-type UnitWithRelations = Prisma.UnitGetPayload<typeof unitWithRelations>;
-
+import { Roadmap } from "@/server/core/cases/GetRoadmapUseCase";
 export interface LessonListProps {
-  units: UnitWithRelations[];
+  units: Roadmap;
   currentLessonId?: number;
 }
 
-export function LessonList({
-  units,
-  currentLessonId,
-}: Readonly<LessonListProps>) {
+export function LessonList({ units }: Readonly<LessonListProps>) {
   const router = useRouter();
 
   return (
@@ -49,15 +22,12 @@ export function LessonList({
             Unit {unit.order + 1}: {unit.title}
           </div>
           {unit.lessons.map((lesson) => {
-            const isCompleted = !!lesson?.lessonProgress?.[0]?.finishedAt;
-            const isCurrent =
-              (currentLessonId && lesson.id === currentLessonId) ||
-              (unit.order === 0 && lesson.order === 0);
-
             let variant: LessonButtonVariant = "disabled";
-            if (isCompleted) {
+            if (lesson.isFinished) {
               variant = "default";
-            } else if (isCurrent) variant = "current";
+            } else if (lesson.isCurrent) {
+              variant = "current";
+            }
 
             return (
               <div

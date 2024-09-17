@@ -2,15 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { z, ZodError } from "zod";
 
 import { container } from "@/server/container";
-import {
-  AlreadyLoggedInError,
-  EmailAlreadyTakenError,
-} from "@/server/core/contracts/AuthContract";
-import { CreateUserValidationError } from "@/server/core/services/UserService";
+import { AlreadyLoggedInError } from "@/server/core/contracts/AuthContract";
 import {
   ApiErrorResponse,
   badRequest,
   internalServerError,
+  noContent,
   unprocessableEntity,
 } from "@/app/api/util";
 
@@ -32,13 +29,21 @@ export async function POST(request: NextRequest) {
   try {
     const json = z
       .object({
-        name: z.string(),
         email: z.string(),
         password: z.string(),
       })
       .parse(await request.json());
 
-    await container.createScope().resolve("SignUpUseCase").execute(json);
+    const loggedIn = await container
+      .createScope()
+      .resolve("SignInUseCase")
+      .execute(json);
+
+    if (loggedIn) {
+      return noContent();
+    }
+
+    return unprocessableEntity({ form: "Invalid email or password" });
   } catch (err) {
     if (err instanceof ZodError) {
       return badRequest("invalid_input", "Invalid input");
@@ -46,14 +51,6 @@ export async function POST(request: NextRequest) {
 
     if (err instanceof AlreadyLoggedInError) {
       return badRequest("already_logged_in", "You are already logged in");
-    }
-
-    if (err instanceof EmailAlreadyTakenError) {
-      return unprocessableEntity({ email: "Email already in use" });
-    }
-
-    if (err instanceof CreateUserValidationError) {
-      return unprocessableEntity(err.messages);
     }
 
     return internalServerError();
