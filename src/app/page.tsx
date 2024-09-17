@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { LessonList } from "@/components/LessonList";
 import { HomeHeader } from "@/components/HomeHeader";
-import { Roadmap } from "@/core/actions/GetRoadmapAction";
+import { Roadmap } from "@/server/core/actions/GetRoadmapAction";
 import { useAuth } from "./AuthProvider";
 
 export default function Home() {

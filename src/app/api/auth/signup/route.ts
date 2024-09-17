@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z, ZodError } from "zod";
 
-import { container } from "@/container";
+import { container } from "@/server/container";
 import {
   AlreadyLoggedInError,
   EmailAlreadyTakenError,
-} from "@/core/contracts/AuthContract";
-import { CreateUserValidationError } from "@/core/services/UserService";
+} from "@/server/core/contracts/AuthContract";
+import { CreateUserValidationError } from "@/server/core/services/UserService";
 import {
   ApiErrorResponse,
   badRequest,

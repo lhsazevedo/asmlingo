@@ -1,4 +1,4 @@
-import { container } from "@/container";
+import { container } from "@/server/container";
 
 export async function GET() {
   const scoped = container.createScope();

@@ -1,16 +1,19 @@
 import { User } from "@prisma/client";
-import { AuthContract } from "../contracts/AuthContract";
-import { HashContract } from "../contracts/HashContract";
-import { SessionContract } from "../contracts/SessionContract";
-import UserRepository from "../repositories/UserRepository";
+import { AuthContract } from "../core/contracts/AuthContract";
+import { HashContract } from "../core/contracts/HashContract";
+import { SessionContract } from "../core/contracts/SessionContract";
+import UserRepository from "../core/repositories/UserRepository";
 
-export default class AuthProvider implements AuthContract {
+export default class DatabaseAuthProvider implements AuthContract {
   constructor(
     private hash: HashContract,
     private pendingSession: Promise<SessionContract>,
     private userRepository: UserRepository,
   ) {}
 
+  /**
+   * Attempt to log in a user with the given email and password.
+   */
   async attempt(email: string, password: string) {
     const user = await this.userRepository.findByEmail(email);
     if (!user) {
@@ -25,6 +28,9 @@ export default class AuthProvider implements AuthContract {
     return true;
   }
 
+  /**
+   * Get the currently authenticated user.
+   */
   async user() {
     const session = await this.pendingSession;
 
@@ -35,6 +41,9 @@ export default class AuthProvider implements AuthContract {
     return this.userRepository.find(session.get("userId"));
   }
 
+  /**
+   * Log in a user.
+   */
   async login(user: User) {
     const session = await this.pendingSession;
 
@@ -43,9 +52,12 @@ export default class AuthProvider implements AuthContract {
     await session.save();
   }
 
+  /**
+   * Log out the currently authenticated user.
+   */
   async logout(): Promise<void> {
     const session = await this.pendingSession;
-    // TODO: It would be better to just unset the user ID and isGuest flag
+    // TODO: It's better to just userId and isGuest.
     session.destroy();
   }
 }

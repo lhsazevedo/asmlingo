@@ -1,4 +1,7 @@
-import { SessionContract, SessionData } from "@/core/contracts/SessionContract";
+import {
+  SessionContract,
+  SessionData,
+} from "@/server/core/contracts/SessionContract";
 import { getIronSession, IronSession, SessionOptions } from "iron-session";
 import { cookies } from "next/headers";
 
@@ -16,7 +19,7 @@ export const sessionOptions: SessionOptions = {
   },
 };
 
-export class SessionProvider implements SessionContract {
+export class IronSessionProvider implements SessionContract {
   private session: IronSession<SessionData>;
 
   private constructor(session: IronSession<SessionData>) {
@@ -27,26 +30,46 @@ export class SessionProvider implements SessionContract {
     }
   }
 
+  /**
+   * Factory method to create a new instance of the session provider.
+   */
   static async instance() {
-    return new SessionProvider(await getIronSession(cookies(), sessionOptions));
+    return new IronSessionProvider(
+      await getIronSession(cookies(), sessionOptions),
+    );
   }
 
+  /**
+   * Retrieves all session data.
+   */
   all(): SessionData {
     return this.session;
   }
 
+  /**
+   * Retrieves a value from the session data.
+   */
   get<K extends keyof SessionData>(key: K): SessionData[K] {
     return this.session[key];
   }
 
+  /**
+   * Sets a value in the session data.
+   */
   set<K extends keyof SessionData>(key: K, value: SessionData[K]) {
     (this.session as SessionData)[key] = value;
   }
 
+  /**
+   * Saves the session data.
+   */
   async save() {
     await this.session.save();
   }
 
+  /**
+   * Destroys the session.
+   */
   destroy() {
     this.session.destroy();
   }

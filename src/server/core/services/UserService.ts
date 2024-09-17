@@ -1,6 +1,6 @@
 import { AtLeastOne } from "@/types";
 import type { z as Zod, ZodError, ZodObject } from "zod";
-import { UserRepositoryContract } from "../contracts/UserRepositoryContract";
+import UserRepository from "../repositories/UserRepository";
 import { HashContract } from "../contracts/HashContract";
 
 export type CreateUserDto = {
@@ -40,7 +40,7 @@ export class UserService {
 
   constructor(
     private readonly hash: HashContract,
-    private readonly userRepository: UserRepositoryContract,
+    private readonly userRepository: UserRepository,
     validator: typeof Zod,
   ) {
     this.z = validator;

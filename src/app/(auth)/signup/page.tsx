@@ -131,11 +131,7 @@ export default function SignUpForm() {
           Already have an account?
         </Button>
 
-        <Button
-          onClick={() => router.push("/")}
-          variant="text"
-          block={true}
-        >
+        <Button onClick={() => router.push("/")} variant="text" block={true}>
           Go back
         </Button>
       </div>

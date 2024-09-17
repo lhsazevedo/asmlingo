@@ -1,6 +1,6 @@
 "use client";
 
-import { ChallengeData } from "@/types";
+import { ChallengeData } from "../GapFillChallenge/GapFillChallenge";
 import styles from "./LessonController.module.css";
 import { useRef } from "react";
 import { GapFillChallenge } from "../GapFillChallenge";

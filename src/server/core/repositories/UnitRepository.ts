@@ -1,10 +1,12 @@
-import type { PrismaClient } from "@prisma/client";
-import { UnitRepositoryContract } from "../contracts/UnitRepositoryContract";
+import type { Prisma, PrismaClient, Unit } from "@prisma/client";
 
-export class UnitRepository implements UnitRepositoryContract {
+export default class UnitRepository {
   constructor(private readonly db: PrismaClient) {}
 
-  get() {
+  /**
+   * Get all units, sorted.
+   */
+  get(): Promise<Unit[]> {
     return this.db.unit.findMany({
       orderBy: {
         order: "asc",
@@ -12,7 +14,12 @@ export class UnitRepository implements UnitRepositoryContract {
     });
   }
 
-  getWithLessons() {
+  /**
+   * Get all units with its lessons, both sorted.
+   */
+  getWithLessons(): Promise<
+    Prisma.UnitGetPayload<{ include: { lessons: true } }>[]
+  > {
     return this.db.unit.findMany({
       orderBy: {
         order: "asc",
@@ -27,7 +34,12 @@ export class UnitRepository implements UnitRepositoryContract {
     });
   }
 
-  findWithLessons(id: number) {
+  /**
+   * Find a unit by its ID, with lessons sorted.
+   */
+  findWithLessons(
+    id: number,
+  ): Promise<Prisma.UnitGetPayload<{ include: { lessons: true } }> | null> {
     return this.db.unit.findUnique({
       where: { id },
       include: {
@@ -40,11 +52,19 @@ export class UnitRepository implements UnitRepositoryContract {
     });
   }
 
-  findByOrder(order: number) {
+  /**
+   * Find a unit by its order.
+   */
+  findByOrder(order: number): Promise<Unit | null> {
     return this.db.unit.findUnique({ where: { order } });
   }
 
-  findByOrderWithLessons(order: number) {
+  /**
+   * Find a unit by its order, with lessons sorted.
+   */
+  findByOrderWithLessons(
+    order: number,
+  ): Promise<Prisma.UnitGetPayload<{ include: { lessons: true } }> | null> {
     return this.db.unit.findUnique({
       where: { order },
       include: {

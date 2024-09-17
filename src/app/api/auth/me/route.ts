@@ -1,4 +1,4 @@
-import { container } from "@/container";
+import { container } from "@/server/container";
 import { User } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { unauthorized } from "../../util";

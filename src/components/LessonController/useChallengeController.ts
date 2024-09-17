@@ -1,4 +1,4 @@
-import { ChallengeData } from "@/types";
+import { ChallengeData } from "../GapFillChallenge/GapFillChallenge";
 import { useState } from "react";
 import { LessonMode } from "./LessonController";
 

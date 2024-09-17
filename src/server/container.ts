@@ -9,26 +9,26 @@ import {
   Lifetime,
 } from "awilix";
 
-import { AuthContract } from "@/core/contracts/AuthContract";
-import { HashContract } from "@/core/contracts/HashContract";
-import { SessionContract } from "@/core/contracts/SessionContract";
-import { UnitRepositoryContract } from "@/core/contracts/UnitRepositoryContract";
-import { UserRepositoryContract } from "@/core/contracts/UserRepositoryContract";
+import { AuthContract } from "@/server/core/contracts/AuthContract";
+import { HashContract } from "@/server/core/contracts/HashContract";
+import { SessionContract } from "@/server/core/contracts/SessionContract";
+// import { UnitRepositoryContract } from "@/server/core/contracts/UnitRepositoryContract";
+// import { UserRepositoryContract } from "@/server/core/contracts/UserRepositoryContract";
 
-import FinishLessonAction from "@/core/actions/FinishLessonAction";
-import GetRoadmapAction from "@/core/actions/GetRoadmapAction";
-import SignInAction from "@/core/actions/SignInAction";
-import SignOutAction from "@/core/actions/SignOutAction";
-import SignUpAction from "@/core/actions/SignUpAction";
+import FinishLessonAction from "@/server/core/actions/FinishLessonAction";
+import GetRoadmapAction from "@/server/core/actions/GetRoadmapAction";
+import SignInAction from "@/server/core/actions/SignInAction";
+import SignOutAction from "@/server/core/actions/SignOutAction";
+import SignUpAction from "@/server/core/actions/SignUpAction";
 
-import AuthProvider from "@/core/providers/AuthProvider";
-import Argon2HashProvider from "@/core/providers/HashProvider";
-import { SessionProvider } from "@/core/providers/SessionProvider";
+import DatabaseAuthProvider from "@/server/providers/DatabaseAuthProvider";
+import Argon2IdHashProvider from "@/server/providers/Argon2IdHashProvider";
+import { IronSessionProvider } from "@/server/providers/IronSessionProvider";
 
-import { UnitRepository } from "@/core/repositories/UnitRepository";
-import UserRepository from "@/core/repositories/UserRepository";
+import UnitRepository from "@/server/core/repositories/UnitRepository";
+import UserRepository from "@/server/core/repositories/UserRepository";
 
-import { UserService } from "@/core/services/UserService";
+import { UserService } from "@/server/core/services/UserService";
 
 export type ContainerEntries = {
   // Providers
@@ -39,8 +39,8 @@ export type ContainerEntries = {
   validator: typeof Zod;
 
   // Repositories
-  userRepository: UserRepositoryContract;
-  unitRepository: UnitRepositoryContract;
+  userRepository: UserRepository;
+  unitRepository: UnitRepository;
 
   // Use cases
   SignUpAction: SignUpAction;
@@ -58,7 +58,10 @@ const container = createContainer<ContainerEntries>({
   strict: true,
 });
 
-container.register("auth", asClass(AuthProvider).setLifetime(Lifetime.SCOPED));
+container.register(
+  "auth",
+  asClass(DatabaseAuthProvider).setLifetime(Lifetime.SCOPED),
+);
 
 container.register(
   "db",
@@ -67,14 +70,14 @@ container.register(
 
 container.register(
   "pendingSession",
-  asFunction(async () => SessionProvider.instance()).setLifetime(
+  asFunction(async () => IronSessionProvider.instance()).setLifetime(
     Lifetime.SCOPED,
   ),
 );
 
 container.register(
   "hash",
-  asClass(Argon2HashProvider).setLifetime(Lifetime.SINGLETON),
+  asClass(Argon2IdHashProvider).setLifetime(Lifetime.SINGLETON),
 );
 
 container.register(

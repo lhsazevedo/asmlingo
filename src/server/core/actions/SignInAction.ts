@@ -1,4 +1,4 @@
-import { AlreadyLoggedInError } from "@/core/contracts/AuthContract";
+import { AlreadyLoggedInError } from "@/server/core/contracts/AuthContract";
 import { AuthContract } from "../contracts/AuthContract";
 
 export interface SignInActionDto {

@@ -1,6 +1,6 @@
 import { LessonController } from "@/components/LessonController";
-import { container } from "@/container";
-import { GapFillChallengeData } from "@/types";
+import { container } from "@/server/container";
+import { GapFillChallengeData } from "@/components/GapFillChallenge/GapFillChallenge";
 
 export default async function Page({ params }: { params: { id: string } }) {
   // TODO: Handle non-numeric id

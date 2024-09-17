@@ -3,7 +3,21 @@
 import { ChoiceList } from "../ChoiceList";
 import { PromptBox } from "../PromptBox";
 import { InstructionTranslation } from "../InstructionTranslation";
-import { GapFillChallengeData } from "@/types";
+
+export interface PromptToken {
+  value: string;
+  type: "operation" | "register" | "memory";
+  hint: string;
+}
+
+export interface GapFillChallengeData {
+  type: "gap-fill";
+  translation: string;
+  prompt: PromptToken[];
+  choices: string[];
+  fillableIndex: number;
+  correctIndex: number;
+}
 
 export interface GapFillChallengeProps {
   challengeData: GapFillChallengeData;
@@ -11,6 +25,8 @@ export interface GapFillChallengeProps {
   value?: number;
   onChange?: (value: number) => void;
 }
+
+export type ChallengeData = GapFillChallengeData;
 
 export function GapFillChallenge({
   challengeData: { translation, prompt, fillableIndex, choices, correctIndex },

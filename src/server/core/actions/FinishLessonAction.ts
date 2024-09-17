@@ -1,8 +1,8 @@
-import { AuthContract } from "@/core/contracts/AuthContract";
-import { UserService } from "@/core/services/UserService";
-import { UserRepositoryContract } from "../contracts/UserRepositoryContract";
+import { AuthContract } from "@/server/core/contracts/AuthContract";
+import { UserService } from "@/server/core/services/UserService";
 import { PrismaClient } from "@prisma/client";
-import { UnitRepositoryContract } from "../contracts/UnitRepositoryContract";
+import UnitRepository from "../repositories/UnitRepository";
+import UserRepository from "../repositories/UserRepository";
 
 /**
  * Finish a lesson.
@@ -13,8 +13,8 @@ export default class FinishLessonAction {
   constructor(
     private auth: AuthContract,
     private db: PrismaClient,
-    private unitRepository: UnitRepositoryContract,
-    private userRepository: UserRepositoryContract,
+    private unitRepository: UnitRepository,
+    private userRepository: UserRepository,
     private userService: UserService,
   ) {}
 

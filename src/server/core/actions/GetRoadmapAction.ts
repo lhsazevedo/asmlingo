@@ -1,6 +1,6 @@
 import { Prisma, Lesson, PrismaClient, Unit } from "@prisma/client";
-import { UnitRepositoryContract } from "../contracts/UnitRepositoryContract";
-import { AuthContract } from "../contracts/AuthContract";
+import { AuthContract } from "@/server/core/contracts/AuthContract";
+import UnitRepository from "../repositories/UnitRepository";
 
 interface RoadmapLesson extends Lesson {
   isFinished?: boolean;
@@ -17,7 +17,7 @@ export default class GetRoadmapAction {
   constructor(
     private auth: AuthContract,
     private db: PrismaClient,
-    private unitRepository: UnitRepositoryContract,
+    private unitRepository: UnitRepository,
   ) {}
 
   async execute() {

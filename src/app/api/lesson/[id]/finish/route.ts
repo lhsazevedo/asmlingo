@@ -1,5 +1,5 @@
 import { created, notFound } from "@/app/api/util";
-import { container } from "@/container";
+import { container } from "@/server/container";
 
 export async function POST(
   _request: Request,

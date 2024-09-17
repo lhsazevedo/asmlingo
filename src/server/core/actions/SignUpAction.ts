@@ -1,8 +1,11 @@
-import { AlreadyLoggedInError, EmailAlreadyTakenError } from "@/core/contracts/AuthContract";
-import { AuthContract } from "../contracts/AuthContract";
-import { SessionContract } from "../contracts/SessionContract";
-import { UserRepositoryContract } from "../contracts/UserRepositoryContract";
-import { UserService } from "../services/UserService";
+import {
+  AlreadyLoggedInError,
+  EmailAlreadyTakenError,
+} from "@/server/core/contracts/AuthContract";
+import { AuthContract } from "@/server/core/contracts/AuthContract";
+import { SessionContract } from "@/server/core/contracts/SessionContract";
+import { UserService } from "@/server/core/services/UserService";
+import UserRepository from "../repositories/UserRepository";
 
 export interface SignUpActionDto {
   name: string;
@@ -18,7 +21,7 @@ export default class SignUpAction {
   constructor(
     private auth: AuthContract,
     private pendingSession: Promise<SessionContract>,
-    private userRepository: UserRepositoryContract,
+    private userRepository: UserRepository,
     private userService: UserService,
   ) {}
 
