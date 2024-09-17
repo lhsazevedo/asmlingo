@@ -7,6 +7,11 @@ A Duolingo-like microlearning prototype for learning SuperH assembly (or any ass
 ## Overview
 
 > [!NOTE]
+> The project received some architectural improvements after the initial week of development.
+> You can read more about the changes in the "2024-09-17: Updates and Architectural Changes", at the
+> end of this README.
+
+> [!IMPORTANT]
 > This project is a learning exercise developed over the course of one week to explore and
 > gain hands-on experience with TypeScript, Next.js 14, and Prisma ORM. It is not intended for
 > production use. The primary goals were rapid learning, technology exploration, and demonstration
@@ -59,15 +64,28 @@ into a new tech stack for me: TypeScript, Next.js 14 and Prisma ORM.
 ## Project Structure
 
 ```
-├── prisma ........... Prisma schema and migrations
-├── public
-├── scripts .......... Helper scripts
-├── src .............. Application source code and
-│   ├── app .......... Next.js pages and Server Actions
-│   ├── components ... UI components and tests
-│   ├── icons ........ SVG icons as React components
-│   └── lib .......... Utility functions
-└── tests ............ e2e tests
+.
+├── src
+│   ├── app
+│   │   ├── api ............... API route handlers
+│   │   ├── (auth) ............  Authentication routes
+│   │   │   ├── signin
+│   │   │   └── signup
+│   │   └── lesson
+│   │       └── [id]  ......... Lesson route
+│   ├── components ............ UI components and tests
+│   ├── icons ................. SVG icons as components
+│   └── server ................ Server application logic
+│       ├── core .............. Core application domain logic
+│       │   ├── cases ......... Use cases for core business logic
+│       │   ├── contracts ..... Interfaces for external dependencies
+│       │   ├── repositories .. Data access layer
+│       │   └── services ...... Reusable domain logic
+│       └── providers ......... Abstracted external services
+├── prisma .................... Prisma schema and migrations
+├── public .................... Public assets
+├── scripts ................... Utility scripts
+└── tests ..................... e2e tests
 ```
 
 ## Testing
@@ -92,9 +110,9 @@ behaviors and edge cases, and adding e2e tests for authentication.
 
 - [ ] Implement heart system for challenges.
 - [ ] Address TODOs in codebase.
-- [ ] Rethink the architecture to better separate concerns.
-- [ ] Add styles to the Sign Up page.
-- [ ] Add Sign In page.
+- [x] Rethink the architecture to better separate concerns.
+- [x] Add styles to the Sign Up page.
+- [x] Add Sign In page.
 - [ ] Backoffice panel for managing challenges and lessons.
 - [ ] Internationalization
 - [ ] Add missing cascade on delete referential actions.
@@ -104,3 +122,76 @@ behaviors and edge cases, and adding e2e tests for authentication.
 
 This project was a fun learning experience. I'm happy with the result, but I would like to revisit
 now that I can focus more on the architecture instead of learning the tech stack.
+
+# 2024-09-17: Backend Architectural Changes
+
+The project's backend code was refactored to improve modularity, maintainability, and testability.
+The new architecture is inspired by Clean Architecture principles, adapted pragmatically to fit the
+project's specific context and time constraints.
+
+#### Layered architecture
+
+Implemented a layered architecture that separates concerns applying principles such as Dependency
+Inversion and Use Cases, while trading of some abstractions (db and validation) for practicality.
+
+#### Dependency Injection
+
+Implemented a dependency injection container using [Awilix](https://github.com/jeffijoe/awilix) for
+better modularity and testability. See `src/server/container.ts`.
+
+#### Use Cases and Domain Logic
+
+Introduced Use Cases to encapsulate core business logic (e.g., GetRoadmap, FinishLesson).
+Created Services and Repositories to handle reusable domain logic and data access, respectively.
+
+#### API Structure and Error Handling
+
+Reorganized API routes for consistency and improved error handling, and began implementing utility
+functions for standardized API responses.
+
+#### Type Safety
+
+Enhanced TypeScript/ESLint configuration with stricter rules and added more type definitions for
+better type safety.
+
+#### Refactor Final Thoughts
+
+While these changes significantly improve the project's architecture, there are still areas for
+further development:
+
+- **Infrastructure dependencies**: Some concrete infrastructure dependencies remain in services:
+  schema validation (Zod) and database (Prisma). This was a pragmatic decision to avoid recreating a
+  1:1 abstraction layer of the fluent APIs provided by these libraries. This may be revisited in
+  future iterations as I learn more about architectural best practices.
+- **Anemic Entities**: Prisma excellent generated types are currently being used as anemic entities.
+  I would like to talk with experienced engineers and explore the feasibility of implementing a more
+  robust domain model layer for short-lived entities in web applications context.
+- **Client-side validation**: Challenge answer validation is currently done client-side. This was a
+  trade-off for better user experience as it allows for immediate feedback.
+- **Error handling**: Error handing, particularly around Promise rejections, could be improved for
+  more robust exception management. I would like to explore [using Either/Result
+  monads](https://blog.devgenius.io/using-either-result-in-typescript-for-error-handling-66baceefd9a0).
+- **Testing**: While the project became more testable, there wan't enough time to implement unit
+  tests in this new architecture. This is a priority for future iterations. For now, you can see the
+  tests for a couple of use cases in `src/server/core/cases` directories. Note that the existing e2e
+  tests are still passing 😊.
+
+### Future tasks:
+
+These are the follow up tasks that I would follow for getting this project production ready:
+
+- Write unit tests for all use cases and services.
+- Write integration tests for the API routes.
+- Add a config service to manage environment variables and configuration.
+- Further refining the separation of concerns where beneficial.
+  - Consider tools like `eslint-plugin-boundaries` or `dependency-cruiser` for architectural
+    testing.
+- Implement a logging system for better debugging and monitoring.
+- Improve error handling and validation throughout the application.
+- Improve security measures for the API, addings mecanisms such as rate limiting.
+- Improving response typing for better API contract definition.
+- Refactor the frontend code using best practices and architectural patterns for React:
+  https://vasanthk.gitbooks.io/react-bits
+
+These improvements and planned tasks reflect an ongoing commitment to code quality, maintainability,
+and the pragmatic application of architectural best practices in modern web development.
