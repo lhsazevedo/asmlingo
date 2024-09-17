@@ -18,7 +18,6 @@ it("renders the list of lessons", () => {
           id: 1,
           order: 0,
           title: "Unit 1",
-          unitProgress: [],
           lessons: [
             {
               id: 1,
@@ -27,7 +26,6 @@ it("renders the list of lessons", () => {
               challenges: "",
               unitId: 1,
               order: 0,
-              lessonProgress: [],
             },
             {
               id: 2,
@@ -36,7 +34,6 @@ it("renders the list of lessons", () => {
               challenges: "",
               unitId: 1,
               order: 1,
-              lessonProgress: [],
             },
           ],
         },
@@ -58,7 +55,6 @@ it("renders completed, current and disabled lessons", () => {
           id: 1,
           order: 0,
           title: "Unit 1",
-          unitProgress: [],
           lessons: [
             {
               id: 1,
@@ -67,14 +63,8 @@ it("renders completed, current and disabled lessons", () => {
               challenges: "",
               unitId: 1,
               order: 0,
-              lessonProgress: [
-                {
-                  id: 1,
-                  userId: 1,
-                  lessonId: 1,
-                  finishedAt: new Date(),
-                },
-              ],
+              isFinished: true,
+              isCurrent: false,
             },
             {
               id: 2,
@@ -83,7 +73,8 @@ it("renders completed, current and disabled lessons", () => {
               challenges: "",
               unitId: 1,
               order: 1,
-              lessonProgress: [],
+              isFinished: false,
+              isCurrent: true,
             },
             {
               id: 3,
@@ -92,7 +83,8 @@ it("renders completed, current and disabled lessons", () => {
               challenges: "",
               unitId: 1,
               order: 2,
-              lessonProgress: [],
+              isFinished: false,
+              isCurrent: false,
             },
           ],
         },

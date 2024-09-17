@@ -73,6 +73,7 @@ export function LessonController({
     if (isCompleted) {
       await fetch(`/api/lesson/${lessonId}/finish`, { method: "POST" });
       router.push("/");
+      router.refresh();
     }
   };
 
@@ -121,7 +122,7 @@ export function LessonController({
         isCorrect={isCorrect}
         value={value}
         onVerify={onVerify}
-        onNext={() => void onNext}
+        onNext={() => void onNext()}
       />
 
       <audio ref={correctAudioRef} preload="auto">

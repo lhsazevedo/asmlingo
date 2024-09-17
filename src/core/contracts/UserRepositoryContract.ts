@@ -29,9 +29,7 @@ export interface UserRepositoryContract {
   /**
    * Get progress for a given user
    */
-  getProgress(
-    userId: number,
-  ): Promise<{
+  getProgress(userId: number): Promise<{
     lessonProgress: LessonProgress[];
     unitProgress: UnitProgress[];
   }>;

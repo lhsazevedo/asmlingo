@@ -20,6 +20,9 @@ import { AuthContract } from "./core/contracts/AuthContract";
 import AuthProvider from "./core/providers/AuthProvider";
 import FinishLessonAction from "./core/actions/FinishLessonAction";
 import { PrismaClient } from "@prisma/client";
+import GetRoadmapAction from "./core/actions/GetRoadmapAction";
+import { UnitRepositoryContract } from "./core/contracts/UnitRepositoryContract";
+import { UnitRepository } from "./core/repositories/UnitRepository";
 
 export type ContainerEntries = {
   // Providers
@@ -31,14 +34,16 @@ export type ContainerEntries = {
 
   // Repositories
   userRepository: UserRepositoryContract;
+  unitRepository: UnitRepositoryContract;
 
   // Use cases
-  SignUpAction: InstanceType<typeof SignUpAction>;
-  SignOutAction: InstanceType<typeof SignOutAction>;
+  SignUpAction: SignUpAction;
+  SignOutAction: SignOutAction;
+  GetRoadmapAction: GetRoadmapAction;
   FinishLessonAction: FinishLessonAction;
 
   // Services
-  UserService: UserService;
+  userService: UserService;
 };
 
 const container = createContainer<ContainerEntries>({
@@ -71,6 +76,11 @@ container.register(
 );
 
 container.register(
+  "unitRepository",
+  asClass(UnitRepository).setLifetime(Lifetime.SINGLETON),
+);
+
+container.register(
   "SignUpAction",
   asClass(SignUpAction).setLifetime(Lifetime.TRANSIENT),
 );
@@ -81,12 +91,17 @@ container.register(
 );
 
 container.register(
+  "GetRoadmapAction",
+  asClass(GetRoadmapAction).setLifetime(Lifetime.TRANSIENT),
+);
+
+container.register(
   "FinishLessonAction",
   asClass(FinishLessonAction).setLifetime(Lifetime.TRANSIENT),
 );
 
 container.register(
-  "UserService",
+  "userService",
   asClass(UserService).setLifetime(Lifetime.SINGLETON),
 );
 

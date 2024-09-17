@@ -24,6 +24,8 @@ export function HomeHeader({
 
   return (
     <>
+      <pre>{JSON.stringify(user, null, 2)}</pre>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
       <div className="text-lg space-x-4 flex items-center justify-center mb-8">
         {loggedIn ? (
           <>

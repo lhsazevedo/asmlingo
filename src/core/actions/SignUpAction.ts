@@ -24,7 +24,6 @@ export default class SignUpAction {
 
   async execute(input: SignUpActionDto) {
     const session = await this.pendingSession;
-
     const existingUser = await this.auth.user();
 
     if (existingUser && existingUser.isGuest === false) {
