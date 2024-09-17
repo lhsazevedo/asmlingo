@@ -13,7 +13,7 @@ interface RoadmapUnit extends Unit {
 
 export type Roadmap = RoadmapUnit[];
 
-export default class GetRoadmapAction {
+export default class GetRoadmapUseCase {
   constructor(
     private auth: AuthContract,
     private db: PrismaClient,

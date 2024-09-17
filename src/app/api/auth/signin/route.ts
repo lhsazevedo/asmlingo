@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 
     const loggedIn = await container
       .createScope()
-      .resolve("SignInAction")
+      .resolve("SignInUseCase")
       .execute(json);
 
     if (loggedIn) {

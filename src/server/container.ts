@@ -13,11 +13,11 @@ import { AuthContract } from "./core/contracts/AuthContract";
 import { HashContract } from "./core/contracts/HashContract";
 import { SessionContract } from "./core/contracts/SessionContract";
 
-import FinishLessonAction from "./core/actions/FinishLessonAction";
-import GetRoadmapAction from "./core/actions/GetRoadmapAction";
-import SignInAction from "./core/actions/SignInAction";
-import SignOutAction from "./core/actions/SignOutAction";
-import SignUpAction from "./core/actions/SignUpAction";
+import FinishLessonUseCase from "./core/cases/FinishLessonUseCase";
+import GetRoadmapUseCase from "./core/cases/GetRoadmapUseCase";
+import SignInUseCase from "./core/cases/SignInUseCase";
+import SignOutUseCase from "./core/cases/SignOutUseCase";
+import SignUpUseCase from "./core/cases/SignUpUseCase";
 
 import DatabaseAuthProvider from "./providers/DatabaseAuthProvider";
 import Argon2IdHashProvider from "./providers/Argon2IdHashProvider";
@@ -41,11 +41,11 @@ export type ContainerEntries = {
   unitRepository: UnitRepository;
 
   // Use cases
-  SignUpAction: SignUpAction;
-  SignInAction: SignInAction;
-  SignOutAction: SignOutAction;
-  GetRoadmapAction: GetRoadmapAction;
-  FinishLessonAction: FinishLessonAction;
+  SignUpUseCase: SignUpUseCase;
+  SignInUseCase: SignInUseCase;
+  SignOutUseCase: SignOutUseCase;
+  GetRoadmapUseCase: GetRoadmapUseCase;
+  FinishLessonUseCase: FinishLessonUseCase;
 
   // Services
   userService: UserService;
@@ -89,28 +89,28 @@ container.register(
 );
 
 container.register(
-  "SignUpAction",
-  asClass(SignUpAction).setLifetime(Lifetime.TRANSIENT),
+  "SignUpUseCase",
+  asClass(SignUpUseCase).setLifetime(Lifetime.TRANSIENT),
 );
 
 container.register(
-  "SignInAction",
-  asClass(SignInAction).setLifetime(Lifetime.TRANSIENT),
+  "SignInUseCase",
+  asClass(SignInUseCase).setLifetime(Lifetime.TRANSIENT),
 );
 
 container.register(
-  "SignOutAction",
-  asClass(SignOutAction).setLifetime(Lifetime.TRANSIENT),
+  "SignOutUseCase",
+  asClass(SignOutUseCase).setLifetime(Lifetime.TRANSIENT),
 );
 
 container.register(
-  "GetRoadmapAction",
-  asClass(GetRoadmapAction).setLifetime(Lifetime.TRANSIENT),
+  "GetRoadmapUseCase",
+  asClass(GetRoadmapUseCase).setLifetime(Lifetime.TRANSIENT),
 );
 
 container.register(
-  "FinishLessonAction",
-  asClass(FinishLessonAction).setLifetime(Lifetime.TRANSIENT),
+  "FinishLessonUseCase",
+  asClass(FinishLessonUseCase).setLifetime(Lifetime.TRANSIENT),
 );
 
 container.register(

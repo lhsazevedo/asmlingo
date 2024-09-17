@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
       })
       .parse(await request.json());
 
-    await container.createScope().resolve("SignUpAction").execute(json);
+    await container.createScope().resolve("SignUpUseCase").execute(json);
   } catch (err) {
     if (err instanceof ZodError) {
       return badRequest("invalid_input", "Invalid input");

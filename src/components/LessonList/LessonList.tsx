@@ -5,7 +5,7 @@ import styles from "./LessonList.module.css";
 import { LessonButtonVariant } from "../LessonButton/LessonButton";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
-import { Roadmap } from "@/server/core/actions/GetRoadmapAction";
+import { Roadmap } from "@/server/core/cases/GetRoadmapUseCase";
 export interface LessonListProps {
   units: Roadmap;
   currentLessonId?: number;

@@ -9,7 +9,7 @@ import UserRepository from "../repositories/UserRepository";
  *
  * This action updates the user's current lesson, advancing to the next unit when appropriate.
  */
-export default class FinishLessonAction {
+export default class FinishLessonUseCase {
   constructor(
     private auth: AuthContract,
     private db: PrismaClient,

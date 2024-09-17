@@ -6,24 +6,24 @@ import { AuthContract } from "../contracts/AuthContract";
 import { UserService } from "../services/UserService";
 import UserRepository from "../repositories/UserRepository";
 
-export interface SignUpActionDto {
+export interface SignUpUseCaseDto {
   name: string;
   email: string;
   password: string;
 }
 
-export type SignUpActionErrors = {
-  [K in keyof SignUpActionDto]?: string;
+export type SignUpUseCaseErrors = {
+  [K in keyof SignUpUseCaseDto]?: string;
 };
 
-export default class SignUpAction {
+export default class SignUpUseCase {
   constructor(
     private auth: AuthContract,
     private userRepository: UserRepository,
     private userService: UserService,
   ) {}
 
-  async execute(input: SignUpActionDto) {
+  async execute(input: SignUpUseCaseDto) {
     const existingUser = await this.auth.user();
 
     if (existingUser && existingUser.isGuest === false) {
