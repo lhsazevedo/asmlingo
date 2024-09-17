@@ -1,4 +1,4 @@
-import { AlreadyLoggedInError, EmailAlreadyTakenError } from "../auth/Errors";
+import { AlreadyLoggedInError, EmailAlreadyTakenError } from "@/core/contracts/AuthContract";
 import { AuthContract } from "../contracts/AuthContract";
 import { SessionContract } from "../contracts/SessionContract";
 import { UserRepositoryContract } from "../contracts/UserRepositoryContract";

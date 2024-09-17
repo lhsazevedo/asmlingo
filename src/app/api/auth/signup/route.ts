@@ -5,7 +5,7 @@ import { container } from "@/container";
 import {
   AlreadyLoggedInError,
   EmailAlreadyTakenError,
-} from "@/core/auth/Errors";
+} from "@/core/contracts/AuthContract";
 import { CreateUserValidationError } from "@/core/services/UserService";
 import {
   ApiErrorResponse,

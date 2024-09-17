@@ -1,5 +1,9 @@
 import { User } from "@prisma/client";
 
+// TODO: Move out of contracts
+export class AlreadyLoggedInError extends Error {}
+export class EmailAlreadyTakenError extends Error {}
+
 export interface AuthCredentials {
   email: string;
   password: string;

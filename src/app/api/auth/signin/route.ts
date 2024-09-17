@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { z, ZodError } from "zod";
 
 import { container } from "@/container";
-import { AlreadyLoggedInError } from "@/core/auth/Errors";
+import { AlreadyLoggedInError } from "@/core/contracts/AuthContract";
 import {
   ApiErrorResponse,
   badRequest,
