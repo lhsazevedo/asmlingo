@@ -1,5 +1,5 @@
-import { AuthContract } from "@/server/core/contracts/AuthContract";
-import { UserService } from "@/server/core/services/UserService";
+import { AuthContract } from "../contracts/AuthContract";
+import { UserService } from "../services/UserService";
 import { PrismaClient } from "@prisma/client";
 import UnitRepository from "../repositories/UnitRepository";
 import UserRepository from "../repositories/UserRepository";

@@ -1,5 +1,5 @@
 import { Prisma, Lesson, PrismaClient, Unit } from "@prisma/client";
-import { AuthContract } from "@/server/core/contracts/AuthContract";
+import { AuthContract } from "../contracts/AuthContract";
 import UnitRepository from "../repositories/UnitRepository";
 
 interface RoadmapLesson extends Lesson {

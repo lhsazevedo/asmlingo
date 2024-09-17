@@ -1,10 +1,9 @@
 import {
   AlreadyLoggedInError,
   EmailAlreadyTakenError,
-} from "@/server/core/contracts/AuthContract";
-import { AuthContract } from "@/server/core/contracts/AuthContract";
-import { SessionContract } from "@/server/core/contracts/SessionContract";
-import { UserService } from "@/server/core/services/UserService";
+} from "../contracts/AuthContract";
+import { AuthContract } from "../contracts/AuthContract";
+import { UserService } from "../services/UserService";
 import UserRepository from "../repositories/UserRepository";
 
 export interface SignUpActionDto {
@@ -20,13 +19,11 @@ export type SignUpActionErrors = {
 export default class SignUpAction {
   constructor(
     private auth: AuthContract,
-    private pendingSession: Promise<SessionContract>,
     private userRepository: UserRepository,
     private userService: UserService,
   ) {}
 
   async execute(input: SignUpActionDto) {
-    const session = await this.pendingSession;
     const existingUser = await this.auth.user();
 
     if (existingUser && existingUser.isGuest === false) {
@@ -49,10 +46,7 @@ export default class SignUpAction {
       throw new Error("Failed to create user");
     }
 
-    // TODO: Move the Auth service
-    session.set("userId", user.id);
-    session.set("isGuest", false);
-    await session.save();
+    await this.auth.login(user);
 
     return user;
   }

@@ -9,26 +9,24 @@ import {
   Lifetime,
 } from "awilix";
 
-import { AuthContract } from "@/server/core/contracts/AuthContract";
-import { HashContract } from "@/server/core/contracts/HashContract";
-import { SessionContract } from "@/server/core/contracts/SessionContract";
-// import { UnitRepositoryContract } from "@/server/core/contracts/UnitRepositoryContract";
-// import { UserRepositoryContract } from "@/server/core/contracts/UserRepositoryContract";
+import { AuthContract } from "./core/contracts/AuthContract";
+import { HashContract } from "./core/contracts/HashContract";
+import { SessionContract } from "./core/contracts/SessionContract";
 
-import FinishLessonAction from "@/server/core/actions/FinishLessonAction";
-import GetRoadmapAction from "@/server/core/actions/GetRoadmapAction";
-import SignInAction from "@/server/core/actions/SignInAction";
-import SignOutAction from "@/server/core/actions/SignOutAction";
-import SignUpAction from "@/server/core/actions/SignUpAction";
+import FinishLessonAction from "./core/actions/FinishLessonAction";
+import GetRoadmapAction from "./core/actions/GetRoadmapAction";
+import SignInAction from "./core/actions/SignInAction";
+import SignOutAction from "./core/actions/SignOutAction";
+import SignUpAction from "./core/actions/SignUpAction";
 
-import DatabaseAuthProvider from "@/server/providers/DatabaseAuthProvider";
-import Argon2IdHashProvider from "@/server/providers/Argon2IdHashProvider";
-import { IronSessionProvider } from "@/server/providers/IronSessionProvider";
+import DatabaseAuthProvider from "./providers/DatabaseAuthProvider";
+import Argon2IdHashProvider from "./providers/Argon2IdHashProvider";
+import { IronSessionProvider } from "./providers/IronSessionProvider";
 
-import UnitRepository from "@/server/core/repositories/UnitRepository";
-import UserRepository from "@/server/core/repositories/UserRepository";
+import UnitRepository from "./core/repositories/UnitRepository";
+import UserRepository from "./core/repositories/UserRepository";
 
-import { UserService } from "@/server/core/services/UserService";
+import { UserService } from "./core/services/UserService";
 
 export type ContainerEntries = {
   // Providers
