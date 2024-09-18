@@ -5,8 +5,6 @@ import { AuthContract, AlreadyLoggedInError } from "../contracts/AuthContract";
 import { User } from "@prisma/client";
 import { mock, MockProxy } from "vitest-mock-extended";
 
-// type MockedFunction<T extends (...args: any[]) => any> = Mock<Parameters<T>, ReturnType<T>>;
-
 describe("SignInUseCase", () => {
   let auth: MockProxy<AuthContract>;
   let signInUseCase: SignInUseCase;

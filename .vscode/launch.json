@@ -27,6 +27,13 @@
         "uriFormat": "%s",
         "webRoot": "${workspaceFolder}"
       }
+    },
+    {
+      // Vitest
+      "name": "Vitest: debug",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run test"
     }
   ]
 }
