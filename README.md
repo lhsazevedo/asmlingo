@@ -136,8 +136,8 @@ Inversion and Use Cases, while trading of some abstractions (db and validation) 
 
 #### Dependency Injection
 
-Implemented a dependency injection container using [Awilix](https://github.com/jeffijoe/awilix) for
-better modularity and testability. See `src/server/container.ts`.
+Implemented an IoC and dependency injection container using
+[Awilix](https://github.com/jeffijoe/awilix). See `src/server/container.ts`.
 
 #### Use Cases and Domain Logic
 
@@ -163,9 +163,13 @@ further development:
   schema validation (Zod) and database (Prisma). This was a pragmatic decision to avoid recreating a
   1:1 abstraction layer of the fluent APIs provided by these libraries. This may be revisited in
   future iterations as I learn more about architectural best practices.
-- **Anemic Entities**: Prisma excellent generated types are currently being used as anemic entities.
+- **Anemic Entities**: ~~Prisma excellent generated types are currently being used as anemic entities.
   I would like to talk with experienced engineers and explore the feasibility of implementing a more
-  robust domain model layer for short-lived entities in web applications context.
+  robust domain model layer for short-lived entities in web applications context.~~  
+  Edit: Writing tests for use cases that interact with Prisma was a pain point. In retrospect, using
+  my own domain entities would declouple the core domain logic from the ORM, making it easier to
+  test. [MikroORM](https://mikro-orm.io), which unfortunately I discovered only after this refactor,
+  looks really promising for this scenario.
 - **Client-side validation**: Challenge answer validation is currently done client-side. This was a
   trade-off for better user experience as it allows for immediate feedback.
 - **Error handling**: Error handing, particularly around Promise rejections, could be improved for
@@ -180,7 +184,7 @@ further development:
 
 These are the follow up tasks that I would follow for getting this project production ready:
 
-- Write unit tests for all use cases and services.
+- Done ~~Write unit tests for all use cases and services.~~
 - Write integration tests for the API routes.
 - Add a config service to manage environment variables and configuration.
 - Further refining the separation of concerns where beneficial.
@@ -192,6 +196,3 @@ These are the follow up tasks that I would follow for getting this project produ
 - Improving response typing for better API contract definition.
 - Refactor the frontend code using best practices and architectural patterns for React:
   https://vasanthk.gitbooks.io/react-bits
-
-These improvements and planned tasks reflect an ongoing commitment to code quality, maintainability,
-and the pragmatic application of architectural best practices in modern web development.
