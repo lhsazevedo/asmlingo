@@ -115,6 +115,7 @@ describe("FinishLessonUseCase", () => {
 
     await finishLessonUseCase.execute(1);
 
+    expect(userRepository.getProgress).toHaveBeenCalledWith(mockUser.id);
     expect(db.lessonProgress.create).not.toHaveBeenCalled();
   });
 
@@ -127,6 +128,7 @@ describe("FinishLessonUseCase", () => {
 
     await finishLessonUseCase.execute(1);
 
+    expect(db.lessonProgress.create).toHaveBeenCalled();
     expect(userRepository.update).toHaveBeenCalledWith(mockUser.id, {
       currentLessonId: nextLesson.id,
       currentUnitId: mockUnit.id,
@@ -144,6 +146,7 @@ describe("FinishLessonUseCase", () => {
 
     await finishLessonUseCase.execute(1);
 
+    expect(db.lessonProgress.create).toHaveBeenCalled();
     expect(db.unitProgress.create).toHaveBeenCalledWith({
       /* eslint-disable @typescript-eslint/no-unsafe-assignment */
       data: expect.objectContaining({
