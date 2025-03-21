@@ -12,10 +12,7 @@ A Duolingo-like microlearning prototype for learning SuperH assembly (or any ass
 > end of this README.
 
 > [!IMPORTANT]
-> This project is a learning exercise developed over the course of one week to explore and
-> gain hands-on experience with TypeScript, Next.js 14, and Prisma ORM. It is not intended for
-> production use. The primary goals were rapid learning, technology exploration, and demonstration
-> of newly acquired skills.
+> This project not intended for production use.
 
 Asmlingo is a educational app inspired by Duolingo's microlearning concept, designed to teach
 assembly language using a gamified approach. This project was developed as a week-long deep dive
